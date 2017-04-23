@@ -1,0 +1,155 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>python的一些糖</title><link rel="alternate" type="application/rss+xml" title="庶民样本" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="python的一些糖"><meta name="description" content="&lt;ul&gt;
+&lt;li&gt;reduce&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reduce 把一个函数作用在序列上， 这个函数必须有两个参数， 它把结果继续作用在序列的下一个元素上。&lt;/p&gt;
+&lt;p&gt;比如一个列表内元素的所用的乘积：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from functools import reduce
+
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+reduce(lambda x, y: x*y, list)
+
+return 362880
+&lt;/code&gt;&lt;/pre&gt;"><meta name="twitter:description" content="&lt;ul&gt;
+&lt;li&gt;reduce&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reduce 把一个函数作用在序列上， 这个函数必须有两个参数， 它把结果继续作用在序列的下一个元素上。&lt;/p&gt;
+&lt;p&gt;比如一个列表内元素的所用的乘积：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from functools import reduce
+
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+reduce(lambda x, y: x*y, list)
+
+return 362880
+&lt;/code&gt;&lt;/pre&gt;"></head><body><header class="header"><h1 class="site-name"><a href="/">e.z.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/girls.html">girls</a></li><li><a href="/donate.html">donate</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">python的一些糖</h2><script></script><div class="post-content markdown-body"><ul>
+<li>reduce</li>
+</ul>
+<p>reduce 把一个函数作用在序列上， 这个函数必须有两个参数， 它把结果继续作用在序列的下一个元素上。</p>
+<p>比如一个列表内元素的所用的乘积：</p>
+<pre><code>from functools import reduce
+
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+reduce(lambda x, y: x*y, list)
+
+return 362880
+</code></pre><a id="more"></a>
+<ul>
+<li>map</li>
+</ul>
+<p>map 函数接受两个参数， 一个序列， 一个函数， 并把结果通过Iterator(迭代器)返回</p>
+<pre><code>test = map(lambda x: x*x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+test 为 &lt;map object at 0x7f998e02c7b8&gt;
+
+list(test)
+
+[1, 4, 9, 16, 16, 25, 36, 49, 64, 81]
+</code></pre><ul>
+<li>filter</li>
+</ul>
+<p>filter 函数接受两个参数， 一个函数， 一个序列， 并把函数作用与序列的每一个元素， 并通过True or False， 来判断是否保留元素。</p>
+<pre><code>test = filter(lambda x : x &gt; 5, [1, 3, 4, 6, 7, 8, 9])
+
+list(test)
+
+[6, 7, 8, 9]
+</code></pre><ul>
+<li>int</li>
+</ul>
+<p>int 函数可以返回 整数</p>
+<pre><code>int(12.3)
+return 12
+</code></pre><p>而且 int 函数可以返回， 字符串的进制数</p>
+<pre><code>int(&#39;0001&#39;, 2)
+
+return 1
+
+其中的 ‘0001’ 必须以字符串的形式输入， 返回的是2进制数
+</code></pre><ul>
+<li>join</li>
+</ul>
+<p>join 函数 string.join(seq), 其中seq是一个序列， string为字符串，</p>
+<pre><code>&#39;+&#39;.join(map(str,range(7)))
+
+return &#39;0+1+2+3+4+5+6&#39;
+</code></pre><ul>
+<li>operator 模块</li>
+</ul>
+<p>python 内置的模块，operator为c代码编写， 其速度更快。</p>
+<p>算术操作符：</p>
+<pre><code>import operator
+
+operator.add(1, 2)
+operator.sub(1, 2)
+operator.mul(1, 2)
+operator.turediv(1, 2)# 浮点除法
+operator.floortdiv(1, 2)# 整数除法
+operator.mod(1, 2)
+</code></pre><p>其他可参见 (operator)[<a href="https://docs.python.org/3/library/operator.html" target="_blank" rel="external">https://docs.python.org/3/library/operator.html</a>]</p>
+<ul>
+<li>list and string</li>
+</ul>
+<p>list 的一个很实用的方法 list.count(obj),</p>
+<p>string.count(obj)</p>
+<pre><code>test = &#39;fhaognaorghksangjalgjl&#39;
+
+test.count(&#39;n&#39;)# return 2
+
+list(test).count(&#39;n&#39;)# return 2
+</code></pre><ul>
+<li>math</li>
+</ul>
+<p>math 函数， math.modf() 返回数字的小数部分，<br>其中 is_integer() 函数</p>
+<pre><code>test = math.sqrt(155)
+
+&gt;&gt;&gt; math.modf(test)
+(0.4498995979887326, 12.0)
+
+&gt;&gt;&gt; (2.0).is_integer()
+True
+&gt;&gt;&gt; (3.2).is_integer()
+False
+</code></pre><ul>
+<li>@classmethod and @staticmethod 的区别</li>
+</ul>
+<p>py中要想调用类中的一个方法， 要先实例化一个对象在调用。<br>而使用@classmethod和@staticmethod则不需要实例化， 直接使用 类名.方法名来调用</p>
+<p>很优雅，<br>他们的区别：</p>
+<p>@staticmethod 不需要表达自身的对象的self参数和自身类的cls的参数</p>
+<p>@classmethod 不需要表达自身de对象的self参宿， 但是第一个参数必须是表达自身类的cls参数</p>
+<pre><code>class A(object):  
+    bar = 1  
+    def foo(self):  
+        print &#39;foo&#39;  
+
+    @staticmethod  
+    def static_foo():  
+        print &#39;static_foo&#39;  
+        print A.bar  
+
+    @classmethod  
+    def class_foo(cls):  
+        print &#39;class_foo&#39;  
+        print cls.bar  
+        cls().foo()  
+
+A.static_foo()  
+A.class_foo()
+</code></pre><p>输出</p>
+<pre><code>static_foo
+1
+class_foo
+1
+foo
+</code></pre><ul>
+<li>itertools</li>
+</ul>
+<p>itertools用于高效循环的迭代函数集合</p>
+</div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
+var disqus_config = function () {
+  this.page.url = 'https://blog.whilte.cn/2017/03/16/python-tip/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '2017/03/16/python-tip/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><div class="post-report-bug">文章勘误可以直接到 <a target="_blank" href="https://github.com/egoist/blog/blob/master/source/_posts/python-tip.md">源代码地址</a> 修改或者 <a target="_blank" href="https://github.com/egoist/blog/issues/new">提交 ISSUE</a>，感谢阅读！</div></article></section><footer class="footer"><div class="centered"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" class="hide-on-mobile">CC BY-NC-ND 4.0</a><span class="hide-on-mobile">&nbsp;</span><span>&copy;&nbsp;</span><a href="https://github.com/egoist">E.Z.</a><span class="hide-on-mobile">&nbsp;</span><a href="https://github.com/egoist/blog" class="hide-on-mobile">Read the source code.</a></div></footer><div style="display:none"></div><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54857209-6', 'auto');
+ga('send', 'pageview');</script><script async src="https://www.google-analytics.com/analytics.js"></script><script src="/js/highlight.min.js?v=4.2.2"></script><script src="/js/zoom.js?v=4.2.2"></script><script>window.hexoLayout = "post"</script><script src="/js/app.js?v=4.2.2"></script></body></html>

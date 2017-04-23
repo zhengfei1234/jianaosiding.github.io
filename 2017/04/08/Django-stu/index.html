@@ -1,0 +1,67 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>Django MTV模型</title><link rel="alternate" type="application/rss+xml" title="庶民样本" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="Django MTV模型"><meta name="description" content="
+MTV 模型
+
+简单的向服务器发送一个requests，服务器会返回一个responses。
+具体的操作为：
+发送一个请求， requests 会到views区， 找到特定的views， views"><meta name="twitter:description" content="
+MTV 模型
+
+简单的向服务器发送一个requests，服务器会返回一个responses。
+具体的操作为：
+发送一个请求， requests 会到views区， 找到特定的views， views"></head><body><header class="header"><h1 class="site-name"><a href="/">e.z.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/girls.html">girls</a></li><li><a href="/donate.html">donate</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">Django MTV模型</h2><script></script><div class="post-content markdown-body"><ul>
+<li>MTV 模型</li>
+</ul>
+<p>简单的向服务器发送一个requests，服务器会返回一个responses。</p>
+<p>具体的操作为：</p>
+<p>发送一个请求， requests 会到views区， 找到特定的views， views到models层查找数据， models为托管数据的层级和一些对数据进行操作， 接下来会将找到的数据到templates层，templates来展示数据。这就是简单的 MTV 模型</p>
+<ul>
+<li>创建 Django 项目</li>
+</ul>
+<p>使用pycharm中的terminal：</p>
+<pre><code>python3 manage.py startproject tango
+</code></pre><ul>
+<li><strong>init</strong>.py:这是一个空的脚本,用来告诉Python编译器这个目录是一个Python包.</li>
+<li>settings.py:用来存储Django项目设置的文件.</li>
+<li>urls.py:用来存储项目里的URL模式.</li>
+<li>wsgi.py:用来帮助你运行开发服务,同时可以帮助部署你的生产环境.</li>
+</ul>
+<p>在新的 Djangoapp 项目中的文件：</p>
+<ul>
+<li><strong>init</strong>.py，前面的功能一样.</li>
+<li>models.py,一个存储你的应用中数据模型的地方 - 在这里描述数据的实体和关系.</li>
+<li>tests.py,存储你应用的测试代码.</li>
+<li>views.py,在这里处理用户请求和响应.</li>
+<li>admin.py,在这里你可以向Django注册你的模型,它会为你创建Django的管理界面.</li>
+</ul>
+<p>新建一个项目后要在 setting.py 中设置 INSTALLED_APPS 元组 中 加入新建app的名字， 这样django就可以识别le。</p>
+<ul>
+<li>创建视图</li>
+</ul>
+<p>在views.py 中， 加入：</p>
+<pre><code>from django.shortcuts import render
+def index(requests):
+    return render(requests, &#39;index.html&#39;)
+</code></pre><p>需要在templates中新建一个html文件为index。</p>
+<ul>
+<li>分配url<br>在urls.py中，添加代码：</li>
+</ul>
+<pre><code>from django.conf.urls import url
+from django.contrib import admin
+from tango.views import index # 导入views层中的index
+
+urlpatterns = [
+    url(r&#39;^admin/&#39;, admin.site.urls),
+    url(r&#39;^index/&#39;, index) # 增加urls
+]
+</code></pre><ul>
+<li>运行服务</li>
+</ul>
+<p>在termainl中：</p>
+<pre><code>python3 manage.py runserver
+</code></pre></div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
+var disqus_config = function () {
+  this.page.url = 'https://blog.whilte.cn/2017/04/08/Django-stu/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '2017/04/08/Django-stu/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><div class="post-report-bug">文章勘误可以直接到 <a target="_blank" href="https://github.com/egoist/blog/blob/master/source/_posts/Django-stu.md">源代码地址</a> 修改或者 <a target="_blank" href="https://github.com/egoist/blog/issues/new">提交 ISSUE</a>，感谢阅读！</div></article></section><footer class="footer"><div class="centered"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" class="hide-on-mobile">CC BY-NC-ND 4.0</a><span class="hide-on-mobile">&nbsp;</span><span>&copy;&nbsp;</span><a href="https://github.com/egoist">E.Z.</a><span class="hide-on-mobile">&nbsp;</span><a href="https://github.com/egoist/blog" class="hide-on-mobile">Read the source code.</a></div></footer><div style="display:none"></div><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54857209-6', 'auto');
+ga('send', 'pageview');</script><script async src="https://www.google-analytics.com/analytics.js"></script><script src="/js/highlight.min.js?v=4.2.2"></script><script src="/js/zoom.js?v=4.2.2"></script><script>window.hexoLayout = "post"</script><script src="/js/app.js?v=4.2.2"></script></body></html>

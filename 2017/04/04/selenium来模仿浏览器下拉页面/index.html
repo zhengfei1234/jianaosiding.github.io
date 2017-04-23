@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>selenium实现浏览器下拉页面</title><link rel="alternate" type="application/rss+xml" title="庶民样本" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="selenium实现浏览器下拉页面"><meta name="description" content="&lt;p&gt;在我爬取美团数据的时候，发现美团的整个页面数据采用ajax来加载，ajax 就是异步的javascript和XML, 我也不是很懂， 近期打算学习js，它的功能就是网站不需要使用单独的页面请求就可以和服务器进行交互，表单采用Ajax与服务器通信。&lt;/p&gt;
+&lt;p&gt;要想获得全部的数据，需要下拉到底页面才会完全加载本页面的全部内容。&lt;/p&gt;
+&lt;p&gt;这里其时有两种办法，来进行爬取：&lt;br&gt;"><meta name="twitter:description" content="&lt;p&gt;在我爬取美团数据的时候，发现美团的整个页面数据采用ajax来加载，ajax 就是异步的javascript和XML, 我也不是很懂， 近期打算学习js，它的功能就是网站不需要使用单独的页面请求就可以和服务器进行交互，表单采用Ajax与服务器通信。&lt;/p&gt;
+&lt;p&gt;要想获得全部的数据，需要下拉到底页面才会完全加载本页面的全部内容。&lt;/p&gt;
+&lt;p&gt;这里其时有两种办法，来进行爬取：&lt;br&gt;"></head><body><header class="header"><h1 class="site-name"><a href="/">e.z.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/girls.html">girls</a></li><li><a href="/donate.html">donate</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">selenium实现浏览器下拉页面</h2><script></script><div class="post-content markdown-body"><p>在我爬取美团数据的时候，发现美团的整个页面数据采用ajax来加载，ajax 就是异步的javascript和XML, 我也不是很懂， 近期打算学习js，它的功能就是网站不需要使用单独的页面请求就可以和服务器进行交互，表单采用Ajax与服务器通信。</p>
+<p>要想获得全部的数据，需要下拉到底页面才会完全加载本页面的全部内容。</p>
+<p>这里其时有两种办法，来进行爬取：<br><a id="more"></a></p>
+<ol>
+<li><p>抓包分析请求，找到真实的请求，来模拟请求，获得数据。</p>
+</li>
+<li><p>使用selenium来进行爬取，但是其效率不高。</p>
+</li>
+</ol>
+<p>由于我爬取的数据量较小，我只需要几个分类下的数据。我采用第二种。（第一种，模拟起来很麻烦）。</p>
+<pre><code># 导入第三方库
+from selenium import webdriver
+import time
+from bs4 import BeautifulSoup
+
+# 你可以使用 phantomjs 或者使用 chrome
+driver = webdriver.PhantomJS(executable_path=&#39;/home/jasd/python/phantomjs/bin/phantomjs&#39;)
+# driver = webdriver.Chrome()
+
+def get_info(page):
+
+    driver.get(full_url)
+    time.sleep(2)
+# 这里我使用 js 的方法，来实现下拉页面
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+# 使用的执行 JavaScript
+    driver.execute_script(js)
+# 休眠 3 秒种
+    time.sleep(3)
+# 重复执行多次， 确保页面已完全加载
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+    js = &quot;window.scrollTo(0,document.body.scrollHeight)&quot;
+    driver.execute_script(js)
+    time.sleep(3)
+
+# 这里使用 page_source 的方法， 我还是比较喜欢使用BeautifulSoup， 虽然效率有点低
+    pageSoure = driver.page_source
+    soup = BeautifulSoup(pageSoure, &#39;lxml&#39;)
+# 退出
+    driver.quit()
+
+get_info(i)
+</code></pre><p>我觉得代码写的很挫。。。。</p>
+</div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
+var disqus_config = function () {
+  this.page.url = 'https://blog.whilte.cn/2017/04/04/selenium来模仿浏览器下拉页面/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '2017/04/04/selenium来模仿浏览器下拉页面/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><div class="post-report-bug">文章勘误可以直接到 <a target="_blank" href="https://github.com/egoist/blog/blob/master/source/_posts/selenium来模仿浏览器下拉页面.md">源代码地址</a> 修改或者 <a target="_blank" href="https://github.com/egoist/blog/issues/new">提交 ISSUE</a>，感谢阅读！</div></article></section><footer class="footer"><div class="centered"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" class="hide-on-mobile">CC BY-NC-ND 4.0</a><span class="hide-on-mobile">&nbsp;</span><span>&copy;&nbsp;</span><a href="https://github.com/egoist">E.Z.</a><span class="hide-on-mobile">&nbsp;</span><a href="https://github.com/egoist/blog" class="hide-on-mobile">Read the source code.</a></div></footer><div style="display:none"></div><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54857209-6', 'auto');
+ga('send', 'pageview');</script><script async src="https://www.google-analytics.com/analytics.js"></script><script src="/js/highlight.min.js?v=4.2.2"></script><script src="/js/zoom.js?v=4.2.2"></script><script>window.hexoLayout = "post"</script><script src="/js/app.js?v=4.2.2"></script></body></html>

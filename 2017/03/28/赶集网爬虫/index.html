@@ -1,0 +1,195 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>赶集网爬虫</title><link rel="alternate" type="application/rss+xml" title="庶民样本" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="赶集网爬虫"><meta name="description" content="&lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em&gt;算是以深度优先来进行爬取&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;爬虫的目的是收集数据，数据的格式要便于处理和分析。&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;MongoDB&lt;/li&gt;
+&lt;li&gt;requests&lt;/li&gt;
+&lt;li&gt;pymongo&lt;/li&gt;
+&lt;li&gt;BeautifulSoup and lxml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;关于爬虫&quot;&gt;&lt;a href=&quot;#关于爬虫&quot; class=&quot;headerlink&quot; title=&quot;关于爬虫&quot;&gt;&lt;/a&gt;关于爬虫&lt;/h4&gt;&lt;h5 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装需要的Python的第三方库:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 在 terminal(cmd) 中输入：
+
+ win:
+
+ pip install requests, BeautifulSoup4, pymongo, lxml
+
+ linux:
+
+ sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果你知道更好(不知道也可以)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一点 HTML CSS HTTP and MongoDB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;"><meta name="twitter:description" content="&lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em&gt;算是以深度优先来进行爬取&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;爬虫的目的是收集数据，数据的格式要便于处理和分析。&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;MongoDB&lt;/li&gt;
+&lt;li&gt;requests&lt;/li&gt;
+&lt;li&gt;pymongo&lt;/li&gt;
+&lt;li&gt;BeautifulSoup and lxml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;关于爬虫&quot;&gt;&lt;a href=&quot;#关于爬虫&quot; class=&quot;headerlink&quot; title=&quot;关于爬虫&quot;&gt;&lt;/a&gt;关于爬虫&lt;/h4&gt;&lt;h5 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装需要的Python的第三方库:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 在 terminal(cmd) 中输入：
+
+ win:
+
+ pip install requests, BeautifulSoup4, pymongo, lxml
+
+ linux:
+
+ sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果你知道更好(不知道也可以)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一点 HTML CSS HTTP and MongoDB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;"></head><body><header class="header"><h1 class="site-name"><a href="/">e.z.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/girls.html">girls</a></li><li><a href="/donate.html">donate</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">赶集网爬虫</h2><script></script><div class="post-content markdown-body"><p>爬虫地址：<a href="https://github.com/jianaosiding/crawl1" target="_blank" rel="external">spider</a></p>
+<p>赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。<br><em>算是以深度优先来进行爬取</em></p>
+<p><em>爬虫的目的是收集数据，数据的格式要便于处理和分析。</em></p>
+<h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><ul>
+<li>MongoDB</li>
+<li>requests</li>
+<li>pymongo</li>
+<li>BeautifulSoup and lxml</li>
+</ul>
+<h4 id="关于爬虫"><a href="#关于爬虫" class="headerlink" title="关于爬虫"></a>关于爬虫</h4><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><ol>
+<li>确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。</li>
+<li><p>安装需要的Python的第三方库:</p>
+<pre><code> 在 terminal(cmd) 中输入：
+
+ win:
+
+ pip install requests, BeautifulSoup4, pymongo, lxml
+
+ linux:
+
+ sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
+</code></pre></li>
+<li><p>如果你知道更好(不知道也可以)：</p>
+<ul>
+<li>一点 HTML CSS HTTP and MongoDB</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+<h5 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h5><p><img src="http://oava7ylm5.bkt.clouddn.com/test.jpg" alt="test"></p>
+<ul>
+<li><p>Spider 1 从<a href="http://bj.ganji.com/zhaopin/" target="_blank" rel="external">列表页</a>中获取页面下全部的个分类的链接，然后将分类的链接储存到 url_list 这个collection中。</p>
+</li>
+<li><p>Spider 2 从url_list 中获取储存的链接并解析，获取链接的详情页，将详情页中的想要抓取的信息储存到 item_info 中。</p>
+</li>
+</ul>
+<h5 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h5><p><img src="http://oava7ylm5.bkt.clouddn.com/liuchengtu.png" alt="liuchengtu"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h5 id="首先要观察爬取网站的页面结构"><a href="#首先要观察爬取网站的页面结构" class="headerlink" title="首先要观察爬取网站的页面结构"></a>首先要观察爬取网站的页面结构</h5><ul>
+<li>首先从<a href="http://bj.ganji.com/zhaopin/" target="_blank" rel="external">起始页</a>来看，我的目的是将其中的 销售， 行政， 后勤等这样的类别的链接提取出来。</li>
+<li>其次到这样的<a href="http://bj.ganji.com/zpshichangyingxiao/" target="_blank" rel="external">类别页</a>中， 我的目的是将 所有招聘职位的链接 爬取下来并储存到url_list表中，</li>
+<li>然后从数据库url_list表中，迭代其中的链接，解析出<a href="http://bj.ganji.com/zpfangjingjiren/2593320747x.htm" target="_blank" rel="external">详情页</a>，提取出我想要的信息。就是这样一步一步的深入它的页面结构</li>
+</ul>
+<h5 id="channel-url文件-为将招聘板块中的招聘职位分类的链接提取出来。"><a href="#channel-url文件-为将招聘板块中的招聘职位分类的链接提取出来。" class="headerlink" title="channel_url文件 为将招聘板块中的招聘职位分类的链接提取出来。"></a>channel_url文件 为将招聘板块中的招聘职位分类的链接提取出来。</h5><p>这里的 <a href="http://docs.python-requests.org/zh_CN/latest/index.html" target="_blank" rel="external">requests</a> 的作用:</p>
+<blockquote>
+<p>Requests 唯一的一个非转基因的 Python HTTP 库，人类可以安全享用。<br><em>警告：非专业使用其他 HTTP 库会导致危险的副作用，包括：安全缺陷症、冗余代码症、重新发明轮子症、啃文档症、抑郁、头疼、甚至死亡。</em></p>
+</blockquote>
+<p>requests 的基本用法:</p>
+<pre><code>import requests
+# 发起get请求
+data = requests.get(&#39;http://www.baidu.com&#39;)
+# 打印data
+print(data.text)
+# .....
+# 其中还可以设置 headers and proxies
+# headers 是访问一个网站的头部信息， 通常在可在 浏览器的开发者工具中看到
+# 如 chrome: 检查 &gt; network &gt; headers
+# 使用headers 的作用是看起来像一个人一样的访问
+# 由于网站可能限制了一个ip访问的频率，所以使用代理ip
+</code></pre><p><em>关于代理ip</em> 可以在 <a href="http://cn-proxy.com/" target="_blank" rel="external">http://cn-proxy.com/</a> 找到， 当然也可以写一个爬虫，将代理爬下来。</p>
+<p>有关http的头字段可以参见 <a href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5%E5%88%97%E8%A1%A8" target="_blank" rel="external">http头字段</a></p>
+<p><em>headers 的位置</em>：<br><img src="http://oava7ylm5.bkt.clouddn.com/headers.png" alt="img"></p>
+<p>这里的 BeautifulSoup and lxml的作用：</p>
+<blockquote>
+<p>Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库, 这里我使用 lxml 来解析。</p>
+</blockquote>
+<p><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/#" target="_blank" rel="external">BeautifulSoup</a> 的基本用法：</p>
+<pre><code>from bs4 import BeautifulSoup
+# 以下是一个非常经典的写法，其中 data.text是做汤的原料， lxml 是菜谱，BeautifulSoup 将其做成
+soup = BeautifulSoup(data.text, &#39;lxml&#39;)
+# BeautifulSoup 有 select and find 两种提取信息的方式
+# select 用的是css选择器
+img = soup.select(&#39;#lg &gt; img&#39;)
+# find 方法可以根据标签和属性来提取信息
+img = soup.find(&#39;img&#39;, {&#39;hidefocus&#39;: &quot;true&quot;})
+# 此外 find 还有 findAll() and find_all() 方法 可参见文档
+</code></pre><p>channel_url 中定义了一个函数， 来进行获取链接，我这里将运行的结果，赋给了channel_list, 当然也可以放进数据库。<br><img src="http://oava7ylm5.bkt.clouddn.com/chanenl_list.png" alt="images"></p>
+<h5 id="page-spider-是进行爬取的主要文件，-其中定义两个函数，是进行爬取信息的两个爬虫。"><a href="#page-spider-是进行爬取的主要文件，-其中定义两个函数，是进行爬取信息的两个爬虫。" class="headerlink" title="page_spider 是进行爬取的主要文件， 其中定义两个函数，是进行爬取信息的两个爬虫。"></a>page_spider 是进行爬取的主要文件， 其中定义两个函数，是进行爬取信息的两个爬虫。</h5><p>这里的 pymongo:</p>
+<blockquote>
+<p>PyMongo is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python. This documentation attempts to explain everything you need to know to use PyMongo.</p>
+</blockquote>
+<p>pymongo 的基本用法：</p>
+<pre><code>import pymongo
+# 连接pymongo
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+# 连接到数据库
+ganji = client[&#39;ganji&#39;]
+# 连接到数据库中的一个表(集合)
+url_list = ganji[&#39;url_list&#39;]
+# pymongo 的一些方法: 单个插入数据
+url_list1.insert_one({&#39;url&#39;: url})
+# 对数据库中的数据进行计数
+url_list1.find().count()
+</code></pre><p>关于 <em>正则表达式</em>：<br>python 中的正则表达式为 re模块， 基本用法：</p>
+<pre><code>import re
+# 进行正则匹配
+re.complie(&#39;^(https?://)?bj\.ganji\.com.*\.htm&#39;)
+</code></pre><p>正则表达式可以参见：<a href="http://www.runoob.com/python/python-reg-expressions.html" target="_blank" rel="external">正则表达式</a></p>
+<p>一个正则表达式的测试网站：<a href="http://www.pyregex.com/" target="_blank" rel="external">PyRegex</a></p>
+<h6 id="其中的函数-get-link-form-的一些细节："><a href="#其中的函数-get-link-form-的一些细节：" class="headerlink" title="其中的函数 get_link_form 的一些细节："></a>其中的函数 get_link_form 的一些细节：</h6><ol>
+<li><p>url_views 是对其url 的观察构造的，例如 <a href="http://bj.ganji.com/zpshichangyingxiao/o3/" target="_blank" rel="external">http://bj.ganji.com/zpshichangyingxiao/o3/</a> 为其第三页的url， 我将其写成 url_views = ‘{0}o{1}/‘.format(channel, str(page)) ， channel 和 page 为这个函数的参数</p>
+</li>
+<li><p>我的计划是爬去100页， 但是有的页面可能没有100页， 用if来判断是否有要爬去的信息，有则爬，无则pass， 具体的判断的依据是 <em>每个页面下都会有的 下一页的选项</em>。</p>
+</li>
+<li><p>由于findAll所返回的对象是一个列表，所以用for循环来进行迭代并储存。</p>
+</li>
+</ol>
+<h6 id="其中get-item-info-的细节："><a href="#其中get-item-info-的细节：" class="headerlink" title="其中get_item_info 的细节："></a>其中get_item_info 的细节：</h6><ol>
+<li>与上一个函数相似，这个主要是将每一个职位招聘的详情信息，提取并储存。但是要判断一下，这个商品是否已经成交或者下架，如果成交或者下架，那么访问这个页面时状态码应该返回 404. 所以用if判断状态码来进行爬去。</li>
+</ol>
+<h6 id="main-文件主要是调用page-spider的爬虫进行爬取"><a href="#main-文件主要是调用page-spider的爬虫进行爬取" class="headerlink" title="main 文件主要是调用page_spider的爬虫进行爬取"></a>main 文件主要是调用page_spider的爬虫进行爬取</h6><p>multiprocessing 为python的多进程模块，采用多进程爬取。</p>
+<pre><code>from multiprocessing import Pool
+# 如果要启动大量的子进程，可以用进程池的方式批量创建子进程
+pool = Pool(4)
+for link in url_list1.find({}, {&#39;_id&#39;: 0, &#39;url&#39;: 1}):
+        pool.apply(get_item_info, args=(link[&#39;url&#39;],))
+pool.close()
+pool.join()
+# pool = Pool(4) 就可以运行 4 个进程， Pool的默认大小是CPU的核数
+# 对Pool对象调用join()方法会等待所有子进程执行完毕，调用join()之前必须先调用close()，调用close()之后就不能继续添加新的Process了
+# map 函数是一个语法糖， map 函数接受两个参数， 一个序列， 一个函数， 并把结果通过Iterator(迭代器)返回
+test = map(lambda x: x*x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+test 为 &lt;map object at 0x7f998e02c7b8&gt;
+list(test)
+[1, 4, 9, 16, 16, 25, 36, 49, 64, 81]
+</code></pre><h5 id="count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。"><a href="#count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。" class="headerlink" title="count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。"></a>count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。</h5><h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu1.png" alt="xiaoguotu1"><br><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu2.png" alt="xiaoguotu2"></p>
+<h6 id="运行时的截图："><a href="#运行时的截图：" class="headerlink" title="运行时的截图："></a>运行时的截图：</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/sometime2.png" alt="sometime"></p>
+<h5 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h5><p>我的MongoDB中， 其中 url_list的 count 为:<em>120166</em>, item_info的 count为:<em>30726</em>.</p>
+<p>可能是我url_list先于item_info爬取，url_list有些链接已经失效。</p>
+<h5 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h5><p>我之前写过58同城的爬虫和这个类似， 但是写这个的时候bug明显更多。</p>
+<p>不同的网站会有不同的抓取策略。</p>
+<p><em>写爬虫会有很多的坑，验证码，采集JavaScript，模拟登录等都是要克服的。</em></p>
+<p>还有一些网站的数据加载方式， 比如美团，美团的数据加载使用的是 ajax(异步加载JavaScript和XML)，用selenium虽然可以,但是效率低。抓包分析效率高，但是很难模仿请求。我比较偏于分析请求。所以要了解网站的一些常见的反爬措施和网页的结构。</p>
+<p>赶集网这种网站页面结构很适合爬取， 但是它对同一ip的访问频率会有限制。</p>
+<p>这个程序的效率还可以优化，<em>例如 使用 lxml 来解析网页， 速度会快大概10倍的样子， 还可以利用 异步非阻塞 优化， </em>虽然我不会。 我会继续学习的。**</p>
+</div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
+var disqus_config = function () {
+  this.page.url = 'https://blog.whilte.cn/2017/03/28/赶集网爬虫/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '2017/03/28/赶集网爬虫/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><div class="post-report-bug">文章勘误可以直接到 <a target="_blank" href="https://github.com/egoist/blog/blob/master/source/_posts/赶集网爬虫.md">源代码地址</a> 修改或者 <a target="_blank" href="https://github.com/egoist/blog/issues/new">提交 ISSUE</a>，感谢阅读！</div></article></section><footer class="footer"><div class="centered"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" class="hide-on-mobile">CC BY-NC-ND 4.0</a><span class="hide-on-mobile">&nbsp;</span><span>&copy;&nbsp;</span><a href="https://github.com/egoist">E.Z.</a><span class="hide-on-mobile">&nbsp;</span><a href="https://github.com/egoist/blog" class="hide-on-mobile">Read the source code.</a></div></footer><div style="display:none"></div><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54857209-6', 'auto');
+ga('send', 'pageview');</script><script async src="https://www.google-analytics.com/analytics.js"></script><script src="/js/highlight.min.js?v=4.2.2"></script><script src="/js/zoom.js?v=4.2.2"></script><script>window.hexoLayout = "post"</script><script src="/js/app.js?v=4.2.2"></script></body></html>

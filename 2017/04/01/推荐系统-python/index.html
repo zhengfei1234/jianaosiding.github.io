@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>简单推荐(python)</title><link rel="alternate" type="application/rss+xml" title="庶民样本" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="简单推荐(python)"><meta name="description" content="&lt;ul&gt;
+&lt;li&gt;协作型过滤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个协作型过滤算法通常会对一大群人进行搜索， 并从中找出与我们品味相近的一小群人。算法会对这些人所偏爱的内容进行分析，并将它们组合构建一个经过排名的列表。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寻找相近的用户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有很多相似度评价值的体系，我将写的是 欧几里德距离和皮尔逊相关系数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;欧几里德距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;欧几里得距离就是，比如在平面直角坐标系中，欧几里得距离就是两点的距离方程。&lt;/p&gt;
+&lt;p&gt;两点距离公式：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://wikimedia.org/api/rest_v1/media/math/render/svg/bfa1815838113388d78c9402bba7308d734a4af2&quot; alt=&quot;oujilide&quot;&gt;&lt;/p&gt;"><meta name="twitter:description" content="&lt;ul&gt;
+&lt;li&gt;协作型过滤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个协作型过滤算法通常会对一大群人进行搜索， 并从中找出与我们品味相近的一小群人。算法会对这些人所偏爱的内容进行分析，并将它们组合构建一个经过排名的列表。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寻找相近的用户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有很多相似度评价值的体系，我将写的是 欧几里德距离和皮尔逊相关系数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;欧几里德距离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;欧几里得距离就是，比如在平面直角坐标系中，欧几里得距离就是两点的距离方程。&lt;/p&gt;
+&lt;p&gt;两点距离公式：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://wikimedia.org/api/rest_v1/media/math/render/svg/bfa1815838113388d78c9402bba7308d734a4af2&quot; alt=&quot;oujilide&quot;&gt;&lt;/p&gt;"></head><body><header class="header"><h1 class="site-name"><a href="/">e.z.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/girls.html">girls</a></li><li><a href="/donate.html">donate</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">简单推荐(python)</h2><script></script><div class="post-content markdown-body"><ul>
+<li>协作型过滤</li>
+</ul>
+<p>一个协作型过滤算法通常会对一大群人进行搜索， 并从中找出与我们品味相近的一小群人。算法会对这些人所偏爱的内容进行分析，并将它们组合构建一个经过排名的列表。</p>
+<ul>
+<li>寻找相近的用户</li>
+</ul>
+<p>有很多相似度评价值的体系，我将写的是 欧几里德距离和皮尔逊相关系数。</p>
+<ul>
+<li>欧几里德距离</li>
+</ul>
+<p>欧几里得距离就是，比如在平面直角坐标系中，欧几里得距离就是两点的距离方程。</p>
+<p>两点距离公式：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bfa1815838113388d78c9402bba7308d734a4af2" alt="oujilide"></p>
+<a id="more"></a>
+<p>欧几里得距离计算的代码</p>
+<pre><code>from math import sqrt
+
+
+def sim_distance(dataset, person1, person2):
+# common 为两者共同的之处
+        common = {}
+        for item in dataset[person1]:
+                if item in dataset[person2]:
+                        common[item] = 1
+
+# 没有共同之处， 则返回0
+        if len(common) == 0: return 0
+
+# 计算差值的平方和
+        sum_of_squares = sum([pow(dataset[person1][item] - dataset[person2][item], 2) for item in dataset[person1] if item in dataset[person2]])
+
+# 我将函数值加1， 避免除数为0的情况， 并取倒数
+        return 1 / (1 + sqrt(sum_of_squares))
+</code></pre><ul>
+<li>皮尔逊相关系数</li>
+</ul>
+<p>关于皮尔逊相关系数，首先是协方差。</p>
+<p>协方差是描述相互关联程度的一个特征数就是协方差。定义：</p>
+<blockquote>
+<p>设（X, Y) 是二维的随机变量， 若 E[(X - E(X))(Y - E(Y))] 存在，则称此数学期望为 X 和 Y 的协方差， 或称为 X与Y的相关（中心）距。</p>
+</blockquote>
+<p>协方差为 X的偏差与Y的偏差的乘积的数学期望。</p>
+<p>协方差公式：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3b2f5356a89c413a67fbb16292ed80e3187fbc86" alt="cov"></p>
+<p>协方差是有量纲的量，比如X表示人的身高， 单位是 m， Y表示人的体重， 单位是 kg，则 Cov(X, Y)带有量纲（m.kg), 为了消除量纲的影响，对协方差除以相同量纲的量，就得到相关系数。</p>
+<p>相关系数公式：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8b0d0608b5f85d24a9c572f8d1b5769289664dfb" alt="pearson"></p>
+<p>除以X和Y的标准差的乘积。</p>
+<p>公式1:</p>
+<p><img src="http://oava7ylm5.bkt.clouddn.com/19961_12788382715I69.gif" alt="foum1"></p>
+<p>公式2:</p>
+<p><img src="http://oava7ylm5.bkt.clouddn.com/19961_1278843346L5kz.gif" alt="foum2"></p>
+<p>公式2 为样本的相关系数</p>
+<p>皮尔逊相关系数计算代码：</p>
+<pre><code>from math import sqrt
+
+
+def sim_pearson(prefs, p1, p2):
+    common = {}
+    for item in prefs[p1]:
+        if item in prefs[p2]:
+            common[item] = 1
+
+    n = len(common)
+    if n == 0: return 0
+
+    sum1 = sum([prefs[p1][it] for it in common])
+    sum2 = sum([prefs[p2][it] for it in common])
+
+    sum1Sq = sum([pow(prefs[p1][it], 2) for it in common])
+    sum2Sq = sum([pow(prefs[p2][it], 2) for it in common])
+
+    pSum = sum([prefs][p1][it]*prefs[p2][it] for it in common)
+
+    # 计算
+    xfc = pSum - (sum1 * sum2) / n
+    bzc = sqrt((sum1Sq - pow(sum1, 2) / n) * (sum2Sq - pow(sum2, 2) / n))
+
+    if bzc == 0 : return 0
+    pearson = xfc / bzc
+
+    return pearson
+</code></pre><ul>
+<li>推荐物品</li>
+</ul>
+<p>一个受更多人评论的物品会对结果产生更大的影响， 为了修正这样的问题，要除以它所代表的对着个物品评论的人的相似度之和。</p>
+<pre><code># 利用所有人的评价值的加权平均， 为某人提供建议
+def getRecommendations(prefs, person, similarity=sim_pearson):
+    totals = {}
+    simSums = {}
+    for other in prefs:
+    # 不和自己作比较
+        if other == person:
+            continue
+        sim = similarity(prefs, person, other)
+
+        # 忽略评价值小于0或等于0的情况
+        if sim &lt; 0:
+            continue
+
+        for item in prefs[other]:
+
+        # 只对自己还未评价的物品评价
+            if item not in prefs[person] or prefs[person][item] == 0:
+
+                totals.setdefalult(item, 0)
+                totals[item] += prefs[other][item]*sim
+
+                simSums.setdefalult(item, 0)
+                simSums[item] += sim
+
+    # 生成列表
+    rankings = [(total / simSums[item], item) for item in totals.items()]
+
+    rankings.sort()
+    rankings.reverse()
+    return rankings
+</code></pre></div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
+var disqus_config = function () {
+  this.page.url = 'https://blog.whilte.cn/2017/04/01/推荐系统-python/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '2017/04/01/推荐系统-python/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};</script><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript><div class="post-report-bug">文章勘误可以直接到 <a target="_blank" href="https://github.com/egoist/blog/blob/master/source/_posts/推荐系统-python.md">源代码地址</a> 修改或者 <a target="_blank" href="https://github.com/egoist/blog/issues/new">提交 ISSUE</a>，感谢阅读！</div></article></section><footer class="footer"><div class="centered"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" class="hide-on-mobile">CC BY-NC-ND 4.0</a><span class="hide-on-mobile">&nbsp;</span><span>&copy;&nbsp;</span><a href="https://github.com/egoist">E.Z.</a><span class="hide-on-mobile">&nbsp;</span><a href="https://github.com/egoist/blog" class="hide-on-mobile">Read the source code.</a></div></footer><div style="display:none"></div><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54857209-6', 'auto');
+ga('send', 'pageview');</script><script async src="https://www.google-analytics.com/analytics.js"></script><script src="/js/highlight.min.js?v=4.2.2"></script><script src="/js/zoom.js?v=4.2.2"></script><script>window.hexoLayout = "post"</script><script src="/js/app.js?v=4.2.2"></script></body></html>
