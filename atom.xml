@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.whilte.cn/"/>
-  <updated>2017-04-23T10:38:26.184Z</updated>
+  <updated>2017-04-24T02:58:47.366Z</updated>
   <id>https://blog.whilte.cn/</id>
   
   <author>
@@ -14,6 +14,150 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django 模板语言</title>
+    <link href="https://blog.whilte.cn/2017/04/08/Django-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E8%A8%80/"/>
+    <id>https://blog.whilte.cn/2017/04/08/Django-模板语言/</id>
+    <published>2017-04-08T10:18:56.000Z</published>
+    <updated>2017-04-24T02:58:47.366Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>render函数</li>
+</ul>
+<p>render的参数</p>
+<pre><code>render(requests, &#39;index.html&#39;, context)
+</code></pre><p>context 也叫上下文， 可以替换index中内容.</p>
+<p>比如context为:</p>
+<pre><code>context = {
+  &#39;title&#39;: &#39;something&#39;,
+  &#39;content&#39;: &#39;somehow&#39;
+ }
+</code></pre><a id="more"></a>
+<p>在index中的具体写法，来将context中的内容替换：</p>
+<pre><code>{{ title }}
+{{ content}}
+</code></pre><ul>
+<li>static 目录<br>有时侯要使用css， javascript, images等，要设置静态目录文件夹。</li>
+</ul>
+<p>创建static文件夹，要让Django知道目录的所在。</p>
+<p>在setting.py 文件中，需要更新两个变量 STATIC_URL 和 STATICFILES_DIRS 元祖。</p>
+<pre><code>
+STATIC_URL = &#39;/static&#39;
+STATICFILES_DIRS = (os.path.join(BASE_DIR, &#39;static&#39;),)
+</code></pre><p>在html文件中，加入 {% load static %} 即可导入static文件。</p>
+<ul>
+<li>关于数据库</li>
+</ul>
+<p>上面的context就模拟了， 从数据库取出的数据。从models取出数据，Django其实自带数据库sqlite， 这里我使用mongodb。</p>
+<p>要使用mongodb，要现在setting.py 中设置:</p>
+<pre><code>from mongoengine import connect
+connect(&#39;library&#39;, host=&#39;localhost&#39;, port=27017)
+</code></pre><p>在models.py中引入mongoengine，</p>
+<pre><code>from django.db import models
+from mongoengine import Document, StringField
+
+# 继承 mongoengine的Document类
+class LibraryInfo(Document):
+# 创建一个字符串Field
+    姓名 = StringField(),
+    身份证号 = StringField(),
+    性别 = StringField(),
+    出生日期 = StringField(),
+    欠款金额 = StringField(),
+    累计借书 = StringField()
+
+# meta 指定集合， 集合要是已经创建的
+    meta = {
+        &#39;collection&#39;: &#39;math_all&#39;
+    }
+</code></pre><p>更改以后，要在views.py 中导入：</p>
+<pre><code>from tango.models import LibraryInfo
+</code></pre><ul>
+<li>数据分页</li>
+</ul>
+<p>数据很多的时候，就需要分页功能。<br>在views.py 中加入</p>
+<pre><code>from django.core.paginator import Paginator
+# 在函数index中加入
+limit = 4
+paginator = Paginator(info, limit)
+</code></pre><p>Paginator的用法：</p>
+<pre><code>from django.core.paginator import Paginator
+
+info = &#39;something and something else something&#39;
+# 使用方法，使用方法将 info 分为 4 页。
+paginator = Paginator(info, 4)
+# 将第一页提出
+page1 = paginator.page(1)
+# 使用object_list来展现数据
+page1.object_list
+# 判断一共多少页
+page1.has_next()
+# 获得page的页数
+page1.number
+# 获得总页数
+page1.paginator.page_number
+</code></pre><ul>
+<li>模板的继承</li>
+</ul>
+<p>Django 的模板系统有来创建html页面， 为减少重复和冗余的代码重复， 模板继承可以很优雅的解决。</p>
+<p>模板继承就是先创建一个基础模板，然后自定义其中的部分内容。</p>
+<p>比如创建一个base.html 内容如下：</p>
+<pre><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;{% block title %}{% endblock %}
+
+<body>
+    <h1>My helpful timestamp site</h1>
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <hr>
+    <p>Thanks for visiting my site.</p>
+    {% endblock %}
+&lt;/body&gt;
+&lt;/html&gt;
+</body></code></pre><p>其中的 {% block %}  。 所有的  {% block %}  标签告诉模板引擎，子模板可以重载这些部分。 每个 {% block %} 标签所要做的是告诉模板引擎，该模板下的这一块内容将有可能被子模板覆盖。</p>
+<p>现在写一个模板来继承它：</p>
+<pre><code>{% extends "base.html" %}
+
+{% block title %}The current time{% endblock %}
+
+{% block content %}
+<p>It is now {{ current_date }}.</p>
+{% endblock %}
+</code></pre><p>模板引擎发现了 {% extends %} 标签， 注意到该模板是一个子模板。 模板引擎立即装载其父模板，即本例中的 base.html<br>非常的优雅解决。</p>
+<p>以下是使用模板继承的一些点：</p>
+<p>1.如果在模板中使用 {% extends %} ，必须保证其为模板中的第一个模板标记。 否则，模板继承将不起作用。</p>
+<p>2.一般来说，基础模板中的 {% block %} 标签越多越好。 记住，子模板不必定义父模板中所有的代码块，因此你可以用合理的缺省值对一些代码块进行填充，然后只对子模板所需的代码块进行（重）定义。 俗话说，钩子越多越好</p>
+<p>3.如果发觉自己在多个模板之间拷贝代码，你应该考虑将该代码段放置到父模板的某个 {% block %} 中。</p>
+<p>4.如果你需要访问父模板中的块的内容，使用 {{ block.super }} 这个标签吧，这一个魔法变量将会表现出父模板中的内容。 如果只想在上级代码块基础上添加内容，而不是全部重载，该变量就显得非常有用了</p>
+<p>5.不允许在同一个模板中定义多个同名的 {% block %} 。 存在这样的限制是因为block 标签的工作方式是双向的。 也就是说，block 标签不仅挖了一个要填的坑，也定义了在父模板中这个坑所填充的内容。如果模板中出现了两个相同名称的 {% block %} 标签，父模板将无从得知要使用哪个块的内容。</p>
+<p>6.{% extends %} 对所传入模板名称使用的加载方法和 get_template() 相同。 也就是说，会将模板名称被添加到 TEMPLATE_DIRS 设置之后。</p>
+<p>7.多数情况下， {% extends %} 的参数应该是字符串，但是如果直到运行时方能确定父模板名，这个参数也可以是个变量。 这使得你能够实现一些很酷的动态功能。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;render函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;render的参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;render(requests, &amp;#39;index.html&amp;#39;, context)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;context 也叫上下文， 可以替换index中内容.&lt;/p&gt;
+&lt;p&gt;比如context为:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;context = {
+  &amp;#39;title&amp;#39;: &amp;#39;something&amp;#39;,
+  &amp;#39;content&amp;#39;: &amp;#39;somehow&amp;#39;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="Django" scheme="https://blog.whilte.cn/tags/Django/"/>
+    
+  </entry>
   
   <entry>
     <title>Django MTV模型</title>
