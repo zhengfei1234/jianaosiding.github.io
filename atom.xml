@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>庶民样本</title>
+  <title>啦e啦啦</title>
   <subtitle>An artist who lives in his fields</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>https://blog.whilte.cn/</id>
   
   <author>
-    <name>EGOIST</name>
+    <name>Ewen</name>
     <email>zeliges@gmail.com</email>
   </author>
   
