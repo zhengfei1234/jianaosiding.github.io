@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.whilte.cn/2017/04/08/Django-stu/</loc>
+    
+    <lastmod>2017-04-24T04:21:18.212Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.whilte.cn/about.html</loc>
     
     <lastmod>2017-04-24T03:02:07.688Z</lastmod>
@@ -30,7 +37,7 @@
   </url>
   
   <url>
-    <loc>https://blog.whilte.cn/girls.html</loc>
+    <loc>https://blog.whilte.cn/contact.html</loc>
     
     <lastmod>2017-04-23T10:44:16.171Z</lastmod>
     
@@ -44,16 +51,9 @@
   </url>
   
   <url>
-    <loc>https://blog.whilte.cn/contact.html</loc>
+    <loc>https://blog.whilte.cn/girls.html</loc>
     
     <lastmod>2017-04-23T10:44:16.171Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.whilte.cn/2017/04/08/Django-stu/</loc>
-    
-    <lastmod>2017-04-23T10:38:26.184Z</lastmod>
     
   </url>
   

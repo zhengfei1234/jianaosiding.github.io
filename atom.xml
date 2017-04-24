@@ -164,7 +164,7 @@ page1.paginator.page_number
     <link href="https://blog.whilte.cn/2017/04/08/Django-stu/"/>
     <id>https://blog.whilte.cn/2017/04/08/Django-stu/</id>
     <published>2017-04-08T06:18:56.000Z</published>
-    <updated>2017-04-23T10:38:26.184Z</updated>
+    <updated>2017-04-24T04:21:18.212Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>MTV 模型</li>
@@ -172,6 +172,10 @@ page1.paginator.page_number
 <p>简单的向服务器发送一个requests，服务器会返回一个responses。</p>
 <p>具体的操作为：</p>
 <p>发送一个请求， requests 会到views区， 找到特定的views， views到models层查找数据， models为托管数据的层级和一些对数据进行操作， 接下来会将找到的数据到templates层，templates来展示数据。这就是简单的 MTV 模型</p>
+<p>Django 里更关注的是模型（Model）、模板(Template)和视图（Views），Django 也被称为 MTV 框架 。在 MTV 开发模式中：</p>
+<p>M 代表模型（Model），即数据存取层。 该层处理与数据相关的所有事务： 如何存取、如何验证有效性、包含哪些行为以及数据之间的关系等。</p>
+<p>T 代表模板(Template)，即表现层。 该层处理与表现相关的决定： 如何在页面或其他类型文档中进行显示。</p>
+<p>V 代表视图（View），即业务逻辑层。 该层包含存取模型及调取恰当模板的相关逻辑。 你可以把它看作模型与模板之间的桥梁。</p>
 <ul>
 <li>创建 Django 项目</li>
 </ul>
