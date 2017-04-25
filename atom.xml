@@ -473,7 +473,7 @@ def getRecommendations(prefs, person, similarity=sim_pearson):
     <link href="https://blog.whilte.cn/2017/03/28/%E8%B5%B6%E9%9B%86%E7%BD%91%E7%88%AC%E8%99%AB/"/>
     <id>https://blog.whilte.cn/2017/03/28/赶集网爬虫/</id>
     <published>2017-03-28T08:08:46.000Z</published>
-    <updated>2017-04-23T10:54:10.690Z</updated>
+    <updated>2017-04-25T05:25:37.201Z</updated>
     
     <content type="html"><![CDATA[<p>爬虫地址：<a href="https://github.com/jianaosiding/crawl1" target="_blank" rel="external">spider</a></p>
 <p>赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。<br><em>算是以深度优先来进行爬取</em></p>
@@ -503,7 +503,6 @@ def getRecommendations(prefs, person, similarity=sim_pearson):
 </ul>
 </li>
 </ol>
-<a id="more"></a>
 <h5 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h5><p><img src="http://oava7ylm5.bkt.clouddn.com/test.jpg" alt="test"></p>
 <ul>
 <li><p>Spider 1 从<a href="http://bj.ganji.com/zhaopin/" target="_blank" rel="external">列表页</a>中获取页面下全部的个分类的链接，然后将分类的链接储存到 url_list 这个collection中。</p>
@@ -599,11 +598,10 @@ test = map(lambda x: x*x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 test 为 &lt;map object at 0x7f998e02c7b8&gt;
 list(test)
 [1, 4, 9, 16, 16, 25, 36, 49, 64, 81]
-</code></pre><h5 id="count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。"><a href="#count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。" class="headerlink" title="count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。"></a>count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。</h5><h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu1.png" alt="xiaoguotu1"><br><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu2.png" alt="xiaoguotu2"></p>
-<h6 id="运行时的截图："><a href="#运行时的截图：" class="headerlink" title="运行时的截图："></a>运行时的截图：</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/sometime2.png" alt="sometime"></p>
-<h5 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h5><p>我的MongoDB中， 其中 url_list的 count 为:<em>120166</em>, item_info的 count为:<em>30726</em>.</p>
+</code></pre><h5 id="count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。"><a href="#count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。" class="headerlink" title="count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。"></a>count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。</h5><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu1.png" alt="xiaoguotu1"><br><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu2.png" alt="xiaoguotu2"></p>
+<h4 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h4><p>我的MongoDB中， 其中 url_list的 count 为:<em>120166</em>, item_info的 count为:<em>30726</em>.</p>
 <p>可能是我url_list先于item_info爬取，url_list有些链接已经失效。</p>
-<h5 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h5><p>我之前写过58同城的爬虫和这个类似， 但是写这个的时候bug明显更多。</p>
+<h4 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h4><p>我之前写过58同城的爬虫和这个类似， 但是写这个的时候bug明显更多。</p>
 <p>不同的网站会有不同的抓取策略。</p>
 <p><em>写爬虫会有很多的坑，验证码，采集JavaScript，模拟登录等都是要克服的。</em></p>
 <p>还有一些网站的数据加载方式， 比如美团，美团的数据加载使用的是 ajax(异步加载JavaScript和XML)，用selenium虽然可以,但是效率低。抓包分析效率高，但是很难模仿请求。我比较偏于分析请求。所以要了解网站的一些常见的反爬措施和网页的结构。</p>
@@ -613,34 +611,8 @@ list(test)
     
     <summary type="html">
     
-      &lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em&gt;算是以深度优先来进行爬取&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;爬虫的目的是收集数据，数据的格式要便于处理和分析。&lt;/em&gt;&lt;/p&gt;
-&lt;h4 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;MongoDB&lt;/li&gt;
-&lt;li&gt;requests&lt;/li&gt;
-&lt;li&gt;pymongo&lt;/li&gt;
-&lt;li&gt;BeautifulSoup and lxml&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;关于爬虫&quot;&gt;&lt;a href=&quot;#关于爬虫&quot; class=&quot;headerlink&quot; title=&quot;关于爬虫&quot;&gt;&lt;/a&gt;关于爬虫&lt;/h4&gt;&lt;h5 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h5&gt;&lt;ol&gt;
-&lt;li&gt;确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装需要的Python的第三方库:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; 在 terminal(cmd) 中输入：
-
- win:
-
- pip install requests, BeautifulSoup4, pymongo, lxml
-
- linux:
-
- sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果你知道更好(不知道也可以)：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一点 HTML CSS HTTP and MongoDB&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
+      &lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em
     
     </summary>
     
@@ -812,7 +784,7 @@ return 362880
     <link href="https://blog.whilte.cn/2017/01/27/%E5%85%B3%E4%BA%8E%E5%AD%A6%E6%A0%A1%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%BD%91%E7%AB%99/"/>
     <id>https://blog.whilte.cn/2017/01/27/关于学校图书馆网站/</id>
     <published>2017-01-27T02:57:24.000Z</published>
-    <updated>2017-04-15T08:35:44.092Z</updated>
+    <updated>2017-04-25T05:33:28.122Z</updated>
     
     <content type="html"><![CDATA[<p>前段时间看完了python网络数据收集这本书，自己想练习一下。<br>联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，<br>觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，<br>顿时很有兴趣，就动手了。</p>
 <ul>
@@ -868,7 +840,7 @@ headers = {
     &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8&#39;,
     &#39;Cache-Control&#39;: &#39;max-age=0&#39;,
     &#39;Connection&#39;: &#39;keep-alive&#39;,
-    &#39;Host&#39;: &#39;202.196.13.8:8080&#39;,
+    &#39;Host&#39;: &#39;202.1X6.13.X:8080&#39;,
     &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;,
     &#39;User-Agent&#39;: &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36&#39;
 }
@@ -957,7 +929,7 @@ headers = {
     &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8&#39;,
     &#39;Cache-Control&#39;: &#39;max-age=0&#39;,
     &#39;Connection&#39;: &#39;keep-alive&#39;,
-    &#39;Host&#39;: &#39;202.196.13.8:8080&#39;,
+    &#39;Host&#39;: &#39;202.1X6.13.X:8080&#39;,
     &#39;Origin&#39;: &#39;http://202.196.13.8:8080&#39;,
     &#39;Referer&#39;: &#39;http://202.196.13.8:8080/reader/login.php&#39;,
     &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;,
@@ -1017,7 +989,7 @@ if __name__ == &#39;__main__&#39;:
 </code></pre><p>其实我的目的是写一个能够知道我借阅的图书到期是给我发mail，提醒我，如果可以续借帮我续借的脚本，<br>当然我还在写(手动微笑)。。。</p>
 <hr>
 <p>更新线</p>
-<p>关于图书馆借阅脚本，已经写的差不多了，代码有点挫；<br><a href="https://github.com/jianaosiding/spider_code/blob/master/library.py" target="_blank" rel="external">code</a></p>
+<p>关于图书馆借阅脚本，已经写的差不多了，代码有点挫:<a href="https://github.com/jianaosiding/spider_code/blob/master/renew.py" target="_blank" rel="external">RenewBook</a></p>
 ]]></content>
     
     <summary type="html">

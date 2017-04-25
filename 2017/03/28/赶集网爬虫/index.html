@@ -1,58 +1,16 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>赶集网爬虫</title><link rel="alternate" type="application/rss+xml" title="啦e啦啦" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="赶集网爬虫"><meta name="description" content="&lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em&gt;算是以深度优先来进行爬取&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;爬虫的目的是收集数据，数据的格式要便于处理和分析。&lt;/em&gt;&lt;/p&gt;
-&lt;h4 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;MongoDB&lt;/li&gt;
-&lt;li&gt;requests&lt;/li&gt;
-&lt;li&gt;pymongo&lt;/li&gt;
-&lt;li&gt;BeautifulSoup and lxml&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;关于爬虫&quot;&gt;&lt;a href=&quot;#关于爬虫&quot; class=&quot;headerlink&quot; title=&quot;关于爬虫&quot;&gt;&lt;/a&gt;关于爬虫&lt;/h4&gt;&lt;h5 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h5&gt;&lt;ol&gt;
-&lt;li&gt;确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装需要的Python的第三方库:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; 在 terminal(cmd) 中输入：
-
- win:
-
- pip install requests, BeautifulSoup4, pymongo, lxml
-
- linux:
-
- sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果你知道更好(不知道也可以)：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一点 HTML CSS HTTP and MongoDB&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;"><meta name="twitter:description" content="&lt;p&gt;爬虫地址：&lt;a href=&quot;https://github.com/jianaosiding/crawl1&quot;&gt;spider&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。&lt;br&gt;&lt;em&gt;算是以深度优先来进行爬取&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;爬虫的目的是收集数据，数据的格式要便于处理和分析。&lt;/em&gt;&lt;/p&gt;
-&lt;h4 id=&quot;依赖&quot;&gt;&lt;a href=&quot;#依赖&quot; class=&quot;headerlink&quot; title=&quot;依赖&quot;&gt;&lt;/a&gt;依赖&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;MongoDB&lt;/li&gt;
-&lt;li&gt;requests&lt;/li&gt;
-&lt;li&gt;pymongo&lt;/li&gt;
-&lt;li&gt;BeautifulSoup and lxml&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;关于爬虫&quot;&gt;&lt;a href=&quot;#关于爬虫&quot; class=&quot;headerlink&quot; title=&quot;关于爬虫&quot;&gt;&lt;/a&gt;关于爬虫&lt;/h4&gt;&lt;h5 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h5&gt;&lt;ol&gt;
-&lt;li&gt;确定已安装MongoDB，Python3.5, 浏览器建议使用Chrome。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装需要的Python的第三方库:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; 在 terminal(cmd) 中输入：
-
- win:
-
- pip install requests, BeautifulSoup4, pymongo, lxml
-
- linux:
-
- sudo pip3 install requests, BeautifulSoup4, pymongo, lxml
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果你知道更好(不知道也可以)：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一点 HTML CSS HTTP and MongoDB&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;"></head><body><header class="header"><h1 class="site-name"><a href="/">e.w.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/saber.html">saber</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">赶集网爬虫</h2><script></script><div class="post-content markdown-body"><p>爬虫地址：<a href="https://github.com/jianaosiding/crawl1" target="_blank" rel="external">spider</a></p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>赶集网爬虫</title><link rel="alternate" type="application/rss+xml" title="啦e啦啦" href="/atom.xml"><link href="/css/main.css?v=4.2.2" rel="stylesheet"><link rel="stylesheet" href="/css/highlight.css?v=4.2.2"><link rel="stylesheet" href="/css/zoom.css?v=4.2.2"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@rem_rin_rin"><meta name="twitter:title" content="赶集网爬虫"><meta name="description" content="爬虫地址：spider
+赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。算是以深度优先来进行爬取
+爬虫的目的是收集数据，数据的格式要便于处理和分析。
+依赖
+MongoDB
+requests
+py"><meta name="twitter:description" content="爬虫地址：spider
+赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。算是以深度优先来进行爬取
+爬虫的目的是收集数据，数据的格式要便于处理和分析。
+依赖
+MongoDB
+requests
+py"></head><body><header class="header"><h1 class="site-name"><a href="/">e.w.</a></h1><ul class="nav"><li><a href="/about.html">about</a></li><li><a href="/saber.html">saber</a></li></ul></header><section class="centered post-page"><article class="post"><h2 class="post-title">赶集网爬虫</h2><script></script><div class="post-content markdown-body"><p>爬虫地址：<a href="https://github.com/jianaosiding/crawl1" target="_blank" rel="external">spider</a></p>
 <p>赶集网的爬虫，爬取赶集网上的招聘的板块上的信息并储存。<br><em>算是以深度优先来进行爬取</em></p>
 <p><em>爬虫的目的是收集数据，数据的格式要便于处理和分析。</em></p>
 <h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><ul>
@@ -80,7 +38,6 @@
 </ul>
 </li>
 </ol>
-<a id="more"></a>
 <h5 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h5><p><img src="http://oava7ylm5.bkt.clouddn.com/test.jpg" alt="test"></p>
 <ul>
 <li><p>Spider 1 从<a href="http://bj.ganji.com/zhaopin/" target="_blank" rel="external">列表页</a>中获取页面下全部的个分类的链接，然后将分类的链接储存到 url_list 这个collection中。</p>
@@ -176,11 +133,10 @@ test = map(lambda x: x*x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 test 为 &lt;map object at 0x7f998e02c7b8&gt;
 list(test)
 [1, 4, 9, 16, 16, 25, 36, 49, 64, 81]
-</code></pre><h5 id="count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。"><a href="#count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。" class="headerlink" title="count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。"></a>count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。</h5><h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu1.png" alt="xiaoguotu1"><br><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu2.png" alt="xiaoguotu2"></p>
-<h6 id="运行时的截图："><a href="#运行时的截图：" class="headerlink" title="运行时的截图："></a>运行时的截图：</h6><p><img src="http://oava7ylm5.bkt.clouddn.com/sometime2.png" alt="sometime"></p>
-<h5 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h5><p>我的MongoDB中， 其中 url_list的 count 为:<em>120166</em>, item_info的 count为:<em>30726</em>.</p>
+</code></pre><h5 id="count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。"><a href="#count-文件主要是在main-py-运行时，-每5秒来检查一次数据库中数据的数量。" class="headerlink" title="count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。"></a>count 文件主要是在main.py 运行时， 每5秒来检查一次数据库中数据的数量。</h5><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu1.png" alt="xiaoguotu1"><br><img src="http://oava7ylm5.bkt.clouddn.com/xiaoguotu2.png" alt="xiaoguotu2"></p>
+<h4 id="爬取结果"><a href="#爬取结果" class="headerlink" title="爬取结果"></a>爬取结果</h4><p>我的MongoDB中， 其中 url_list的 count 为:<em>120166</em>, item_info的 count为:<em>30726</em>.</p>
 <p>可能是我url_list先于item_info爬取，url_list有些链接已经失效。</p>
-<h5 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h5><p>我之前写过58同城的爬虫和这个类似， 但是写这个的时候bug明显更多。</p>
+<h4 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h4><p>我之前写过58同城的爬虫和这个类似， 但是写这个的时候bug明显更多。</p>
 <p>不同的网站会有不同的抓取策略。</p>
 <p><em>写爬虫会有很多的坑，验证码，采集JavaScript，模拟登录等都是要克服的。</em></p>
 <p>还有一些网站的数据加载方式， 比如美团，美团的数据加载使用的是 ajax(异步加载JavaScript和XML)，用selenium虽然可以,但是效率低。抓包分析效率高，但是很难模仿请求。我比较偏于分析请求。所以要了解网站的一些常见的反爬措施和网页的结构。</p>
