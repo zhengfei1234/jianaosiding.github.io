@@ -784,9 +784,9 @@ return 362880
     <link href="https://blog.whilte.cn/2017/01/27/%E5%85%B3%E4%BA%8E%E5%AD%A6%E6%A0%A1%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%BD%91%E7%AB%99/"/>
     <id>https://blog.whilte.cn/2017/01/27/关于学校图书馆网站/</id>
     <published>2017-01-27T02:57:24.000Z</published>
-    <updated>2017-04-25T05:33:28.122Z</updated>
+    <updated>2017-04-26T09:25:26.456Z</updated>
     
-    <content type="html"><![CDATA[<p>前段时间看完了python网络数据收集这本书，自己想练习一下。<br>联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，<br>觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，<br>顿时很有兴趣，就动手了。</p>
+    <content type="html"><![CDATA[<p>前段时间看完了python网络数据收集这本书，自己想练习一下。<br>联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，<br>觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，顺便写一个自动借阅的脚本。<br>顿时很有兴趣，就动手了。</p>
 <ul>
 <li>验证码</li>
 </ul>
@@ -910,83 +910,76 @@ if __name__ == &#39;__main__&#39;:
     time.sleep(2)
     for i in range(541310020101, 541310020161):
         login(str(i))
-</code></pre><h4 id="通过分析数据可以得到以下图表："><a href="#通过分析数据可以得到以下图表：" class="headerlink" title="通过分析数据可以得到以下图表："></a>通过分析数据可以得到以下图表：</h4><p><img src="http://oava7ylm5.bkt.clouddn.com/chart_math.png" alt="math"></p>
-<h4 id="另附上关于每个人的图书借阅情况的code："><a href="#另附上关于每个人的图书借阅情况的code：" class="headerlink" title="另附上关于每个人的图书借阅情况的code："></a>另附上关于每个人的图书借阅情况的code：</h4><pre><code>import requests
-from bs4 import BeautifulSoup
-import subprocess
-import time
-import http.cookiejar as cookielib
-import pymysql
-conn = pymysql.connect(host=&#39;localhost&#39;, user=&#39;root&#39;, password=&#39;jian&#39;,
-                       port=3306, db=&#39;scraping&#39;, charset=&#39;utf8&#39;)
-cur = conn.cursor()
-cur.execute(&quot;use scraping&quot;)
-cur.execute(&quot;create table yingshu_2015(条形码 INT(100), 书名 VARCHAR(200), 作者 VARCHAR(200), 借阅日期 DATE , 归还日期 DATE , 馆藏地 VARCHAR(200))&quot;)
-headers = {
-    &#39;Accept&#39;: (&#39;text/html,application/xhtml+xml,application/xml;q=0.9,
-               image/webp,*/*;q=0.8&#39;,)
-    &#39;Accept-Encoding&#39;: &#39;gzip, deflate, sdch&#39;,
-    &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8&#39;,
-    &#39;Cache-Control&#39;: &#39;max-age=0&#39;,
-    &#39;Connection&#39;: &#39;keep-alive&#39;,
-    &#39;Host&#39;: &#39;202.1X6.13.X:8080&#39;,
-    &#39;Origin&#39;: &#39;http://202.196.13.8:8080&#39;,
-    &#39;Referer&#39;: &#39;http://202.196.13.8:8080/reader/login.php&#39;,
-    &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;,
-    &#39;User-Agent&#39;: (&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-                   (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36&#39;,)
+</code></pre><h4 id="通过分析数据可以得到以下图表："><a href="#通过分析数据可以得到以下图表：" class="headerlink" title="通过分析数据可以得到以下图表："></a>通过分析数据可以得到以下图表：</h4><p>在jupyter中简单的分析：</p>
+<pre><code># coding: utf-8
+import pymongo
+import charts
+from functools import reduce
+
+
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+scraping = client[&#39;scraping&#39;]
+library = client[&#39;library&#39;]
+IdNumbers = scraping[&#39;IdNumbers&#39;]
+xk15 = library[&#39;xk15&#39;]
+ys15 = library[&#39;ys15&#39;]
+math_all = library[&#39;math_all&#39;]
+iec = library[&#39;iec_all&#39;]
+
+all_loc = []
+for ma in iec.find():
+    for d in IdNumbers.find():
+        if reduce(lambda x, y:  int(str(x) + str(y)), list(str(ma[&#39;身份证号&#39;]))[0: 7]) == int(d[&#39;number&#39;]):
+          all_loc.append(d[&#39;city&#39;])
+#           print(d[&#39;city&#39;], ma[&#39;姓名&#39;])
+
+locs = [reduce(lambda x, y: str(x) + str(y), list(loc)[0: 2]) for loc in all_loc]
+list(set(locs))
+
+loc_times = []
+for i in list(set(locs)):
+    loc_times.append(locs.count(i))
+print(loc_times)
+
+def gen_data(types):
+    length = 0
+    if length &lt;= len(locs):
+        for area, times in zip(list(set(locs)), loc_times):
+            data = {
+                &#39;name&#39;: area,
+                &#39;data&#39;: [times],
+                &#39;type&#39;: types,
+            }
+            yield data
+            length += 1
+
+for i in gen_data(&#39;column&#39;):
+    print(i)
+
+series = [data for data in gen_data(&#39;column&#39;)]
+charts.plot(series, show=&#39;inline&#39;, options=dict(title=dict(text=&#39;学院学生分布&#39;)))
+
+def gen_datas():
+    for area, times in zip(list(set(locs)), loc_times):
+        yield [area, times]
+
+for i in gen_datas():
+    print(i)
+
+options = {
+    &#39;chart&#39;   : {&#39;zoomType&#39;:&#39;xy&#39;},
+    &#39;title&#39;   : {&#39;text&#39;: &#39;IEC计算机科学与技术(互联网科学与技术) &#39;},
+    &#39;subtitle&#39;: {&#39;text&#39;: &#39;学生分布&#39;},
     }
-session = requests.Session()
-session.cookies = cookielib.LWPCookieJar(filename=&#39;cookies&#39;)
-try:
-    session.cookies.load(ignore_discard=True)
-except:
-    print(&quot;Cookie 未能加载&quot;)
-def get_captcha():
-    captcha_url =&quot;http://202.196.13.8:8080/reader/captcha.php&quot;
-    x = 0
-    bin = session.get(captcha_url, headers=headers).content
-    with open(&quot;d:/python/euler/%s.jpg&quot; % x, &quot;wb&quot;)as file:
-        file.write(bin)
-        file.close()
-    p = subprocess.Popen([&quot;tesseract&quot;, &quot;d:/python/euler/0.jpg&quot;,
-    &quot;d:/python/euler/captcha&quot;], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    p.wait()
-    f = open(&quot;d:/python/euler/captcha.txt&quot;, &quot;r&quot;)
-    captcharesponse = f.read().replace(&quot; &quot;, &quot; &quot;).replace(&quot;\n&quot;, &quot;&quot;)
-    return captcharesponse
-def login(xuehao):
-    from_data = {
-        &#39;number&#39;: xuehao,
-        &#39;passwd&#39;: password,
-        &#39;captcha&#39;: get_captcha(),
-        &#39;select&#39;: &#39;cert_no&#39;,
-        &#39;returnUrl&#39;: &#39;&#39;,
-    }
-    data = {
-        &#39;para_string&#39;: &#39;all&#39;,
-        &#39;topage&#39;: &#39;1&#39;,
-    }
-    time.sleep(2)
-    session.post(&quot;http://202.196.13.8:8080/reader/redr_verify.php&quot;,
-                 data=from_data, headers=headers)
-    session.get(&quot;http://202.196.13.8:8080/reader/redr_info.php&quot;,
-                headers=headers).content.decode(&quot;UTF-8&quot;)
-    book_info = session.post(&quot;http://202.196.13.8:8080/reader/book_hist.php&quot;,
-                             headers=headers, data=data).content.decode(&quot;UTF-8&quot;)
-    soup = BeautifulSoup(book_info, &quot;lxml&quot;)
-    book_info = soup.findAll(&quot;tr&quot;)
-    for i in range(1, len(book_info)):
-        print(book_info[i].get_text().split(&quot;\n&quot;))
-        cur.execute(&quot;insert into yingshu_2015(条形码, 书名, 作者, 借阅日期, 归还日期, 馆藏地)
-        VALUES (%s, %s, %s, %s, %s, %s)&quot;, (book_info[i].get_text().split(&quot;\n&quot;)[2], book_info[i].get_text().split(&quot;\n&quot;)[3], book_info[i].get_text().split(&quot;\n&quot;)[4], book_info[i].get_text().split(&quot;\n&quot;)[5], book_info[i].get_text().split(&quot;\n&quot;)[6], book_info[i].get_text().split(&quot;\n&quot;)[7]))
-        conn.commit()
-    session.cookies.save()
-if __name__ == &#39;__main__&#39;:
-    for i in range(541510020141, 541510020161):
-        login(&quot;541510020140&quot;)
-        print(i)
-</code></pre><p>其实我的目的是写一个能够知道我借阅的图书到期是给我发mail，提醒我，如果可以续借帮我续借的脚本，<br>当然我还在写(手动微笑)。。。</p>
+series =  [{
+    &#39;type&#39;: &#39;pie&#39;,
+    &#39;name&#39;: &#39;pie charts&#39;,
+    &#39;data&#39;:[i for i in gen_datas()]
+
+        }]
+charts.plot(series,options=options,show=&#39;inline&#39;)
+</code></pre><p><img src="http://oava7ylm5.bkt.clouddn.com/chart_math.png" alt="math"></p>
+<p>其实我的目的是写一个能够知道我借阅的图书到期是给我发mail，提醒我，如果可以续借帮我续借的脚本，<br>当然我还在写(手动微笑)。。。</p>
 <hr>
 <p>更新线</p>
 <p>关于图书馆借阅脚本，已经写的差不多了，代码有点挫:<a href="https://github.com/jianaosiding/spider_code/blob/master/renew.py" target="_blank" rel="external">RenewBook</a></p>
@@ -994,7 +987,7 @@ if __name__ == &#39;__main__&#39;:
     
     <summary type="html">
     
-      &lt;p&gt;前段时间看完了python网络数据收集这本书，自己想练习一下。&lt;br&gt;联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，&lt;br&gt;觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，&lt;br&gt;顿时很有兴趣，就动手了。&lt;/p&gt;
+      &lt;p&gt;前段时间看完了python网络数据收集这本书，自己想练习一下。&lt;br&gt;联想到刚入学时的时候登陆学校图书馆网站，初始密码是学号，觉得很鸡肋，&lt;br&gt;觉得用模拟登陆和验证码识别，就可以爬下我们学院每个人的图书借阅记录和个人信息，顺便写一个自动借阅的脚本。&lt;br&gt;顿时很有兴趣，就动手了。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;验证码&lt;/li&gt;
 &lt;/ul&gt;
