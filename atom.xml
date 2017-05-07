@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.whilte.cn/"/>
-  <updated>2017-05-07T10:55:24.502Z</updated>
+  <updated>2017-05-07T10:58:30.807Z</updated>
   <id>https://blog.whilte.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://blog.whilte.cn/2017/05/07/GameOfThroen/"/>
     <id>https://blog.whilte.cn/2017/05/07/GameOfThroen/</id>
     <published>2017-05-07T10:49:01.000Z</published>
-    <updated>2017-05-07T10:55:24.502Z</updated>
+    <updated>2017-05-07T10:58:30.807Z</updated>
     
     <content type="html"><![CDATA[<p>分析GOT文本， 利用jieba中文分词库和wordcloud来绘制词云图。</p>
 <pre><code>import jieba.analyse
@@ -62,7 +62,7 @@ words = jieba.analyse.extract_tags(content, topK=100, withWeight=True)
 
 for word, freq in words:
     print(word, freq)
-</code></pre><p>如图；<br><img src="https://ooo.0o0.ooo/2017/05/07/590efd1380870.png" alt="saber"></p>
+</code></pre><p>如图；<br><img src="https://ooo.0o0.ooo/2017/05/07/590efdc75f2c5.png" alt="saber"></p>
 ]]></content>
     
     <summary type="html">
