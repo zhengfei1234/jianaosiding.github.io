@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.whilte.cn/"/>
-  <updated>2017-04-27T03:51:53.826Z</updated>
+  <updated>2017-05-07T10:55:24.502Z</updated>
   <id>https://blog.whilte.cn/</id>
   
   <author>
@@ -14,6 +14,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GOT 词云图</title>
+    <link href="https://blog.whilte.cn/2017/05/07/GameOfThroen/"/>
+    <id>https://blog.whilte.cn/2017/05/07/GameOfThroen/</id>
+    <published>2017-05-07T10:49:01.000Z</published>
+    <updated>2017-05-07T10:55:24.502Z</updated>
+    
+    <content type="html"><![CDATA[<p>分析GOT文本， 利用jieba中文分词库和wordcloud来绘制词云图。</p>
+<pre><code>import jieba.analyse
+
+from wordcloud import WordCloud
+
+from PIL import Image
+
+import codecs
+
+import matplotlib.pyplot as plt
+
+import numpy as np
+from collections import Counter
+
+get_ipython().magic(&#39;matplotlib&#39;)
+
+f = codecs.open(&#39;/home/jasd/python/game_of_throne.txt&#39;, &#39;r&#39;, &#39;utf-8&#39;)
+content = f.read()
+f.close()
+
+mask = np.array(Image.open(&#39;/home/jasd/python/ml/saber.jpg&#39;))
+
+word = jieba.cut(content, cut_all=True)
+wordpro = &#39;&#39;.join(word)
+
+wordcloud = WordCloud(font_path=&#39;./fonts/wqy-microhei.ttc&#39;, margin=5, mask=mask, max_words=1000)
+wordcloud = wordcloud.generate(wordpro)
+
+plt.figure()
+plt.imshow(wordcloud, interpolation=&#39;bilinear&#39;)
+plt.axis(&quot;off&quot;)
+plt.show()
+
+
+# 关键词权重
+
+words = jieba.analyse.extract_tags(content, topK=100, withWeight=True)
+
+for word, freq in words:
+    print(word, freq)
+</code></pre><p>如图；<br><img src="https://ooo.0o0.ooo/2017/05/07/590efd1380870.png" alt="saber"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;分析GOT文本， 利用jieba中文分词库和wordcloud来绘制词云图。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import jieba.analyse
+
+from wordcloud import WordCloud
+
+from PIL import Image
+
+impor
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://blog.whilte.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Django 数据库</title>
