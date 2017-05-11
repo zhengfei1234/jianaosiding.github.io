@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.whilte.cn/2017/03/16/python-tip/</loc>
+    
+    <lastmod>2017-05-11T09:54:48.744Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.whilte.cn/about.html</loc>
     
     <lastmod>2017-05-07T11:01:58.342Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://blog.whilte.cn/2017/04/04/selenium%E6%9D%A5%E6%A8%A1%E4%BB%BF%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E6%8B%89%E9%A1%B5%E9%9D%A2/</loc>
     
     <lastmod>2017-04-05T08:38:51.922Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.whilte.cn/2017/03/16/python-tip/</loc>
-    
-    <lastmod>2017-04-05T08:38:45.062Z</lastmod>
     
   </url>
   
