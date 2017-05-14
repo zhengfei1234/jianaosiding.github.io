@@ -49,22 +49,31 @@
         except:
             return set()
 </code></pre><ul>
-<li><p>实现线程池<br>```<br>class ThreadPool:<br>  def <strong>init</strong>(self, num_threads):</p>
-<pre><code>  self.tasks = Queue()
-  for _ in range(num_threads):
-      Fetcher(self.tasks)
-</code></pre><p>  def add_task(self, url):</p>
-<pre><code>  self.tasks.put(url)
-  # 将url放进队列
-</code></pre><p>  def wait_completion(self):</p>
-<pre><code>  self.tasks.join()
-  # 阻塞
-</code></pre></li>
+<li>实现线程池</li>
 </ul>
-<pre><code>main部分运行程序
-</code></pre><p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    start = time.time()<br>    pool = ThreadPool(4)<br>    pool.add_task(‘<a href="http://zzuli.edu.cn/" target="_blank" rel="external">http://zzuli.edu.cn/</a>‘)<br>    pool.wait_completion()<br>    print(‘{} urls fetcher in {:.1f} seconds’.format(len(seen_urls), time.time() - start))</p>
-<p>```</p>
-</div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
+<pre><code>class ThreadPool:
+    def __init__(self, num_threads):
+        self.tasks = Queue()
+        for _ in range(num_threads):
+            Fetcher(self.tasks)
+
+    def add_task(self, url):
+        self.tasks.put(url)
+        # 将url放进队列
+
+    def wait_completion(self):
+        self.tasks.join()
+        # 阻塞
+</code></pre><ul>
+<li>main部分运行程序</li>
+</ul>
+<pre><code>if __name__ == &#39;__main__&#39;:
+    start = time.time()
+    pool = ThreadPool(4)
+    pool.add_task(&#39;http://zzuli.edu.cn/&#39;)
+    pool.wait_completion()
+    print(&#39;{} urls fetcher in {:.1f} seconds&#39;.format(len(seen_urls), time.time() - start))
+</code></pre></div><div id="disqus_thread" class="disqus"></div><script>window.isPost = true;
 var disqus_config = function () {
   this.page.url = 'https://blog.whilte.cn/2017/05/14/线程池实现爬虫/'; // Replace PAGE_URL with your page's canonical URL variable
   this.page.identifier = '2017/05/14/线程池实现爬虫/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable

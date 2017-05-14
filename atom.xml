@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.whilte.cn/"/>
-  <updated>2017-05-14T08:07:37.463Z</updated>
+  <updated>2017-05-14T08:09:20.630Z</updated>
   <id>https://blog.whilte.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://blog.whilte.cn/2017/05/14/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AE%9E%E7%8E%B0%E7%88%AC%E8%99%AB/"/>
     <id>https://blog.whilte.cn/2017/05/14/线程池实现爬虫/</id>
     <published>2017-05-13T16:00:00.000Z</published>
-    <updated>2017-05-14T08:07:37.463Z</updated>
+    <updated>2017-05-14T08:09:20.630Z</updated>
     
     <content type="html"><![CDATA[<p>我将会写一个很无聊的爬虫，从一个url出发解析页面，提取页面中的链接，然后重复这个过程。</p>
 <p>线程池方式：开一个线程池，每当爬虫发现一个新链接，就将链接放入任务队列中，线程池中的线程从任务队列获取一个链接，完成抓取页面、解析、将新连接放入工作队列。</p>
@@ -71,22 +71,31 @@
         except:
             return set()
 </code></pre><ul>
-<li><p>实现线程池<br>```<br>class ThreadPool:<br>  def <strong>init</strong>(self, num_threads):</p>
-<pre><code>  self.tasks = Queue()
-  for _ in range(num_threads):
-      Fetcher(self.tasks)
-</code></pre><p>  def add_task(self, url):</p>
-<pre><code>  self.tasks.put(url)
-  # 将url放进队列
-</code></pre><p>  def wait_completion(self):</p>
-<pre><code>  self.tasks.join()
-  # 阻塞
-</code></pre></li>
+<li>实现线程池</li>
 </ul>
-<pre><code>main部分运行程序
-</code></pre><p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    start = time.time()<br>    pool = ThreadPool(4)<br>    pool.add_task(‘<a href="http://zzuli.edu.cn/" target="_blank" rel="external">http://zzuli.edu.cn/</a>‘)<br>    pool.wait_completion()<br>    print(‘{} urls fetcher in {:.1f} seconds’.format(len(seen_urls), time.time() - start))</p>
-<p>```</p>
-]]></content>
+<pre><code>class ThreadPool:
+    def __init__(self, num_threads):
+        self.tasks = Queue()
+        for _ in range(num_threads):
+            Fetcher(self.tasks)
+
+    def add_task(self, url):
+        self.tasks.put(url)
+        # 将url放进队列
+
+    def wait_completion(self):
+        self.tasks.join()
+        # 阻塞
+</code></pre><ul>
+<li>main部分运行程序</li>
+</ul>
+<pre><code>if __name__ == &#39;__main__&#39;:
+    start = time.time()
+    pool = ThreadPool(4)
+    pool.add_task(&#39;http://zzuli.edu.cn/&#39;)
+    pool.wait_completion()
+    print(&#39;{} urls fetcher in {:.1f} seconds&#39;.format(len(seen_urls), time.time() - start))
+</code></pre>]]></content>
     
     <summary type="html">
     
